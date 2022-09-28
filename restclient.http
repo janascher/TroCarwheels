@@ -1,0 +1,69 @@
+GET http://192.168.15.15:8000/api/users HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY0Mzc0MjU5LCJleHAiOjE2NjQzNzYwNTl9.EJ4KrW52GZwQiqzxBBaZByGNmjvvi_UYKE4hKrSFZWg
+##
+
+###
+POST http://192.168.15.15:8000/api/users HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Usuario5" ,
+    "email": "usuario5@gmail.com",
+    "nick": "usuario5",
+    "password": "pwd",
+    "address": "Rua que Sobe e Desce",
+    "num": "125",
+    "complement": "Nunca Aparece",
+    "city": "Cofins",
+    "state": "MG",
+    "district": "Bairro Morro Alto",
+    "birth_date": "31-12-2000",
+    "zip": "31187-262",
+    "phone": "(31) 99999-9999"
+}
+
+###
+
+GET http://192.168.15.15:8000/api/users/nick/rogerio HTTP/1.1
+
+###
+GET http://192.168.15.15:8000/api/users/nick/rogerio HTTP/1.1
+
+###
+GET http://192.168.15.15:8000/api/users/login HTTP/1.1
+content-type: application/json
+
+{ 
+    "email": "rogerio9@gmail.com",
+    "pwd": "pwd3"
+}
+
+###
+PUT http://192.168.15.15:8000/api/users/pwd/1 HTTP/1.1
+content-type: application/json
+
+{ 
+    "pwd": "pwd3"
+}
+###
+GET http://192.168.15.15:8000/api/users/login HTTP/1.1
+
+###
+PUT http://192.168.15.15:8000/api/users/1 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Rogério9",
+    "email": "rogerio9@gmail.com",
+    "nick": "rogerio",
+    "address": "Rua 5",
+    "num": "435",
+    "complement": "Jd Manacas",
+    "city": "Campinas",
+    "state": "SP",
+    "district": "Bairro Cidade Jd",
+    "birth_date": "31-01-2000",
+    "zip": "13187-232",
+    "phone": "(19) 99999-9999"
+}  
+###

@@ -1,0 +1,29 @@
+{
+  "name": "users",
+  "version": "1.0.0",
+  "description": "users register app",
+  "main": "./src/index.mjs",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:rogeriokotsubo/bd-proj1.git"
+  },
+  "author": "rogerio kotsubo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rogeriokotsubo/bd-proj1/issues"
+  },
+  "homepage": "https://github.com/rogeriokotsubo/bd-proj1#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.8.0",
+    "pgnode": "^1.1.2"
+  }
+}

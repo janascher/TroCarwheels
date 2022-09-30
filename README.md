@@ -32,8 +32,8 @@ Desenvolver um website que possibilite que usuários possam colecionar e trocar 
 3 - retornar a sua topic branch e realizar merge com a main.**Observação: resolver os conflitos caso exista**;
 4 - fazer push com repositório remoto;
 5 - abrir a PR e solicitar via Whatsapp para que os demais possam revisar;
-6 - pelo menos dois revisores devem aprovar ou solicitar explicitamente quais correções devem ser feitas;
-7 - somente após todas as correções terem sido realizadas e, pelo menos dois revisores terem aprovado, que o dono da PR pode realizar o merge na main.**Observação: caso na hora de realizar o merge o GitHub acusar algum conflito, a PR deve ir para o estado de draft e retomar para o passo 2**.
+6 - pelo menos um dos revisores devem aprovar ou solicitar explicitamente quais correções devem ser feitas;
+7 - somente após todas as correções terem sido realizadas e, pelo menos um dos revisores terem aprovado, que o dono da PR pode realizar o merge na main.**Observação: caso na hora de realizar o merge o GitHub acusar algum conflito, a PR deve ir para o estado de draft e retomar para o passo 2**.
 
 ## ✨ Requisitos do projeto
 

@@ -22,7 +22,8 @@ export default class Users {
                                         a.city,
                                         a.state,
                                         a.zip,
-                                        a.phone
+                                        a.phone,
+                                        a.user_class
                                     FROM users a 
                                     WHERE a.active=1 `
             
@@ -51,7 +52,8 @@ export default class Users {
                                     a.city,
                                     a.state,
                                     a.zip,
-                                    a.phone
+                                    a.phone,
+                                    a.user_class
                                 FROM users a 
                             WHERE a.active=1 AND a.id = $1 `,
                   values: [ _id ]
@@ -81,7 +83,8 @@ export default class Users {
                                     city,
                                     state,
                                     zip,
-                                    phone
+                                    phone,
+                                    user_class
                                 FROM users 
                             WHERE active=1 AND  nick = $1  `,
                   values: [ _nick ]
@@ -152,7 +155,8 @@ export default class Users {
                                         city=$9,
                                         state=$10,
                                         zip=$11,
-                                        phone=$12 
+                                        phone=$12,
+                                        updated_at = now() 
                             WHERE id = $13 RETURNING id
                     `,
                     values: [ _params.name, 

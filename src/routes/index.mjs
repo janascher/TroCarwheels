@@ -1,10 +1,10 @@
 import { Router } from "express";
 import jwt from "jsonwebtoken";
-import dotenv from 'dotenv';
-import { usersCtrl } from "../controllers/api/index.mjs";
+import dotenv from "dotenv";
+import { multerUpload } from "./upload.mjs";
+import { usersCtrl, miniaturesCtrl } from "../controllers/api/index.mjs";
 
 dotenv.config();
-
 const route = Router();
 
 // Users
@@ -21,12 +21,32 @@ route.put("/users/reactivate/:id", usersCtrl.reactivateUser);
 //route.get("/users", authenticateToken, usersCtrl.getUsers);
 
 // Miniatures
+route.get("/miniatures", miniaturesCtrl.getMiniatures);
+route.get("/miniatures/:id", miniaturesCtrl.getMiniaturesById);
+route.get("/miniatures/user/:id", miniaturesCtrl.getMiniaturesByUserId);
+route.post("/miniatures/upload/:id", multerUpload.single('file'), (req, res, next) => {
+    try {
+    }    
+    catch (error) {
+        return res.sendStatus(500).json({status: 'Error uploading file!'});
+    }
+    next();
+},  miniaturesCtrl.updateImage);
+
+route.post("/miniatures", miniaturesCtrl.addMiniature);
+route.put("/miniatures/:id", miniaturesCtrl.updMiniature);
+route.put("/miniatures/user/:id/:user_id", miniaturesCtrl.updMiniatureUserId);
+route.put("/miniatures/status/:id/:status", miniaturesCtrl.updMiniatureStatus);
+route.put("/miniatures/check/:id/:checked", miniaturesCtrl.updImgChecked);
+route.delete("/miniatures/:id", miniaturesCtrl.delMiniature);
 
 
 // Cart 
 
 
 // Exchange
+
+
 
 function authenticateToken(req, res, next) {     
     const authHeader = req.headers['authorization'];
@@ -44,3 +64,4 @@ function authenticateToken(req, res, next) {
 
 
 export { route };  
+

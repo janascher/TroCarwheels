@@ -10,7 +10,7 @@ export default class UsersServ {
     async getUsers(){
         try {
             const data = await repositories.users.getData(this.#db);
-            return {data: data, err: null};
+            return {data: data, err: null, errCode: null};
         }
         catch(err){
             return {data: [], err: err.message};

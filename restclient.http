@@ -67,3 +67,14 @@ content-type: application/json
     "phone": "(19) 99999-9999"
 }  
 ###
+POST http://192.168.15.15:8000/api/miniatures HTTP/1.1
+content-type: application/json
+
+{   "user_id": "1",
+    "brand_id": "1",
+    "model": "SS",
+    "color": "Vermelho",
+    "description": "Opala SS Cupê 1970"
+}
+
+###

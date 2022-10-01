@@ -19,21 +19,22 @@ Desenvolver um website que possibilite que usuários possam colecionar e trocar 
 
 ### Sobre as atividades:
 
-1 - atualizar a versão atual com a remota;
-2 - criar ou voltar para branch;
-3 - adicionar e escolher uma atividade no Trello;
-4 - ao concluir uma atividade, abrir uma PR (pull request);
-5 - após atualizar na branch main, marcar a atividade como concluída no Trello.
+- cuidar com os direitos autorais sobre imagens;
+- atualizar a versão atual com a remota;
+- criar ou voltar para branch;
+- adicionar e escolher uma atividade no Trello;
+- ao concluir uma atividade, abrir uma PR (pull request);
+- após atualizar na branch main, marcar a atividade como concluída no Trello.
 
 ### Sobre Pull Request (PR):
 
-1 - é proibido realizar commits e push na branch main;
-2 - ir para branch main, realizar fetch e merge com a origin/main;
-3 - retornar a sua topic branch e realizar merge com a main.**Observação: resolver os conflitos caso exista**;
-4 - fazer push com repositório remoto;
-5 - abrir a PR e solicitar via Whatsapp para que os demais possam revisar;
-6 - pelo menos um dos revisores devem aprovar ou solicitar explicitamente quais correções devem ser feitas;
-7 - somente após todas as correções terem sido realizadas e, pelo menos um dos revisores terem aprovado, que o dono da PR pode realizar o merge na main.**Observação: caso na hora de realizar o merge o GitHub acusar algum conflito, a PR deve ir para o estado de draft e retomar para o passo 2**.
+- é proibido realizar commits e push na branch main;
+- ir para branch main, realizar fetch e merge com a origin/main;
+- retornar a sua topic branch e realizar merge com a main.**Observação: resolver os conflitos caso exista**;
+- fazer push com repositório remoto;
+- abrir a PR e solicitar via Whatsapp para que os demais possam revisar;
+- pelo menos um dos revisores devem aprovar ou solicitar explicitamente quais correções devem ser feitas;
+- somente após todas as correções terem sido realizadas e, pelo menos um dos revisores terem aprovado, que o dono da PR pode realizar o merge na main.**Observação: caso na hora de realizar o merge o GitHub acusar algum conflito, a PR deve ir para o estado de draft e retomar para o passo 2 ("ir para branch main...")**.
 
 ## ✨ Requisitos do projeto
 

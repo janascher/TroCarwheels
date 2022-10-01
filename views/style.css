@@ -1,62 +1,206 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-:root{
-    --blue0:#03071E;
-    --light-text-0: #FFFFFF;
-    --orange0: #DC2F02;
-    --red1: #9D0208;
-    --primary-font: 'Poppins', sans-serif;
-    --secundary-font: 'Roboto', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+    --blue0: #03071e;
+    --light-text-0: #ffffff;
+    --orange0: #dc2f02;
+    --red0: #D00000;
+    --red1: #9d0208;
+    --primary-font: "Poppins", sans-serif;
+    --secundary-font: "Roboto", sans-serif;
 }
-body{
+body {
     margin: 0;
     box-sizing: 0;
 }
-header{
+/*
+  _   _                   _                    
+ | \ | |   __ _  __   __ | |__     __ _   _ __ 
+ |  \| |  / _` | \ \ / / | '_ \   / _` | | '__|
+ | |\  | | (_| |  \ V /  | |_) | | (_| | | |   
+ |_| \_|  \__,_|   \_/   |_.__/   \__,_| |_|   
+                                               */
+header {
     margin: 0 0 0;
     width: 100%;
 }
 
-header nav{
+header nav {
     background-color: var(--blue0);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .5rem 2rem;
+    padding: 0.5rem 2rem;
     font-family: var(--primary-font);
 }
 
-header nav .logo{
+header nav .logo {
     font-family: var(--primary-font);
     color: var(--light-text-0);
     font-size: 1.5rem;
     font-weight: 700;
 }
-header nav .logo span{
+header nav .logo span {
     color: var(--orange0);
 }
-header .menu ul{
+header .menu ul {
     list-style: none;
     display: flex;
     flex-direction: row;
-    gap: .5rem;
+    gap: 0.5rem;
     color: var(--light-text-0);
 }
-#cadastro .form{
+#App{
+    width: 100%;
+}
+
+
+/*
+   ____               _                 _                  
+  / ___|   __ _    __| |   __ _   ___  | |_   _ __    ___  
+ | |      / _` |  / _` |  / _` | / __| | __| | '__|  / _ \ 
+ | |___  | (_| | | (_| | | (_| | \__ \ | |_  | |    | (_) |
+  \____|  \__,_|  \__,_|  \__,_| |___/  \__| |_|     \___/ 
+                                                           */
+
+#cadastro{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+#cadastro .form {
+    position: relative;
+    font-family: var(--primary-font);
+    width: 360px;
+    padding: 4rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(92, 99, 105, 0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 3.5rem;
+    margin: 0 20px;
 }
-#cadastro .form .input{
+.input {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 20px;
+    width: 100%;
+    /* margin-bottom: 2.5rem; */
+}
+.input input {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+    border: 1px solid var(--blue0);
+    border-radius: 0.5rem;
+    padding: 1rem 0rem;
+    background: none;
+    z-index: 1;
+    transition: .3s all;
+}
+.input input.erro {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+    border: 3px solid var(--red0);
+    border-radius: 0;
+    padding: 1rem 0rem;
+    background: none;
+    z-index: 1;
+    transition: .5s all;
+}
+.input label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    padding: 0 0.25rem;
+    background-color: #fff;
+    color: var(--blue0);
+    font-size: 1rem;
+    transition: 0.3s;
+}
+.input input:focus + label {
+    top: -1.2rem;
+    left: 0.8rem;
+    color: var(--blue0);
+    font-size: 1.25rem;
+    font-weight: 500;
+    z-index: 10;
+}
+.input input:not(:placeholder-shown):not(:focus) + label {
+    top: -0.5rem;
+    left: 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    z-index: 10;
+}
+.input label:focus {
+    border: 1.5px solid var(--blue0);
+}
+.select {
+    position: relative;
+    height: auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    margin-bottom: -2rem;
+    /* margin-bottom: 2.5rem; */
 }
-#cadastro .form .input input{
-    border: 3px solid var(--blue0);
+.select select{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+    border: 1px solid var(--blue0);
+    border-radius: 0.5rem;
+    outline: none;
+    color: var(--blue0);
+    padding: 1rem;
+    background: none;
+    z-index: 1;
+}
+.select label{
     font-size: 1rem;
-    border-radius: 5px;
+    font-weight: 500;
 }
-#cadastro .form .input input.erro{
-    border: 3px solid var(--red1);
+.form button{
+    background-color: var(--red1);
+    color: var(--light-text-0);
+    font-size: 1.5rem;
+    font-family: var(--primary-font);
+    padding: .5rem 1rem;
+    border-radius: 6px;
+    border: none;
+}
+.lines{
+    position: relative;
+    width: 5px;
+    top: 0;
+    bottom: 0;
+    background: var(--red1);
+}
+.lines::after{
+    content: '';
+    position: absolute;
+    width: 5px;
+    top: 0;
+    bottom: 0;
+    background: var(--blue0);
+    right: 10px;
+}
+.lines::before{
+    content: '';
+    position: absolute;
+    width: 5px;
+    top: 0;
+    bottom: 0;
+    background: var(--blue0);
+    left: 10px;
 }

@@ -144,16 +144,16 @@ cadastro.submit.addEventListener("click", async () => {
         ) {
             erros.push("email");
         }
-        if (!cadastro.address.checkValidity()) {
+        if (cadastro.address.value.length<5) {
             erros.push("address");
         }
-        if (!cadastro.district.checkValidity()) {
+        if (cadastro.district.value.length<5) {
             erros.push("district");
         }
         if (cadastro.birth_date.value == "") {
             erros.push("birth_date");
         }
-        if (!cadastro.num.checkValidity() || cadastro.num.valueAsNumber < 1) {
+        if (cadastro.num.value == "" || cadastro.num.valueAsNumber < 1) {
             erros.push("num");
         }
 

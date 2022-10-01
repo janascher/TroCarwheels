@@ -4,6 +4,7 @@
     --blue0:#03071E;
     --light-text-0: #FFFFFF;
     --orange0: #DC2F02;
+    --red1: #9D0208;
     --primary-font: 'Poppins', sans-serif;
     --secundary-font: 'Roboto', sans-serif;
 }
@@ -40,4 +41,22 @@ header .menu ul{
     flex-direction: row;
     gap: .5rem;
     color: var(--light-text-0);
+}
+#cadastro .form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#cadastro .form .input{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#cadastro .form .input input{
+    border: 3px solid var(--blue0);
+    font-size: 1rem;
+    border-radius: 5px;
+}
+#cadastro .form .input input.erro{
+    border: 3px solid var(--red1);
 }

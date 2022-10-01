@@ -1,9 +1,9 @@
-GET http://192.168.15.15:8000/api/users HTTP/1.1
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY0Mzc0MjU5LCJleHAiOjE2NjQzNzYwNTl9.EJ4KrW52GZwQiqzxBBaZByGNmjvvi_UYKE4hKrSFZWg
+GET http://localhost:8000/api/users HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY0NTgyMjYwLCJleHAiOjE2NjQ1ODQwNjB9.1D43v_jlyElIYH4cD_iYTsKrpvB0L_bSa6ioO7xJfVM
 ##
 
 ###
-POST http://192.168.15.15:8000/api/users HTTP/1.1
+POST http://localhost:8000/api/users HTTP/1.1
 content-type: application/json
 
 {
@@ -30,7 +30,7 @@ GET http://192.168.15.15:8000/api/users/nick/rogerio HTTP/1.1
 GET http://192.168.15.15:8000/api/users/nick/rogerio HTTP/1.1
 
 ###
-GET http://192.168.15.15:8000/api/users/login HTTP/1.1
+GET http://localhost:8000/api/users/login HTTP/1.1
 content-type: application/json
 
 { 

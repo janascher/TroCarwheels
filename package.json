@@ -1,7 +1,7 @@
 {
-  "name": "users",
+  "name": "TroCarWheels",
   "version": "1.0.0",
-  "description": "users register app",
+  "description": "Website destinado aos amantes por carros em miniaturas poderem colecionar e trocar suas coleções.",
   "main": "./src/index.mjs",
   "scripts": {
     "start": "node .",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:rogeriokotsubo/bd-proj1.git"
+    "url": "git+https://github.com/janascher/TroCarwheels.git"
   },
-  "author": "rogerio kotsubo",
-  "license": "ISC",
+  "author": " ",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rogeriokotsubo/bd-proj1/issues"
+    "url": "https://github.com/janascher/TroCarwheels/issues"
   },
-  "homepage": "https://github.com/rogeriokotsubo/bd-proj1#readme",
+  "homepage": "https://github.com/janascher/TroCarwheels#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.2",

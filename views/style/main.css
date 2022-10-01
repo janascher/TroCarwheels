@@ -1,60 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-:root {
-    --blue0: #03071e;
-    --light-text-0: #ffffff;
-    --orange0: #dc2f02;
-    --red0: #D00000;
-    --red1: #9d0208;
-    --primary-font: "Poppins", sans-serif;
-    --secundary-font: "Roboto", sans-serif;
-}
-body {
-    margin: 0;
-    box-sizing: 0;
-}
-/*
-  _   _                   _                    
- | \ | |   __ _  __   __ | |__     __ _   _ __ 
- |  \| |  / _` | \ \ / / | '_ \   / _` | | '__|
- | |\  | | (_| |  \ V /  | |_) | | (_| | | |   
- |_| \_|  \__,_|   \_/   |_.__/   \__,_| |_|   
-                                               */
-header {
-    margin: 0 0 0;
-    width: 100%;
-}
-
-header nav {
-    background-color: var(--blue0);
+#content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 0.5rem 2rem;
-    font-family: var(--primary-font);
-}
-
-header nav .logo {
-    font-family: var(--primary-font);
-    color: var(--light-text-0);
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-header nav .logo span {
-    color: var(--orange0);
-}
-header .menu ul {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    color: var(--light-text-0);
-}
-#App{
+    /*======================= #TODO Ver como ajustar em qualquer tamanho de tela ======================*/
     width: 100%;
+    min-height: 100vh;
 }
-
-
 /*
    ____               _                 _                  
   / ___|   __ _    __| |   __ _   ___  | |_   _ __    ___  
@@ -63,11 +14,10 @@ header .menu ul {
   \____|  \__,_|  \__,_|  \__,_| |___/  \__| |_|     \___/ 
                                                            */
 
-#cadastro{
+#cadastro {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 2rem;
 }
 #cadastro .form {
     position: relative;
@@ -101,7 +51,7 @@ header .menu ul {
     padding: 1rem 0rem;
     background: none;
     z-index: 1;
-    transition: .3s all;
+    transition: 0.3s all;
 }
 #cadastro .input input.erro {
     position: absolute;
@@ -114,7 +64,7 @@ header .menu ul {
     padding: 1rem 0rem;
     background: none;
     z-index: 1;
-    transition: .5s all;
+    transition: 0.5s all;
 }
 #cadastro .input label {
     position: absolute;
@@ -152,7 +102,7 @@ header .menu ul {
     margin-bottom: -2rem;
     /* margin-bottom: 2.5rem; */
 }
-#cadastro .select select{
+#cadastro .select select {
     position: relative;
     top: 0;
     left: 0;
@@ -167,28 +117,28 @@ header .menu ul {
     background: none;
     z-index: 1;
 }
-#cadastro .select label{
+#cadastro .select label {
     font-size: 1rem;
     font-weight: 500;
 }
-#cadastro .form button{
+#cadastro .form button {
     background-color: var(--red1);
     color: var(--light-text-0);
     font-size: 1.5rem;
     font-family: var(--primary-font);
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     border-radius: 6px;
     border: none;
 }
-#cadastro .lines{
+#cadastro .lines {
     position: relative;
     width: 5px;
     top: 0;
     bottom: 0;
     background: var(--red1);
 }
-#cadastro .lines::after{
-    content: '';
+#cadastro .lines::after {
+    content: "";
     position: absolute;
     width: 5px;
     top: 0;
@@ -196,8 +146,8 @@ header .menu ul {
     background: var(--blue0);
     right: 10px;
 }
-#cadastro .lines::before{
-    content: '';
+#cadastro .lines::before {
+    content: "";
     position: absolute;
     width: 5px;
     top: 0;

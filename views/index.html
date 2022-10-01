@@ -1,86 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>TroCarWheels</title>
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">Tro<span>Car</span>Wheels</div>
-            <div class="menu">
-                <ul>
-                    <li>Inicio</li>
-                    <li>Cadastro</li>
-                    <li>Acesso</li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <div id="App">
-        <section id="cadastro">
-            <div class="lines"></div>
-            <div class="form">
-                <div class="input">
-                    <input type="text" name="namec" id="namec"placeholder=" "/>
-                    <label for="namec">Nome:</label>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="./style/root.css" />
+        <link rel="stylesheet" href="./style/nav.css" />
+        <link rel="stylesheet" href="./style/main.css" />
+        <link rel="stylesheet" href="./style/footer.css" />
+
+        <title>TroCarWheels</title>
+
+        <script src="./script/main.js" defers></script>
+    </head>
+    <body>
+        <noscript>Esta página necessita do JavaScript ativado.</noscript>
+
+        <header>
+            <nav>
+                <div class="logo">Tro<span>Car</span>Wheels</div>
+                <div class="menu">
+                    <ul>
+                        <li class="link" id="home">Início</li>
+                        <li class="link" id="registration">Cadastro</li>
+                        <li class="link" id="login">Login</li>
+                        <li class="link" id="exchanges">Trocas</li>
+                        <li class="link" id="register-car">Cadastrar carro</li>
+                        <li class="link" id="ad">Anúncios</li>
+                        <li class="link" id="transaction">Transação</li>
+                        <li>
+                            <img
+                                src="./assets/img/person-circle.svg"
+                                alt="Ícone de pessoa"
+                                id="icon-person"
+                            />
+                        </li>
+                    </ul>
                 </div>
-                <div class="input">
-                    <input type="email" name="emailc" id="emailc" placeholder=" "/>
-                    <label for="emailc">Email:</label>
-                </div>
-                <div class="input">
-                    <input type="text" name="nickc" id="nickc" placeholder=" "/>
-                    <label for="nickc">Nome de usuario:</label>
-                </div>
-                <div class="input">
-                    <input type="tel" name="phonec" id="phonec" placeholder=" "/>
-                    <label for="phonec">Telefone:</label>
-                </div>
-                <div class="input">
-                    <input type="date" name="birth_datec" id="birth_datec" placeholder=" "/>
-                    <label for="birth_datec">Data de Nascimento:</label>
-                </div>
-                <div class="input">
-                    <input type="password" name="passwordc" id="passwordc" placeholder=" "/>
-                    <label for="passwordc">Senha:</label>
-                </div>
-                <div class="input">
-                    <input type="text" name="zipc" id="zipc" placeholder=" "/>
-                    <label for="zipc">CEP:</label>
-                </div>
-                <div class="select">
-                    <label for="statec">Estado:</label>
-                    <select name="statec" id="statec"></select>
-                </div>
-                <div class="select">
-                    <label for="cityc">Municipio:</label>
-                    <select name="cityc" id="cityc"></select>
-                </div>
-                <div class="input">
-                    <input type="text" name="districtc" id="districtc" placeholder=" "/>
-                    <label for="districtc">Bairro:</label>
-                </div>
-                <div class="input">
-                    <input type="text" name="addressc" id="addressc" placeholder=" "/>
-                    <label for="addressc">Endereço:</label>
-                </div>
-                <div class="input">
-                    <input type="text" name="complementc" id="complementc" placeholder=" "/>
-                    <label for="complementc">Complemento:</label>
-                </div>
-                <div class="input">
-                    <input type="number" name="numc" id="numc" placeholder=" "/>
-                    <label for="numc">Numero:</label>
-                </div>
-                <button id="submitc">Cadastrar</button>
-            </div>
-            <div class="lines"></div>
-        </section>
-    </div>
-    <script src="./script/main.js"></script>
-</body>
+            </nav>
+        </header>
+
+        <main id="content">Carregando página...</main>
+
+        <footer>
+            <section class="socialMedia">
+                <a href="#">
+                    <img src="./assets/img/FacebookLogo.svg" alt="Facebook" />
+                </a>
+                <a href="#">
+                    <img src="./assets/img/InstagramLogo.svg" alt="Instagram" />
+                </a>
+                <a href="#">
+                    <img src="./assets/img/TwitterLogo.svg" alt="Twitter" />
+                </a>
+            </section>
+            <section class="credits">
+                <p>
+                    &copy;2022 | Orgulhosamente criado pelos aspirantes da Turma
+                    Turing:
+                    <a href="https://github.com/Alvaro125" target="_blank">Álvaro,</a>
+                    <a href="https://github.com/LucasCscBks" target="_blank">Lucas,</a>
+                    <a href="https://github.com/janascher" target="_blank">Janaína</a>
+                    e
+                    <a href="https://github.com/rogeriokotsubo" target="_blank">Rogério.</a>
+                </p>
+            </section>
+        </footer>
+
+        <script type="module" src="./index.js" defer></script>
+        <script type="module" src="./script/main.js" id="script"></script>
+    </body>
 </html>

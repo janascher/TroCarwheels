@@ -12,3 +12,9 @@
     --primary-font: "Poppins", sans-serif;
     --secundary-font: "Roboto", sans-serif;
 }
+
+body {
+    margin: 0;
+    box-sizing: 0;
+    background: url(../assets/img/background/giorgio-trovato-2KD6Z-SmTQE-unsplash.jpg) center/cover no-repeat;
+}

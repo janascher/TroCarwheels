@@ -10,6 +10,7 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
+    background-color: var(--light-text-0);
 }
 #cadastro .form {
     position: relative;

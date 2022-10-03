@@ -5,6 +5,7 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: var(--light-text-0);
 }
 
 .socialMedia {
@@ -28,6 +29,7 @@ footer {
 }
 
 .credits a {
+    font-weight: bold;
     text-decoration: none;
 }
 

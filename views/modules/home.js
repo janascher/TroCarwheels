@@ -1,5 +1,5 @@
 export default function home() { 
-    return `<section id="home">
+    return `<section id="home" class="background">
     <div id="home_img_container">
         <img src="./assets/img/home/home_car.jpg" alt="Figura de um carro!" id="car_img"/>
     </div>

@@ -1,0 +1,186 @@
+.container {
+    max-width: 1100px;
+    width: 100%;
+}
+
+h1 {
+    font-family: var(--primary-font);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 0.5rem;
+    gap: 2rem;
+}
+
+/* ======== Coluna da Esquerda ======== */
+.leftSide {
+    box-shadow: 0px 10px 13px -7px var(--black),
+        5px 5px 15px 5px rgb(3 7 30 / 0%);
+    border-radius: 0.5rem;
+    position: relative;
+    padding: 40px;
+    background-color: var(--light-text-0);
+}
+
+.leftSide form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    font-family: var(--primary-font);
+    gap: 1.5rem;
+    margin: 0 20px;
+}
+
+.leftSide .input {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.leftSide .input label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    padding: 0 0.25rem;
+    background-color: var(--light-text-0);
+    color: var(--blue0);
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.leftSide .input input {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1.1rem;
+    border: 1px solid var(--blue0);
+    border-radius: 0.5rem;
+    padding: 1rem 1rem;
+    z-index: 1;
+    transition: 0.3s all;
+}
+
+.leftSide .input input:focus + label {
+    top: -1.2rem;
+    left: 0.8rem;
+    color: var(--blue0);
+    font-size: 1.25rem;
+    font-weight: 500;
+    z-index: 10;
+}
+
+.leftSide .input input:not(:placeholder-shown):not(:focus) + label {
+    top: -0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    z-index: 10;
+}
+
+.leftSide label:focus {
+    border: 1.5px solid var(--blue0);
+}
+
+.leftSide .inputTextarea label {
+    position: absolute;
+    left: 1.1rem;
+    top: 14rem;
+    padding: 0 0.25rem;
+    background-color: var(--light-text-0);
+    color: var(--blue0);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.leftSide .inputTextarea textarea {
+    width: 93%;
+    height: 100%;
+    font-size: 1.1rem;
+    border: 1px solid var(--blue0);
+    border-radius: 0.5rem;
+    padding: 1rem 1rem;
+}
+
+.leftSide button {
+    background-color: var(--red1);
+    color: var(--light-text-0);
+    font-size: 1.1rem;
+    font-family: var(--primary-font);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    width: 30%;
+    cursor: pointer;
+}
+
+/* ======== Coluna da Direita ======== */
+.rightSide {
+    background-color: var(--gray);
+    box-shadow: 0px 10px 13px -7px  var(--black), 5px 5px 15px 5px rgb(3 7 30 / 0%);
+    border-radius: 0.5rem;
+    position: relative;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.rightSide form {
+    display: flex;
+    flex-direction: column;
+    gap: 5.5rem;
+}
+
+.picture {
+    aspect-ratio: 16/9;
+    background-color: var(--very-light-gray);
+    border: 2px dashed;
+    border-radius: 0.5rem;
+    color: var(--dark-grayish-red);
+    cursor: pointer;
+    font-family: var(--secundary-font);
+    outline: none;
+    transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+}
+
+.picture:hover {
+    background-color: var(--gray);
+    color: var(--black);
+}
+
+.picture:active {
+    color: var(--red1);
+    border-color: var(--red1);
+}
+
+.picture:focus {
+    box-shadow: 0 0 10px var(--black-t);
+    color: var(--black);
+}
+
+.pictureImg {
+    border-radius: 0.5rem;
+    max-width: 100%;
+}
+
+#picture-input {
+    display: none;
+}
+
+.rightSide button {
+    background-color: var(--red1);
+    color: var(--light-text-0);
+    font-size: 1.1rem;
+    font-family: var(--primary-font);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    width: 30%;
+    cursor: pointer;
+}

@@ -2,7 +2,7 @@ import { Router } from "express";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { multerUpload } from "./upload.mjs";
-import { usersCtrl, miniaturesCtrl } from "../controllers/api/index.mjs";
+import { usersCtrl, miniaturesCtrl, cartCtrl, exchangesCtrl } from "../controllers/api/index.mjs";
 
 dotenv.config();
 const route = Router();
@@ -40,12 +40,27 @@ route.put("/miniatures/status/:id/:status", miniaturesCtrl.updMiniatureStatus);
 route.put("/miniatures/check/:id/:checked", miniaturesCtrl.updImgChecked);
 route.delete("/miniatures/:id", miniaturesCtrl.delMiniature);
 
-
 // Cart 
+route.get("/cart", cartCtrl.getCarts);
+route.get("/cart/:id", cartCtrl.getCartById);
+route.get("/cart/user/:id", cartCtrl.getCartByUserId);
+route.post("/cart", cartCtrl.addCart);
+route.put("/cart/status/:id/:status", cartCtrl.updCartStatus);
+route.delete("/cart/:id", cartCtrl.delCart);
 
+// Cart Offers
+route.get("/cart_offer/:cart_id", cartCtrl.getCartOffer);
+route.post("/cart_offer/:cart_id", cartCtrl.addCartOffer);
+route.put("/carto_ffer/status/:cart_id/:user_id/:miniature_id/:status", cartCtrl.updCartOfferStatus);
+route.delete("/cart_offer/:cart_id/:user_id/:miniature_id", cartCtrl.delCartOffer);
 
-// Exchange
-
+// Exchanges
+route.get("/exchanges", exchangesCtrl.getExchanges);
+route.get("/exchanges/:id", exchangesCtrl.getExchangeById);
+route.get("/exchanges/user/:id", exchangesCtrl.getExchangeByUserId);
+route.post("/exchanges", exchangesCtrl.addExchange);
+route.put("/exchanges/status/:id/:status", exchangesCtrl.updExchangeStatus);
+route.delete("/exchanges/:id", exchangesCtrl.delExchange);
 
 
 function authenticateToken(req, res, next) {     

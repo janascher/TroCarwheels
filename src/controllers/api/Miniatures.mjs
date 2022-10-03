@@ -249,7 +249,7 @@ export default class MiniaturesCtrl {
     
             const status = parseInt(req.params.status);
             if (isNaN(status)){
-                res.status(400).json({err: `Invalid value for user id ${req.params.status}`});
+                res.status(400).json({err: `Invalid value for status ${req.params.status}`});
                 return ;
             }
 

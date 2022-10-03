@@ -1,5 +1,7 @@
 import UsersServ from './Users.mjs';
 import MiniaturesServ from './Miniatures.mjs';
+import CartServ from './Cart.mjs';
+import ExchangesServ from './Exchanges.mjs';
 import Repositories from '../repositories/index.mjs';
 
 import dotenv from 'dotenv';
@@ -19,7 +21,9 @@ const pool = new pg.Pool({
 
 const usersServ = new UsersServ(pool);
 const miniaturesServ = new MiniaturesServ(pool);
+const cartServ = new CartServ(pool);
+const exchangesServ = new ExchangesServ(pool);
 const repositories = new Repositories(pool);
 
-export { repositories, usersServ, miniaturesServ };
+export { repositories, usersServ, miniaturesServ, cartServ, exchangesServ };
 

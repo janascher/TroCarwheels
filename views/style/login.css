@@ -1,0 +1,160 @@
+section#login {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--light-text-0);
+}
+section#login .banner {
+    position: relative;
+    width: 50%;
+    margin: 0;
+    background-image: url(../assets/img/background/pratileira-car.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+section#login .banner .text {
+    margin: 1rem 0 0 1rem ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 12px;
+    width: max-content;
+    background-color: rgba(255, 255, 255, 0.884);
+    font-family: var(--primary-font);
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+}
+section#login .banner .logo {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+}
+section#login .banner .logo span{
+    color: var(--orange0);
+}
+section#login .banner .text p{
+    margin: 0;
+}
+section#login .form h1 {
+    font-size: 2rem;
+    margin: 4rem 0 0 0;
+}
+section#login .form .text {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+section#login .form {
+    position: relative;
+    font-family: var(--primary-font);
+    width: 50%;
+    padding: 4rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(92, 99, 105, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section#login .input {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 20px;
+    width: 90%;
+    margin-bottom: 3.5rem;
+}
+section#login .input input {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+    border: 1px solid var(--blue0);
+    border-radius: 0.5rem;
+    padding: 1rem 0.25rem;
+    background: none;
+    z-index: 1;
+    transition: 0.3s all;
+}
+section#login .input input.erro {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+    border: 3px solid var(--red0);
+    border-radius: 0;
+    padding: 1rem 0rem;
+    background: none;
+    z-index: 1;
+    transition: 0.5s all;
+}
+section#login .input label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    padding: 0 0.25rem;
+    background-color: #fff;
+    color: var(--blue0);
+    font-size: 1rem;
+    transition: 0.3s;
+}
+section#login .input input:focus + label {
+    top: -1.2rem;
+    left: 0.8rem;
+    color: var(--blue0);
+    font-size: 1.25rem;
+    font-weight: 500;
+    z-index: 10;
+}
+section#login .input input:not(:placeholder-shown):not(:focus) + label {
+    top: -0.5rem;
+    left: 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    z-index: 10;
+}
+section#login .input label:focus {
+    border: 1.5px solid var(--blue0);
+}
+section#login .form button {
+    background-color: var(--red1);
+    color: var(--light-text-0);
+    font-size: 1.5rem;
+    font-family: var(--primary-font);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+}
+section#login .lines {
+    position: absolute;
+    width: 5px;
+    top: 0;
+    bottom: 0;
+    left: 48%;
+    background: var(--red1);
+}
+section#login .lines::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    top: 0;
+    bottom: 0;
+    background: var(--blue0);
+    right: 10px;
+}
+section#login .lines::before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    top: 0;
+    bottom: 0;
+    background: var(--blue0);
+    left: 10px;
+}

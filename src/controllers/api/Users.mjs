@@ -1,7 +1,6 @@
 
 import { usersServ } from "../../services/index.mjs";
 import { usersCtrl } from "./index.mjs";
-import url from "url";
 
 export default class UsersCtrl {
     #token
@@ -48,7 +47,6 @@ export default class UsersCtrl {
 
     async getUsersByNick(req, res) {
         const nick = req.params.nick;
-        console.log(nick)
         try {   
             const resultado = await usersServ.getUsersByNick(nick);
             if (resultado.err !== null){ 
@@ -129,7 +127,8 @@ export default class UsersCtrl {
                 res.status(resultado.errCode).json(resultado);
             } else{
                 const token = usersCtrl.generateAccessToken({ id: user_id });
-                res.status(200).json({id: user_id, token: token});
+                res.cookie('token', token, { maxAge: 900000, httpOnly: true });
+                res.status(200).json({data: user_id});
             }     
         }
         catch(err){
@@ -276,8 +275,6 @@ export default class UsersCtrl {
             } else{
 
                 const user_id = resultado.data;
-                const token = usersCtrl.generateAccessToken({ id: user_id });
-                resultado.data.token = token;
                 res.status(200).json(resultado);
             }     
         }
@@ -300,8 +297,8 @@ export default class UsersCtrl {
 
                 const user_id = resultado.data;
                 const token = usersCtrl.generateAccessToken({ id: user_id });
-                resultado.data.token = token;
-                res.status(200).json(resultado.data);
+                res.cookie('token', token, { maxAge: 900000, httpOnly: true });
+                res.status(200).json({data: resultado.data});
             }     
         }
         catch(err){
@@ -310,7 +307,6 @@ export default class UsersCtrl {
     }
 
     generateAccessToken(_user_id) {    
-        const user_id = _user_id.id;
         return this.#jwt.sign(_user_id, this.#token, { expiresIn: '1800s' });
     }    
 

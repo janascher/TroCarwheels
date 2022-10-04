@@ -43,8 +43,15 @@ export default class UsersServ {
             params.password_hashed = await this.hashPassword(params.password);
             params.active = 1;
             const data = await repositories.users.addData(this.#db, params);
-            const user_id = data[0].id;
-            return {data: user_id, err: null, errCode: null};
+
+            const userData = {
+                user_id: data.rows[0].id,
+                email: data.rows[0].email,
+                nick: data.rows[0].nick,
+                name: data.rows[0].name,
+                user_class: data.rows[0].user_class
+            } 
+            return {data: userData, err: null, errCode: null};
         }
         catch(err){
             return {data: [], err: err.message, errCode: 500};
@@ -92,8 +99,9 @@ export default class UsersServ {
                                         user_id: data.rows[0].id,
                                         email: data.rows[0].email,
                                         nick: data.rows[0].nick,
-                                        name: data.rows[0].name
-                    }  
+                                        name: data.rows[0].name,
+                                        user_class: data.rows[0].user_class
+                                    }  
                     return {data: userData, err: null, errCode: null};                   
                 } else{
                     return {data: [], err: 'Login/Password does not match', errCode: 401};

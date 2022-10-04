@@ -115,8 +115,9 @@ export default class Users {
                                     state,
                                     zip,
                                     phone )
-                            VALUES ( $1, $2, $3, $4, TO_DATE($5,'DD-MM-YYYY'), $6, $7, $8, $9, $10, $11, $12, $13 ) RETURNING id
-                    `,
+                            VALUES ( $1, $2, $3, $4, TO_DATE($5,'DD-MM-YYYY'), $6, $7, $8, $9, $10, $11, $12, $13 ) 
+                                RETURNING id, name, nick, email, birth_date, user_class 
+                            `,
                   values: [ _params.name, 
                             _params.email, 
                             _params.nick,
@@ -132,7 +133,7 @@ export default class Users {
                             _params.phone]
                 };
             const res = await _db.query(query)
-            return res.rows;
+            return res;
         }
         catch(err) {
             throw new Error(err.message);
@@ -157,7 +158,7 @@ export default class Users {
                                         zip=$11,
                                         phone=$12,
                                         updated_at = now() 
-                            WHERE id = $13 RETURNING id
+                            WHERE id = $13 RETURNING id, name, nick, email, birth_date, user_class 
                     `,
                     values: [ _params.name, 
                             _params.email, 
@@ -250,7 +251,8 @@ export default class Users {
                                     a.nick,
                                     a.email,
                                     a.password,
-                                    a.birth_date
+                                    a.birth_date,
+                                    a.user_class
                                 FROM users a 
                                 WHERE a.active=1 AND a.email=$1 `,
                         values: [ _email ]

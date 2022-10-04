@@ -2,12 +2,14 @@ import express from "express";
 import { route } from "./routes/index.mjs";
 import dotenv from "dotenv";
 dotenv.config();
+import cookieParser from "cookie-parser";
 
 const PORT = process.env.PORT || 8000;
 
 const api = express();
 api.use(express.json());
 api.use(express.urlencoded({extended:true}));
+api.use(cookieParser());
 
 api.use("/api", route);
 api.use(express.static("views"));

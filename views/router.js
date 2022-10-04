@@ -3,7 +3,8 @@ import pages from "./modules/index.js";
 const routes = {
     "home": pages.main,
     "registration": pages.cadastroUsuario,
-    "login": pages.login
+    "login": pages.login,
+    "infoCar": pages.infoCar
 }
 
 export function router(route){

@@ -30,12 +30,12 @@ GET http://192.168.15.15:8000/api/users/nick/rogerio HTTP/1.1
 GET http://192.168.15.15:8000/api/users/nick/rogerio HTTP/1.1
 
 ###
-GET http://localhost:8000/api/users/login HTTP/1.1
+POST http://localhost:8000/api/users/login HTTP/1.1
 content-type: application/json
 
 { 
-    "email": "rogerio9@gmail.com",
-    "pwd": "pwd3"
+    "email": "alvaromartinezferreira@gmail.com",
+    "pwd": "alvaro125"
 }
 
 ###

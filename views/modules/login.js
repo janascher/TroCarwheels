@@ -13,22 +13,22 @@ export default function Login() {
         <div class="input">
             <input
                 type="email"
-                name="email_log"
-                id="email_log"
+                name="email"
+                id="email"
                 placeholder=" "
             />
-            <label for="email_log">Email:</label>
+            <label for="email">Email:</label>
         </div>
         <div class="input">
             <input
                 type="password"
-                name="senha_log"
-                id="senha_log"
+                name="password"
+                id="password"
                 placeholder=" "
             />
-            <label for="senha_log">Senha:</label>
+            <label for="password">Senha:</label>
         </div>
-        <button id="submitc">Cadastrar</button>
+        <button id="submit_login">Login</button>
     </div>
 </section>`
 }

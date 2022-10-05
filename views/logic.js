@@ -1,7 +1,9 @@
 import Register from "./script/register.js";
+import Login from "./script/login.js";
 
 const scripts = {
     "registration": Register,
+    "login": Login,
 }
 
 export function logic(route){

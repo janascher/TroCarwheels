@@ -1,4 +1,5 @@
 import { router } from "./router.js";
+import { logic } from "./logic.js";
 
 const app = document.querySelector("#content");
 
@@ -6,6 +7,7 @@ document.querySelectorAll('.link').forEach(link=>{
   link.addEventListener('click', function(e){
     e.preventDefault()
     app.innerHTML = router(e.target.id);
+    logic(e.target.id)
     // click(e.target.attributes.href.value)
   })
 })

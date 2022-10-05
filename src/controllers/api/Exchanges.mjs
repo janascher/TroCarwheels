@@ -135,7 +135,7 @@ export default class ExchangesCtrl {
 
 
         try {   
-            const resultado = await exchangesServ.addExchange(params);
+            const resultado = await exchangesServ.initExchange(params);
             if (resultado.err !== null){ 
                 res.status(resultado.errCode).json(resultado);
             } else{
@@ -183,6 +183,118 @@ export default class ExchangesCtrl {
 
         try {   
             const resultado = await exchangesServ.delExchange(id);
+            if (resultado.err !== null){ 
+                res.status(resultado.errCode).json(resultado);
+            } else{
+                res.status(200).json(resultado);
+            }     
+        }
+        catch(err){
+            res.status(500).json({message: err.message});
+        }   
+    }    
+
+    async closeExchange(req, res) {
+        const id = parseInt(req.params.id);
+        if (isNaN(id)){
+            res.status(400).json({err: `Invalid value for id ${req.params.id}`});
+            return ;
+        }
+
+
+        try {   
+            const resultado = await exchangesServ.finishExchange(id);
+            if (resultado.err !== null){ 
+                res.status(resultado.errCode).json(resultado);
+            } else{
+                res.status(200).json(resultado);
+            }     
+        }
+        catch(err){
+            res.status(500).json({message: err.message});
+        }   
+    }    
+
+    async getExchangeLog(req, res) {
+        const id = parseInt(req.params.id);
+        if (isNaN(id)){
+            res.status(400).json({err: `Invalid value for exchange id ${req.params.id}`});
+            return ;
+        }
+
+        try {   
+            const resultado = await exchangesServ.getExchangeLog(id);
+            if (resultado.err !== null){ 
+                res.status(resultado.errCode).json(resultado);
+            } else{
+                res.status(200).json(resultado);
+            }     
+        }
+        catch(err){
+            res.status(500).json({message: err.message});
+        }   
+    } 
+
+    async addExchangeLog(req, res) {
+        const params = req.body; 
+        const id = parseInt(req.params.id);
+        if (isNaN(id)){
+            res.status(400).json({err: `Invalid value for id ${req.params.id}`});
+            return ;
+        }
+
+        if(!params) 
+        {
+            res.status(400).json({message:"Bad request: No info to add!"});
+            return;
+        }            
+        if (typeof params.user_id !== "string"){
+            res.status(400).json({message:`Bad request: invalid user id: ${params.user_id}`});
+            return; 
+        }
+        if (typeof params.event !== "string"){
+            res.status(400).json({message:`Bad request: invalid event: ${params.event}`});
+            return; 
+        }
+        if (typeof params.rating !== "string"){
+            res.status(400).json({message:`Bad request: invalid rating: ${params.rating}`});
+            return; 
+        }
+        if (typeof params.text !== "string"){
+            res.status(400).json({message:`Bad request: invalid text: ${params.text}`});
+            return; 
+        }
+
+        if (isNaN(parseFloat(params.user_id))){
+            res.status(400).json({message:`Bad request: invalid user id: ${params.user_id}`});
+            return; 
+        }
+        if (parseFloat(params.user_id)<=0){
+            res.status(400).json({message:`Bad request: invalid user id: ${params.user_id}`});
+            return; 
+        }
+
+
+        if (isNaN(parseFloat(params.event))){
+            res.status(400).json({message:`Bad request: invalid event: ${params.event}`});
+            return; 
+        }
+        if (parseFloat(params.event)<=0){
+            res.status(400).json({message:`Bad request: invalid event: ${params.event}`});
+            return; 
+        }
+        if (isNaN(parseFloat(params.rating))){
+            res.status(400).json({message:`Bad request: invalid rating: ${params.rating}`});
+            return; 
+        }
+        if (parseFloat(params.rating)<0){
+            res.status(400).json({message:`Bad request: invalid rating: ${params.rating}`});
+            return; 
+        }
+
+
+        try {   
+            const resultado = await exchangesServ.addExchangeLog(id, params);
             if (resultado.err !== null){ 
                 res.status(resultado.errCode).json(resultado);
             } else{

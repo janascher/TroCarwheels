@@ -162,11 +162,11 @@ export default class Exchanges {
                             _params.user_id1, 
                             _params.user_id2, 
                             _params.miniature_id1, 
-                            _params.miniature_id1 
+                            _params.miniature_id2 
                           ]
                 };
             const res = await _db.query(query)
-            return res.rows;
+            return res;
         }
         catch(err) {
             console.log(`erro add`)
@@ -208,6 +208,63 @@ export default class Exchanges {
             return res;
         }
         catch(err) {
+            throw new Error(err.message);
+        }
+    } 
+
+    async getExchangeLog(_db, _exchange_id,) {
+        try {
+            const query = {
+                  text: `--sql
+                        SELECT 
+                                a.id,
+                                a.exchange_id,
+                                a.user_id,
+                                b.nick,
+                                a.event,
+                                a.rating,
+                                a.created_at,
+                                a.text
+                            FROM exchange_log a
+                                LEFT JOIN users b ON a.user_id=b.id
+                            WHERE a.exchange_id=$1
+                            ORDER BY 1
+                    `,
+                  values: [ _exchange_id ] 
+                };
+            const res = await _db.query(query)
+            return res;
+        }
+        catch(err) {
+            console.log(`erro add`)
+            throw new Error(err.message);
+        }
+    }     
+
+    async addExchangeLog(_db, _exchange_id, _params) {
+        try {
+            const query = {
+                  text: `--sql
+                        INSERT INTO exchange_log
+                                (   exchange_id,
+                                    user_id,
+                                    event,
+                                    rating,
+                                    text)
+                            VALUES ( $1, $2, $3, $4, $5) RETURNING id
+                    `,
+                  values: [ _exchange_id, 
+                            _params.user_id, 
+                            _params.event, 
+                            _params.rating, 
+                            _params.text 
+                          ]
+                };
+            const res = await _db.query(query)
+            return res;
+        }
+        catch(err) {
+            console.log(`erro add`)
             throw new Error(err.message);
         }
     } 

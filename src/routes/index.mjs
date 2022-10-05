@@ -58,7 +58,10 @@ route.get("/exchanges/:id", authenticateToken, exchangesCtrl.getExchangeById);
 route.get("/exchanges/user/:id", authenticateToken, exchangesCtrl.getExchangeByUserId);
 route.post("/exchanges", authenticateToken, exchangesCtrl.addExchange);
 route.put("/exchanges/status/:id/:status", authenticateToken, exchangesCtrl.updExchangeStatus);
+route.put("/exchanges/close/:id", authenticateToken, exchangesCtrl.closeExchange);
 route.delete("/exchanges/:id", authenticateToken, exchangesCtrl.delExchange);
+route.get("/exchanges/log/:id", authenticateToken, exchangesCtrl.getExchangeLog);
+route.post("/exchanges/log/:id", authenticateToken, exchangesCtrl.addExchangeLog);
 
 
 function authenticateToken(req, res, next) {     

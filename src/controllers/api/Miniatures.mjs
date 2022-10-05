@@ -20,6 +20,20 @@ export default class MiniaturesCtrl {
         }   
     }
 
+    async getBrands(req, res) {
+        try {    
+            const resultado = await miniaturesServ.getBrands();
+            if (resultado.err !== null){ 
+                res.status(500).json(resultado);
+            } else{
+                res.status(200).json(resultado);
+            }     
+        }
+        catch(err){
+            res.status(500).json({message: err.message});
+        }   
+    }
+
     async getMiniaturesById(req, res) {
         const id = parseInt(req.params.id);
         if (isNaN(id)){

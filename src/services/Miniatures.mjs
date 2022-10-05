@@ -16,6 +16,16 @@ export default class MiniaturesServ {
         }  
     }
 
+    async getBrands(){
+        try {
+            const data = await repositories.miniatures.getBrands(this.#db);
+            return {data: data, err: null, errCode: null};
+        }
+        catch(err){
+            return {data: [], err: err.message};
+        }  
+    }
+
     async getMiniatureById(_id){
         try {
             const data = await repositories.miniatures.getDataById(this.#db, _id);

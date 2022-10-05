@@ -37,6 +37,7 @@ route.put("/miniatures/user/:id/:user_id", authenticateToken, miniaturesCtrl.upd
 route.put("/miniatures/status/:id/:status", authenticateToken, miniaturesCtrl.updMiniatureStatus);
 route.put("/miniatures/check/:id/:checked", authenticateToken, miniaturesCtrl.updImgChecked);
 route.delete("/miniatures/:id", authenticateToken, miniaturesCtrl.delMiniature);
+route.get("/brands", authenticateToken, miniaturesCtrl.getBrands);
 
 // Cart 
 route.get("/cart", authenticateToken, cartCtrl.getCarts);

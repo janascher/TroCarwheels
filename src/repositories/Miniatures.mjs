@@ -34,6 +34,23 @@ export default class Miniatures {
         }
     }
 
+    async getBrands(_db) {
+        try {
+            const query = `--sql
+                            SELECT 
+                                    a.id, 
+                                    a.description as brand
+                                FROM brand a
+                                WHERE a.deleted=false `
+            
+            const res = await _db.query(query)
+            return res.rows;
+        }
+        catch(err) {
+            throw new Error(err.message);
+        }
+    }
+
     async getDataById(_db, _id) {
         try {
             const query = {

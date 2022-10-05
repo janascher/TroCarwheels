@@ -4,7 +4,7 @@ import { logic } from "./logic.js";
 const app = document.querySelector("#content");
 
 document.querySelectorAll('.link').forEach(link=>{
-  link.addEventListener('click', function(e){
+  link.addEventListener('click', async function(e){
     e.preventDefault()
     app.innerHTML = router(e.target.id);
     logic(e.target.id)

@@ -3,12 +3,22 @@
 
 :root {
     --black: #000000;
+    --black-t: rgba(0, 0, 0, 0.3);
+    --very-dark-blue-t: rgba(3,7,30,0.37); 
     --blue0: #03071e;
+    --dark-grayish-red: #837f7f;
+    --grayish-magenta: #bab1ba;
+    --very-light-gray: #D9D9D9;
+    --gray: #bebebe;
     --light-text-0: #ffffff;
+    --vivid-orange-1: #FFBA08;
     --vivid-orange: #faa307;
     --orange0: #dc2f02;
     --red0: #D00000;
     --red1: #9d0208;
+    --dark-green: #018a43;
+    --lime-green: #00A650;
+    --strong-green: #00c45f;
     --primary-font: "Poppins", sans-serif;
     --secundary-font: "Roboto", sans-serif;
 }

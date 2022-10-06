@@ -1,9 +1,13 @@
-import multer, {diskStorage} from "multer"; 
+import multer, {diskStorage} from "multer";
+import path,{ dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const storage = diskStorage(
     {
         destination: (req, file, cb) => {
-            cb(null, 'upload')
+            cb(null, path.join(__dirname, '../../views/uploads'))
         },
         filename: (req, file, cb) => {
             const ext = file.mimetype.split("/")[1];           

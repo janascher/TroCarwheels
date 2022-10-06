@@ -97,17 +97,17 @@ export default class MiniaturesCtrl {
     }
 
     async addMiniature(req, res) {
-        const params = req.body; 
-
+        const params = req.body;
+        const user_id = String(req.user.id.user_id);
         if(!params) 
         {
             res.status(400).json({message:"Bad request: No info to add!"});
             return;
         }            
-        if (typeof params.user_id !== "string"){
-            res.status(400).json({message:`Bad request: invalid user id: ${params.user_id}`});
-            return; 
-        }
+        // if (typeof params.user_id !== "string"){
+        //     res.status(400).json({message:`Bad request: invalid user id: ${params.user_id}`});
+        //     return; 
+        // }
         if (typeof params.brand_id !== "string"){
             res.status(400).json({message:`Bad request: invalid brand id: ${params.brand_id}`});
             return; 
@@ -132,17 +132,17 @@ export default class MiniaturesCtrl {
             res.status(400).json({message:`Bad request: invalid brand id: ${params.brand_id}`});
             return; 
         }
-        if (isNaN(parseFloat(params.user_id))){
-            res.status(400).json({message:`Bad request: invalid user id: ${params.user_id}`});
-            return; 
-        }
-        if (parseFloat(params.user_id)<=0){
-            res.status(400).json({message:`Bad request: invalid user id: ${params.user_id}`});
-            return; 
-        }
+        // if (isNaN(parseFloat(params.user_id))){
+        //     res.status(400).json({message:`Bad request: invalid user id: ${params.user_id}`});
+        //     return; 
+        // }
+        // if (parseFloat(params.user_id)<=0){
+        //     res.status(400).json({message:`Bad request: invalid user id: ${params.user_id}`});
+        //     return; 
+        // }
 
         try {   
-            const resultado = await miniaturesServ.addMiniature(params);
+            const resultado = await miniaturesServ.addMiniature(params, user_id);
             if (resultado.err !== null){ 
                 res.status(resultado.errCode).json(resultado);
             } else{

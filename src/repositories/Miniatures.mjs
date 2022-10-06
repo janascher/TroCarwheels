@@ -111,7 +111,7 @@ export default class Miniatures {
         }
     }     
 
-    async addData(_db, _params) {
+    async addData(_db, _params, _user_id) {
         try {
             const query = {
                   text: `--sql
@@ -126,7 +126,7 @@ export default class Miniatures {
                                     img_checked)
                             VALUES ( $1, $2, 0, $3, $4, $5, $6, 0 ) RETURNING id
                     `,
-                  values: [ _params.user_id, 
+                  values: [ _user_id, 
                             _params.brand_id, 
                             _params.model,
                             _params.color,

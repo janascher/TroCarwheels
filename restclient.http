@@ -78,3 +78,5 @@ content-type: application/json
 }
 
 ###
+
+GET http://localhost:8000/api/brands HTTP/1.1

@@ -26,6 +26,7 @@ route.post("/miniatures/upload/:id", authenticateToken, multerUpload.single('fil
     try {
     }    
     catch (error) {
+        console.log(error)
         return res.sendStatus(500).json({status: 'Error uploading file!'});
     }
     next();

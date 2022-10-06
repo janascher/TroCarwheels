@@ -3,6 +3,8 @@ import { logic } from "./logic.js";
 
 const app = document.querySelector("#content");
 
+app.innerHTML = router("register-car");
+logic("register-car");
 document.querySelectorAll('.link').forEach(link=>{
   link.addEventListener('click', async function(e){
     e.preventDefault()

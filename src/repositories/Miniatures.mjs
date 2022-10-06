@@ -111,6 +111,37 @@ export default class Miniatures {
         }
     }     
 
+    async getMiniaturesOtherUsers(_db, _id) {
+        try {
+            const query = {
+                        text: `--sql
+                            SELECT 
+                                    a.id, 
+                                    b.nick,
+                                    c.description as brand,
+                                    a.status,
+                                    a.model,
+                                    a.color,
+                                    a.description,
+                                    a.link,
+                                    a.img_checked,
+                                    a.brand_id,
+                                    a.user_id
+                                FROM miniatures a
+                                    left join users b on a.user_id = b.id and b.deleted_at is null 
+                                    left join brand c on a.brand_id = c.id and c.deleted = false
+                                WHERE a.user_id != $1 and a.status=20 `,
+                        values: [ _id ]
+                };
+            const res = await _db.query(query)
+            return res.rows;
+        }
+        catch(err) {
+            throw new Error(err.message);
+        }
+    }     
+
+
     async addData(_db, _params, _user_id) {
         try {
             const query = {

@@ -226,7 +226,7 @@ export default class MiniaturesCtrl {
     }    
 
     async updMiniatureUserId(req, res) {
- 
+
         try {   
             const id = parseInt(req.params.id);
             if (isNaN(id)){
@@ -241,6 +241,22 @@ export default class MiniaturesCtrl {
             }
 
             const resultado = await miniaturesServ.updUserId(id, user_id);
+            if (resultado.err !== null){ 
+                res.status(resultado.errCode).json(resultado);
+            } else{
+                res.status(200).json(resultado);
+            }     
+        }
+        catch(err){
+            res.status(500).json({message: err.message});
+        }   
+    } 
+
+    async getMiniatureOtherUsers(req, res) {
+        const user_id = String(req.user.id.user_id);
+
+        try {   
+            const resultado = await miniaturesServ.getMiniaturesOtherUsers(user_id);
             if (resultado.err !== null){ 
                 res.status(resultado.errCode).json(resultado);
             } else{

@@ -22,6 +22,7 @@ route.put("/users/reactivate/:id", authenticateToken, usersCtrl.reactivateUser);
 route.get("/miniatures", authenticateToken, miniaturesCtrl.getMiniatures);
 route.get("/miniatures/:id", authenticateToken, miniaturesCtrl.getMiniaturesById);
 route.get("/miniatures/user/:id", authenticateToken, miniaturesCtrl.getMiniaturesByUserId);
+route.get("/miniatures/other/users", authenticateToken, miniaturesCtrl.getMiniatureOtherUsers);
 route.post("/miniatures/upload/:id", authenticateToken, multerUpload.single('file'), (req, res, next) => {
     try {
     }    

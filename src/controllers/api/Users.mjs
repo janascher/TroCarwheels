@@ -297,7 +297,9 @@ export default class UsersCtrl {
 
                 const user_id = resultado.data;
                 const token = usersCtrl.generateAccessToken({ id: user_id });
-                res.cookie('token', token, { maxAge: 900000, httpOnly: true });
+                const timer = 900000;
+                res.cookie('token', token, { maxAge: timer, httpOnly: true });
+                res.cookie('auth', true,{ maxAge: timer, httpOnly: false });
                 res.status(200).json({data: resultado.data});
             }     
         }

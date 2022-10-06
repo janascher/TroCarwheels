@@ -77,9 +77,9 @@
     border-radius: 15px;
     width: 45%;
     height: 65%;
-    background-position: center;
-    background-size: 110%;
-    background-repeat: no-repeat;
+    background-repeat:no-repeat;
+background-size:contain;
+background-position:center;
 }
 #car_container2,#car_container4,#car_container6,#car_container8 {
     background-color: #F48C06;

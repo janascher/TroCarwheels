@@ -1,11 +1,13 @@
 import Register from "./script/register.js";
 import Login from "./script/login.js";
 import CarRegister from "./script/carRegister.js";
+import Home from "./script/home.js";
 
 const scripts = {
     "registration": Register,
     "login": Login,
     "register-car": CarRegister,
+    "home": Home,
 }
 
 export function logic(route){

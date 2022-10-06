@@ -2,7 +2,7 @@ import CadastroUsuario from "./cadastroUsuario.js";
 import Main from "./main.js";
 import Home from "./home.js";
 import Login from "./login.js";
-import carRegistration from "./carRegistration";
+import carRegistration from "./carRegistration.js";
 import infoCar from "./infoCar.js";
 import selection from "./selection.js";
 

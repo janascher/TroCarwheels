@@ -46,10 +46,10 @@ export default class MiniaturesServ {
         } 
     }
 
-    async addMiniature(_params){       
+    async addMiniature(_params, _user_id){
         const params = _params;
         try {
-            const data = await repositories.miniatures.addData(this.#db, params);
+            const data = await repositories.miniatures.addData(this.#db, params, _user_id);
             const miniature_id = data[0].id;
             return {data: miniature_id, err: null, errCode: null};
         }

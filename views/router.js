@@ -4,7 +4,7 @@ const routes = {
     "home": pages.main,
     "registration": pages.cadastroUsuario,
     "login": pages.login,
-    "carRegistration": pages.carRegistration,
+    "register-car": pages.carRegistration,
     "infoCar": pages.infoCar,
     "selection": pages.selection
 }

@@ -12,7 +12,7 @@ api.use(express.urlencoded({extended:true}));
 api.use(cookieParser());
 
 api.use("/api", route);
-api.use(express.static("../views"));
+api.use(express.static("views"));
 
-api.listen(PORT, () => {console.log(`Servidor criado: Porta: ${PORT}`)})
+api.listen(PORT, () => {console.log(`Servidor criado: Porta: http://192.168.0.128:${PORT}`)})
 

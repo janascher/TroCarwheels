@@ -46,6 +46,16 @@ export default class MiniaturesServ {
         } 
     }
 
+    async getMiniaturesOtherUsers(_id){
+        try {
+            const data = await repositories.miniatures.getMiniaturesOtherUsers(this.#db, _id);
+            return {data: data, err: null, errCode: null};
+        }
+        catch(err){
+            return {data: [], err: err.message, errCode: 500};
+        } 
+    }
+
     async addMiniature(_params, _user_id){
         const params = _params;
         try {

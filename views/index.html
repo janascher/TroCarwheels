@@ -29,13 +29,13 @@
                 <div class="menu">
                     <ul>
                         <li class="link" id="home">Início</li>
-                        <li class="link" id="registration">Cadastro</li>
-                        <li class="link" id="login">Login</li>
-                        <li class="link" id="exchanges">Trocas</li>
-                        <li class="link" id="register-car">Cadastrar carro</li>
-                        <li class="link" id="ad">Anúncios</li>
-                        <li class="link" id="transaction">Transação</li>
-                        <li>
+                        <li class="link unauth" id="registration">Cadastro</li>
+                        <li class="link unauth" id="login">Login</li>
+                        <li class="link auth" id="exchanges">Trocas</li>
+                        <li class="link auth" id="register-car">Cadastrar carro</li>
+                        <li class="link auth" id="ad">Anúncios</li>
+                        <li class="link auth" id="transaction">Transação</li>
+                        <li class="auth">
                             <img src="./assets/img/person-circle.svg" alt="Ícone de pessoa" id="icon-person" />
                         </li>
                     </ul>
@@ -88,6 +88,6 @@
         </footer>
 
         <script type="module" src="./index.js" defer></script>
-        <script type="module" src="./script/catalog.js" defer></script>
+        <!-- <script type="module" src="./script/catalog.js" defer></script> -->
     </body>
 </html>

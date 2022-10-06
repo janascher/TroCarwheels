@@ -1,24 +1,24 @@
+import { router } from "../router.js";
+import { logic } from "../logic.js";
 class Login {
     constructor() {
         this.email = document.querySelector("input#email");
         this.password = document.querySelector("input#password");
         this.btn_log = document.getElementById("submit_login");
-        this.access()
+        this.access();
     }
-     
+
     access() {
-        this.btn_log.addEventListener('click', async ()=>{
+        this.btn_log.addEventListener("click", async () => {
             try {
-                let erros =[]
+                let erros = [];
                 if (
                     !this.email.checkValidity() ||
                     this.email.value.length == 0
                 ) {
                     erros.push("email");
                 }
-                if (
-                    this.password.value.length < 3
-                ) {
+                if (this.password.value.length < 3) {
                     erros.push("password");
                 }
                 if (erros.length > 0) {
@@ -26,7 +26,7 @@ class Login {
                 }
                 let _data = {
                     pwd: this.password.value,
-                    email: this.email.value
+                    email: this.email.value,
                 };
                 await fetch("http://localhost:8000/api/users/login", {
                     method: "POST",
@@ -35,11 +35,18 @@ class Login {
                 })
                     .then((response) => response.json())
                     .then((json) => {
-                        console.log(json);
+                        document.querySelector("#content").innerHTML = router("home");
+                        logic("home");
+                        document.querySelectorAll(".auth").forEach((el) => {
+                            el.style.display = "block";
+                        });
+                        document.querySelectorAll(".unauth").forEach((el) => {
+                            el.style.display = "none";
+                        });
                     })
                     .catch((err) => console.log(err));
             } catch (error) {
-                console.log(error)
+                console.log(error);
                 error.forEach((err) => {
                     this[err].classList.add("erro");
                     setInterval(() => {

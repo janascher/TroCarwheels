@@ -65,19 +65,19 @@ section#login .input {
     position: relative;
     display: flex;
     justify-content: center;
-    height: 20px;
+    /* height: 20px; */
     width: 90%;
-    margin-bottom: 3.5rem;
+    margin-bottom: 5.25rem;
 }
 section#login .input input {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     font-size: 1.5rem;
     border: 1px solid var(--blue0);
     border-radius: 0.5rem;
-    padding: 1rem 0.25rem;
+    padding: .75rem 0.25rem;
     background: none;
     z-index: 1;
     transition: 0.3s all;
@@ -98,7 +98,7 @@ section#login .input input.erro {
 section#login .input label {
     position: absolute;
     left: 1rem;
-    top: 1rem;
+    top: .75rem;
     padding: 0 0.25rem;
     background-color: #fff;
     color: var(--blue0);

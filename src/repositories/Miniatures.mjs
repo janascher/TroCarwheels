@@ -155,7 +155,7 @@ export default class Miniatures {
                                     description,
                                     link,
                                     img_checked)
-                            VALUES ( $1, $2, 0, $3, $4, $5, $6, 0 ) RETURNING id
+                            VALUES ( $1, $2, 0, $3, $4, $5, $6, 10 ) RETURNING id
                     `,
                   values: [ _user_id, 
                             _params.brand_id, 

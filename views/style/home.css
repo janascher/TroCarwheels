@@ -130,6 +130,9 @@ background-position:center;
     flex-direction: column;
     height: 15vh;
 }
+#divide {
+    height: 8vh;
+}
 #info {
     width: 100vw;
     height: 40vh;
@@ -152,6 +155,9 @@ background-position:center;
     display: flex;
     font-family: 'Roboto', sans-serif;
 }
+#info_container span {
+    color: #fff;
+}
 .icons {
     background-size: cover;
     background-repeat: no-repeat;
@@ -159,20 +165,20 @@ background-position:center;
     height: 6vh;
 }
 #phone_icon {
-    background-image: url("../assets/img/home/phone_icon.jpg");
-    width: 3vw;
-    height: 5vh;
+    background-image: url("../assets/img/home/Phone.svg");
+    width: 2vw;
+    height: 4vh;
     margin-right: 0.5vw;
 }
 #mail_icon {
-    background-image: url("../assets/img/home/mail_icon.jpg");
-    width: 3.5vw;
-    height: 6vh;
+    background-image: url("../assets/img/home/Mail.svg");
+    width: 2.5vw;
+    height: 5vh;
 }
 #clock_icon {
-    background-image: url("../assets/img/home/clock_icon.jpg");
-    width: 3vw;
-    height: 5vh;
+    background-image: url("../assets/img/home/Clock.svg");
+    width: 3w;
+    height: 6vh;
     margin-right: 0.5vw;
 }
 .border_white {

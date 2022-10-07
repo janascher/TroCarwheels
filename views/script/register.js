@@ -1,3 +1,5 @@
+import { router } from "../router.js";
+import { logic } from "../logic.js";
 class Register {
     constructor(){
         this.name= document.getElementById("namec")
@@ -133,6 +135,7 @@ class Register {
     verifyRegister(){
         this.submit.addEventListener("click", async () => {
             try {
+                console.log("now")
                 let erros = [];
                 if (this.name.value.length < 3) {
                     erros.push("name");
@@ -149,10 +152,7 @@ class Register {
                 if (this.phone.value.length < 15) {
                     erros.push("phone");
                 }
-                if (
-                    !this.email.checkValidity() ||
-                    this.email.value.length == 0
-                ) {
+                if ( !this.email.checkValidity() || this.email.value.length == 0) {
                     erros.push("email");
                 }
                 if (this.address.value.length<5) {
@@ -187,18 +187,35 @@ class Register {
                     zip: this.zip.value,
                     phone: this.phone.value,
                 };
-                await fetch("http://localhost:8000/api/users", {
+                console.log(1)
+                fetch("http://localhost:8000/api/users", {
                     method: "POST",
                     body: JSON.stringify(_data),
                     headers: { "Content-type": "application/json" },
                 })
-                    .then((response) => response.json())
-                    .then((json) => {
-                        console.log(json);
-                        localStorage.setItem("jwt",json.token)
+                .then((response) => {
+                    console.log(2)
+                    return response.json()
+                })
+                .then(({data}) => {
+                        console.log(3)
+                        localStorage.email=data.email
+                        localStorage.name=data.name
+                        localStorage.nick=data.nick
+                        localStorage.user_class=data.user_class
+                        localStorage.user_id=data.user_id
+                        document.querySelector("#content").innerHTML = router("/");
+                        logic("/");
+                        document.querySelectorAll(".auth").forEach((el) => {
+                            el.style.display = "block";
+                        });
+                        document.querySelectorAll(".unauth").forEach((el) => {
+                            el.style.display = "none";
+                        });
                     })
                     .catch((err) => console.log(err));
             } catch (error) {
+                console.log(error)
                 error.forEach((err) => {
                     this[err].classList.add("erro");
                     setInterval(() => {

@@ -32,7 +32,6 @@ export default function carRegistration() {
                             <img id="pictureImage"></img>
                         </label>
                         <input type="file" name="picture-input" accept="image/*" id="picture-input">
-                        <button id="upload">Enviar</button>
                     </div>
                 </div>
             </div>

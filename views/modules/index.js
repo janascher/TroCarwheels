@@ -5,6 +5,7 @@ import Login from "./login.js";
 import carRegistration from "./carRegistration.js";
 import Details from "./details.js";
 import catalog from "./catalog.js";
+import Confirmation from "./confirmation.js";
 
 
 const pages = {
@@ -14,6 +15,7 @@ const pages = {
     carRegistration: carRegistration,
     details: Details,
     catalog: catalog,
+    confirmation: Confirmation
 }
 
 export default pages;

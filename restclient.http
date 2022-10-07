@@ -7,35 +7,35 @@ POST http://localhost:8000/api/users HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Usuario5" ,
-    "email": "usuario5@gmail.com",
-    "nick": "usuario5",
-    "password": "pwd",
-    "address": "Rua que Sobe e Desce",
-    "num": "125",
-    "complement": "Nunca Aparece",
-    "city": "Cofins",
-    "state": "MG",
-    "district": "Bairro Morro Alto",
-    "birth_date": "31-12-2000",
-    "zip": "31187-262",
-    "phone": "(31) 99999-9999"
+    "name": "Usuario4" ,
+    "email": "usuario4@gmail.com",
+    "nick": "nick4",
+    "password": "12345678",
+    "address": "Rua 4",
+    "num": "1234",
+    "complement": "Casa 4",
+    "city": "Fortaleza",
+    "state": "CE",
+    "district": "Bairro4",
+    "birth_date": "31-12-1985",
+    "zip": "60860-000",
+    "phone": "(85) 98888-9999"
 }
 
 ###
 
-GET http://192.168.15.15:8000/api/users/nick/rogerio HTTP/1.1
+GET http://localhost:8000/api/users/nick/nick1 HTTP/1.1
 
 ###
-GET http://192.168.15.15:8000/api/users/nick/rogerio HTTP/1.1
+GET http://localhost:8000/api/users/nick/nick2 HTTP/1.1
 
 ###
 POST http://localhost:8000/api/users/login HTTP/1.1
 content-type: application/json
 
 { 
-    "email": "alvaromartinezferreira@gmail.com",
-    "pwd": "alvaro125"
+    "email": "usuario1@gmail.com",
+    "pwd": "123456"
 }
 
 ###
@@ -46,7 +46,7 @@ content-type: application/json
     "pwd": "pwd3"
 }
 ###
-GET http://192.168.15.15:8000/api/users/login HTTP/1.1
+GET http://localhost:8000/api/users/5 HTTP/1.1
 
 ###
 PUT http://192.168.15.15:8000/api/users/1 HTTP/1.1

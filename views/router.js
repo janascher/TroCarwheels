@@ -7,6 +7,7 @@ const routes = {
     "/login": pages.login,
     "/add": pages.carRegistration,
     "/ad": pages.catalog,
+    "/confirmation": pages.confirmation
 }
 
 export function router(route){

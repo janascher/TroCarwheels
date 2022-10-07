@@ -5,6 +5,7 @@ const routes = {
     "/register": pages.cadastroUsuario,
     "/login": pages.login,
     "/add": pages.carRegistration,
+    "/ad": pages.catalog,
     "infoCar": pages.infoCar,
     "selection": pages.selection
 }

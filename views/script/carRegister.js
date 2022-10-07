@@ -67,8 +67,8 @@ class CarRegister {
                         body: formData,
                     }
                 )
-                document.querySelector("#content").innerHTML = router("home");
-                logic("home");
+                document.querySelector("#content").innerHTML = router("/");
+                logic("/");
 
             } catch (error) {
                 console.log(error);

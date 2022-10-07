@@ -47,17 +47,7 @@
     transition: 0.3s all;
 }
 #cadastro .input input.erro {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    font-size: 1.5rem;
     border: 3px solid var(--red0);
-    border-radius: 0;
-    padding: 1rem 0rem;
-    background: none;
-    z-index: 1;
-    transition: 0.5s all;
 }
 #cadastro .input label {
     position: absolute;

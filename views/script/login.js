@@ -34,9 +34,14 @@ class Login {
                     headers: { "Content-type": "application/json" },
                 })
                     .then((response) => response.json())
-                    .then((json) => {
-                        document.querySelector("#content").innerHTML = router("home");
-                        logic("home");
+                    .then(({data}) => {
+                        localStorage.email=data.email
+                        localStorage.name=data.name
+                        localStorage.nick=data.nick
+                        localStorage.user_class=data.user_class
+                        localStorage.user_id=data.user_id
+                        document.querySelector("#content").innerHTML = router("/");
+                        logic("/");
                         document.querySelectorAll(".auth").forEach((el) => {
                             el.style.display = "block";
                         });
@@ -46,7 +51,6 @@ class Login {
                     })
                     .catch((err) => console.log(err));
             } catch (error) {
-                console.log(error);
                 error.forEach((err) => {
                     this[err].classList.add("erro");
                     setInterval(() => {

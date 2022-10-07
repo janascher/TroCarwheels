@@ -30,19 +30,35 @@ nav .logo span {
     color: var(--light-text-0);
 }
 
-#exchanges,
-#register-car,
-#ad,
-#transaction,
-#icon-person {
+li.auth {
     display: none;
 }
 
 .menu ul li {
     cursor: pointer;
 }
+.menu a{
+    color: var(--light-text-0);
+    text-decoration: none;
+}
+.menu a:link {
+    color: var(--light-text-0);
+    text-decoration: none;
+}
 
-.menu ul li:hover {
+/* visited link */
+.menu a:visited {
+    color: var(--light-text-0);
+    text-decoration: none;
+}
+
+/* selected link */
+.menu a:active {
+    color: var(--light-text-0);
+    text-decoration: none;
+}
+
+.menu ul li a:hover {
     color: var(--vivid-orange);
     text-decoration: underline;
 }

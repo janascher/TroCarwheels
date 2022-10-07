@@ -4,6 +4,7 @@ import Home from "./home.js";
 import Login from "./login.js";
 import carRegistration from "./carRegistration.js";
 import Details from "./details.js";
+import catalog from "./catalog.js";
 
 
 const pages = {
@@ -11,7 +12,8 @@ const pages = {
     main: Home,
     login: Login,
     carRegistration: carRegistration,
-    details: Details
+    details: Details,
+    catalog: catalog,
 }
 
 export default pages;

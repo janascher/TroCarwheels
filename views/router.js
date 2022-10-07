@@ -1,17 +1,18 @@
 import pages from "./modules/index.js";
 
 const routes = {
-    "home": pages.main,
-    "registration": pages.cadastroUsuario,
-    "login": pages.login,
-    "register-car": pages.carRegistration,
-    "details": pages.details
+    "/details": pages.details,
+    "/": pages.main,
+    "/register": pages.cadastroUsuario,
+    "/login": pages.login,
+    "/add": pages.carRegistration,
+    "/ad": pages.catalog,
 }
 
 export function router(route){
-    // if (routes[route.length - 1 === "/"]) {
-    //     route = route.slice(0,-1);
-    // }
+    if (routes[route.length - 1 === "/"]) {
+        route = route.slice(0,-1);
+    }
     try{
         return routes[route]()
     } catch{

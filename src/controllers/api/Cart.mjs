@@ -175,6 +175,7 @@ export default class CartCtrl {
 
     async addCartOffer(req, res) {
         const id = parseInt(req.params.cart_id);
+        const user_id = String(req.user.id.user_id);
         if (isNaN(id)){
             res.status(400).json({err: `Invalid value for cart id ${req.params.cart_id}`});
             return ;
@@ -186,10 +187,6 @@ export default class CartCtrl {
         {
             res.status(400).json({message:"Bad request: No info to add!"});
             return;
-        }            
-        if (typeof params.user_id !== "string"){
-            res.status(400).json({message:`Bad request: invalid user id: ${params.user_id}`});
-            return; 
         }
         if (typeof params.miniature_id !== "string"){
             res.status(400).json({message:`Bad request: invalid miniature id: ${params.miniature_id}`});
@@ -203,22 +200,14 @@ export default class CartCtrl {
             res.status(400).json({message:`Bad request: invalid miniature id: ${params.miniature_id}`});
             return; 
         }
-        if (isNaN(parseFloat(params.user_id))){
-            res.status(400).json({message:`Bad request: invalid user id: ${params.user_id}`});
-            return; 
-        }
-        if (parseFloat(params.user_id)<=0){
-            res.status(400).json({message:`Bad request: invalid user id: ${params.user_id}`});
-            return; 
-        }
 
         try {   
-            const resultado = await cartServ.addCartOffer(id, params);
+            const resultado = await cartServ.addCartOffer(id, user_id, params);
             if (resultado.err !== null){ 
                 res.status(resultado.errCode).json(resultado);
             } else{
                 res.status(200).json(resultado);
-            }     
+            }
         }
         catch(err){
             res.status(500).json({message: err.message});

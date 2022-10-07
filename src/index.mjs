@@ -1,5 +1,5 @@
 import express from "express";
-import { routeUser, routeMiniature, routeBrand, routeCart, routeExchange } from "./routes/index.mjs";
+import { routeUser, routeMiniature, routeBrand, routeCartOffer, routeCart, routeExchange } from "./routes/index.mjs";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -17,7 +17,7 @@ api.use("/api/users", routeUser);
 api.use("/api/miniatures", routeMiniature);
 api.use("/api/brands", routeBrand);
 api.use("/api/cart", routeCart);
-api.use("/api/cart_offer", routeCart);
+api.use("/api/cart_offer", routeCartOffer);
 api.use("/api/exchanges", routeExchange);
 
 api.use(express.static("views"));

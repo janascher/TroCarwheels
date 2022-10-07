@@ -1,3 +1,5 @@
+import { router } from "../router.js";
+import { logic } from "../logic.js";
 class Home{
     constructor(){
         this.ctn = document.getElementById("home_cars_container");
@@ -29,9 +31,7 @@ class Home{
         try{
             if(this.cookies.auth){
                 let res = await fetch("http://localhost:8000/api/miniatures/own/user")
-                console.log(res)
                 let {data} = await res.json()
-                console.log(data)
                     document.getElementById("home_cars_container").innerHTML = ""
                     data.forEach(function({id,link,model,nick}){
                         document.getElementById("home_cars_container").innerHTML += `<div class="cars" id="car_container1">

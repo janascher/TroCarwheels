@@ -17,7 +17,7 @@ export default class Exchanges {
                                     d.model as model1,
                                     e.model as model2,
                                     d.color as color1,
-                                    e.color as coloe2,
+                                    e.color as color2,
                                     f.description as brand1,
                                     g.description as brand2,
                                     a.status,
@@ -63,7 +63,7 @@ export default class Exchanges {
                                     d.model as model1,
                                     e.model as model2,
                                     d.color as color1,
-                                    e.color as coloe2,
+                                    e.color as color2,
                                     f.description as brand1,
                                     g.description as brand2,
                                     a.status,
@@ -110,7 +110,7 @@ export default class Exchanges {
                                 d.model as model1,
                                 e.model as model2,
                                 d.color as color1,
-                                e.color as coloe2,
+                                e.color as color2,
                                 f.description as brand1,
                                 g.description as brand2,
                                 a.status,
@@ -134,8 +134,8 @@ export default class Exchanges {
                                 left join miniatures e on a.miniature_id2 = e.id  
                                 left join brand f on d.brand_id = f.id and f.deleted = false
                                 left join brand g on e.brand_id = g.id and g.deleted = false
-                            WHERE a.user_id1 = $1 and a.status!=9 and b.active=1 and c.active=1 and d.status!=9 and e.status!=9  `,
-                    values: [ _id ]
+                            WHERE (a.user_id1 = $1 or a.userid = $2) and a.status!=9 and b.active=1 and c.active=1 and d.status!=9 and e.status!=9  `,
+                    values: [ _id, _id ]
                 };
             const res = await _db.query(query)
             return res.rows;

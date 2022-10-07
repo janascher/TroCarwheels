@@ -55,7 +55,9 @@ export default class MiniaturesCtrl {
     }
 
     async getMiniaturesByUserId(req, res) {
-        const id = parseInt(req.params.id);
+        const user_id = String(req.user.id.user_id);
+//        const id = parseInt(req.params.id);
+        const id = parseInt(user_id);
         if (isNaN(id)){
             res.status(400).json({err: `Invalid value for id ${req.params.id}`});
             return ;
@@ -284,6 +286,28 @@ export default class MiniaturesCtrl {
             }
 
             const resultado = await miniaturesServ.updStatus(id, status);
+            if (resultado.err !== null){ 
+                res.status(resultado.errCode).json(resultado);
+            } else{
+                res.status(200).json(resultado);
+            }     
+        }
+        catch(err){
+            res.status(500).json({message: err.message});
+        }   
+    } 
+
+    async makeAvailable(req, res) {
+        const user_id = String(req.user.id.user_id);
+    
+        try {   
+            const id = parseInt(req.params.id);
+            if (isNaN(id)){
+                res.status(400).json({err: `Invalid value for id ${req.params.id}`});
+                return ;
+            }
+    
+            const resultado = await miniaturesServ.makeAvailable(id, user_id);
             if (resultado.err !== null){ 
                 res.status(resultado.errCode).json(resultado);
             } else{

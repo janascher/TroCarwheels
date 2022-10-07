@@ -5,8 +5,7 @@ const routes = {
     "registration": pages.cadastroUsuario,
     "login": pages.login,
     "register-car": pages.carRegistration,
-    "infoCar": pages.infoCar,
-    "selection": pages.selection
+    "details": pages.details
 }
 
 export function router(route){

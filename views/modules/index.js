@@ -3,8 +3,7 @@ import Main from "./main.js";
 import Home from "./home.js";
 import Login from "./login.js";
 import carRegistration from "./carRegistration.js";
-import infoCar from "./infoCar.js";
-import selection from "./selection.js";
+import Details from "./details.js";
 
 
 const pages = {
@@ -12,8 +11,7 @@ const pages = {
     main: Home,
     login: Login,
     carRegistration: carRegistration,
-    infoCar: infoCar,
-    selection: selection
+    details: Details
 }
 
 export default pages;

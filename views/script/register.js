@@ -143,7 +143,7 @@ class Register {
                 if (this.nick.value.length < 3) {
                     erros.push("nick");
                 }
-                if (this.password.value.length < 6) {
+                if (this.password.value.length < 3) {
                     erros.push("password");
                 }
                 if (this.zip.value.length < 9) {

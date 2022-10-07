@@ -77,6 +77,7 @@ export default function home() {
             </div>
         </div>
     </section>
+    <div id="divide"></div>
     <section id="info">
         <div id="info_container">
             <div>

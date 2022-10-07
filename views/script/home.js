@@ -8,7 +8,6 @@ class Home{
             return prev;
         }, {});
         this.listMiniatures()
-        this.publish()
     }
     publish(){
         document.querySelectorAll("button#publish").forEach(el=>{
@@ -18,7 +17,7 @@ class Home{
                     user_id: localStorage.user_id, 
                     miniature_id: _evt.target.dataset.id
                 }
-                fetch("http://localhost:8000/api/cart", {
+                fetch("http://localhost:8000/api/miniatures/makeavailable/", {
                     method: "POST",
                     body: JSON.stringify(_data),
                     headers: { "Content-type": "application/json" },
@@ -29,10 +28,12 @@ class Home{
     async listMiniatures(){
         try{
             if(this.cookies.auth){
-                let res = await fetch("http://localhost:8000/api/miniatures")
+                let res = await fetch("http://localhost:8000/api/miniatures/own/user")
+                console.log(res)
                 let {data} = await res.json()
+                console.log(data)
                     document.getElementById("home_cars_container").innerHTML = ""
-                    data.map(function({id,link,model,nick}){
+                    data.forEach(function({id,link,model,nick}){
                         document.getElementById("home_cars_container").innerHTML += `<div class="cars" id="car_container1">
                         <img class="car_images" id="car_one" style="background:url(./uploads/${link});background-repeat:no-repeat;
                         background-size:contain;

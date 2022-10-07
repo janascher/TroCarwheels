@@ -1,5 +1,6 @@
 import express from "express";
-import { route } from "./routes/index.mjs";
+import { routeUser, routeMiniature, routeBrand, routeCart, routeExchange } from "./routes/index.mjs";
+
 import dotenv from "dotenv";
 dotenv.config();
 import cookieParser from "cookie-parser";
@@ -11,8 +12,15 @@ api.use(express.json());
 api.use(express.urlencoded({extended:true}));
 api.use(cookieParser());
 
-api.use("/api", route);
+//api.use("/api", route);
+api.use("/api/users", routeUser);
+api.use("/api/miniatures", routeMiniature);
+api.use("/api/brands", routeBrand);
+api.use("/api/cart", routeCart);
+api.use("/api/cart_offer", routeCart);
+api.use("/api/exchanges", routeExchange);
+
 api.use(express.static("views"));
 
-api.listen(PORT, () => {console.log(`Servidor criado: Porta: http://192.168.0.128:${PORT}`)})
+api.listen(PORT, () => {console.log(`Servidor criado: listen port ${PORT}`)});
 

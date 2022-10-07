@@ -155,5 +155,39 @@ export default class MiniaturesServ {
         } 
     }
 
+    async makeAvailable(_id, _user_id){
+        const client = await this.#db.connect();  
+        try {
+            const params ={ user_id: _user_id,
+                      miniature_id: _id
+                    };
+
+            await client.query('BEGIN');
+                const cart_id = await repositories.cart.addData(client, params);
+                if (cart_id === []){
+                    await client.query('ROLLBACK');
+                    return {data: [], err: 'Error generating Cart. Adding Cart.', errCode: 500};    
+                }
+
+                const dataMini = await repositories.miniatures.updStatus(client, _id, 20);
+                if (dataMini.rowcount<=0){
+                    await client.query('ROLLBACK');
+                    return {data: [], err: 'Error generating Cart. Changing Miniature Status.', errCode: 500};    
+                }
+
+            await client.query('COMMIT');
+            return {data: cart_id[0].id, err: null, errCode: null};        
+        }
+        catch(err){
+            await client.query('ROLLBACK');
+            return {data: [], err: err.message, errCode: 500};
+        } 
+        finally{
+            client.release();
+        }        
+    }
+
+
+
 }
 

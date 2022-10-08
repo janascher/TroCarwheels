@@ -1,3 +1,4 @@
+views/uploads/*
 # Logs
 logs
 *.log

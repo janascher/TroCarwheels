@@ -207,7 +207,7 @@ export default class Cart {
         }
     } 
 
-    async addCartOffer(_db, _id, _params) {
+    async addCartOffer(_db, _id, _user_id, _params) {
         try {
             const query = {
                   text: `--sql
@@ -219,7 +219,7 @@ export default class Cart {
                             VALUES ( $1, $2, $3, 0 ) RETURNING cart_id
                     `,
                   values: [ _id,
-                            _params.user_id, 
+                            _user_id, 
                             _params.miniature_id 
                           ]
                 };

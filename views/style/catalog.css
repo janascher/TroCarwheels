@@ -69,8 +69,6 @@ input:focus {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    overflow-y: scroll;
-    overflow-x: hidden;
 }
 #white_container {
     /* background-color: white; */
@@ -84,31 +82,31 @@ input:focus {
     width: 5vw;
 }
 #cars {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    height: 70vh;
+    height: auto;
     width: 80vw;
     /* background-color: blue; */
 }
 
 .cars {
     background-color: #FFBA08;
-    width: 25vw;
-    height: 25vh;
+    padding: 1rem 2rem;
+    width: auto;
     border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: outset;
+    border: none;
     box-shadow: #000 2px 2px 2px 2px;
-    margin-bottom: 10vh;
 }
 .car_images {
     border-style: inset;
     border-radius: 15px;
-    width: 45%;
-    height: 65%;
+    width: 8rem;
+    height: 8rem;
     background-position: center;
     background-size: 110%;
     background-repeat: no-repeat;
@@ -132,8 +130,7 @@ input:focus {
     background-color: var(--vivid-orange);
 }
 .button_details {
-    width: 7vw;
-    height: 5vh;
+    padding: .5rem 1rem;
     border-radius: 15px;
     background-color: #000;
     color: #fff;

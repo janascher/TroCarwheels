@@ -76,10 +76,10 @@ export default class cartServ {
         } 
     }      
 
-    async addCartOffer(_id, _params){       
+    async addCartOffer(_id, _user_id, _params){       
         const params = _params;
         try {
-            const data = await repositories.cart.addCartOffer(this.#db, _id, params);
+            const data = await repositories.cart.addCartOffer(this.#db, _id, _user_id, params);
             const cart_id = data[0].cart_id;
             return {data: [cart_id], err: null, errCode: null};
         }

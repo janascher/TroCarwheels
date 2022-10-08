@@ -1,5 +1,6 @@
 import express from "express";
-import { routeUser, routeMiniature, routeBrand, routeCart, routeExchange, routeCartOffer } from "./routes/index.mjs";
+
+import { routeUser, routeMiniature, routeBrand, routeCartOffer, routeCart, routeExchange } from "./routes/index.mjs";
 
 import dotenv from "dotenv";
 dotenv.config();

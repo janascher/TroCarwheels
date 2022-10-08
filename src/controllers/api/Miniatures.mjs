@@ -59,11 +59,11 @@ export default class MiniaturesCtrl {
 //        const id = parseInt(req.params.id);
         const id = parseInt(user_id);
         if (isNaN(id)){
-            res.status(400).json({err: `Invalid value for id ${req.params.id}`});
+            res.status(400).json({err: `Invalid value for id ${req.user.id.user_id}`});
             return ;
         }
 
-        try {    
+        try {
             const resultado = await miniaturesServ.getMiniatureByUserId(id);
             if (resultado.err !== null){ 
                 res.status(500).json(resultado);

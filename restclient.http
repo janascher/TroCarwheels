@@ -79,20 +79,8 @@ content-type: application/json
 
 ###
 
-GET http://localhost:8000/api/miniatures/user/4 HTTP/1.1
-
-###
 GET http://localhost:8000/api/brands HTTP/1.1
-###
-###
-POST http://localhost:8000/api/exchanges HTTP/1.1
-content-type: application/json
 
-{   
-    "cart_id": "1",
-    "user_id1": "1",
-    "user_id2": "1",
-    "miniature_id1": "1",
-    "miniature_id2": "SS",
-    "status": "TROCA FINALIZADA"
-}
+###
+
+GET http://localhost:8000/api/miniatures/own/user HTTP/1.1

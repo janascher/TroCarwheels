@@ -1,6 +1,7 @@
 import { router } from "./router.js";
 import { logic } from "./logic.js";
-
+import URL from './script/url.js'
+const api_url = new URL("http://localhost:8000")
 const app = document.querySelector("#content");
 const cookie = document.cookie.split("; ").reduce((prev, current) => {
     const [name, ...value] = current.split("=");
@@ -51,3 +52,5 @@ window.addEventListener("popstate", (evt) => {
 window.addEventListener("load", (evt) => {
   app.innerHTML = router(evt.target.location.pathname);
 });
+
+export default api_url

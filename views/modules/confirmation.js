@@ -5,19 +5,19 @@ export default function Confirmation() {
 
             <div class="gridSelect">        
                 <div class="leftSelect">
-                    <img src="./assets/img/photos/pexels-pixabay-35967.jpg" alt="Fotografia" />
-                    <h3>Nome do carro</h3>
+                    <img id="imageCar" src="./assets/img/photos/pexels-pixabay-35967.jpg" alt="Fotografia" />
+                    <h3 id="nomeCar">Nome do carro</h3>
                     <div class="infos padding">
                         <p>Disponibilizado para troca por:</p>
                         <p class="nameUser">Nome do usuário</p>
                     </div>
                     <div class="infos borderTop paddingBorder">
                         <h4>Cor:</h4>
-                        <p>Verde</p>
+                        <p id="colorCar">Verde</p>
                     </div>
                     <div class="description borderTop paddingBorder">
                         <h4>Detalhes do produto:</h4>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam architecto atque expedita cupiditate ad aliquid recusandae mollitia accusantium.</p>
+                        <p id="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam architecto atque expedita cupiditate ad aliquid recusandae mollitia accusantium.</p>
                     </div>
                 </div>
 

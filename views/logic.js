@@ -3,7 +3,8 @@ import Login from "./script/login.js";
 import CarRegister from "./script/carRegister.js";
 import Home from "./script/home.js";
 import Catalog from "./script/catalog.js";
-import Details from './script/details.js'
+import Details from './script/details.js';
+import Confirmation from './script/confirmation.js'
 
 const scripts = {
     "/": Home,
@@ -12,6 +13,7 @@ const scripts = {
     "/add": CarRegister,
     "/ad": Catalog,
     "/details": Details,
+    "/confirmation": Confirmation,
     "/selection": Home,
 }
 

@@ -39,6 +39,25 @@ export default class CartCtrl {
             res.status(500).json({message: err.message});
         }   
     }
+    async getFindMiniatureId(req, res) {
+        const id = parseInt(req.params.id_miniature);
+        if (isNaN(id)){
+            res.status(400).json({err: `Invalid value for id ${req.params.id_miniature}`});
+            return ;
+        }
+
+        try {    
+            const resultado = await cartServ.getFindMiniatureId(id);
+            if (resultado.err !== null){ 
+                res.status(500).json(resultado);
+            } else{
+                res.status(200).json(resultado);
+            }     
+        }
+        catch(err){
+            res.status(500).json({message: err.message});
+        }   
+    }
 
     async getCartByUserId(req, res) {
         const id = parseInt(req.params.id);

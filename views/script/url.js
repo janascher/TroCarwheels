@@ -2,8 +2,8 @@
 export default class Url{
     #apiUrl
 
-    constructor (_url){
-        this.#apiUrl = _url;
+    constructor (){
+        this.#apiUrl = 'http://localhost:8000';
     }
 
     get apiUrl()  {

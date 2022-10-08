@@ -34,8 +34,8 @@ POST http://localhost:8000/api/users/login HTTP/1.1
 content-type: application/json
 
 { 
-    "email": "usuario1@gmail.com",
-    "pwd": "123456"
+    "email": "alvaromartinezferreira@gmail.com",
+    "pwd": "alvaro125"
 }
 
 ###
@@ -83,4 +83,4 @@ GET http://localhost:8000/api/brands HTTP/1.1
 
 ###
 
-GET http://localhost:8000/api/miniatures/own/user HTTP/1.1
+GET http://localhost:8000/api/cart_offer/1 HTTP/1.1

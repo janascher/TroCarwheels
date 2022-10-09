@@ -1,3 +1,4 @@
+import api_url from "../index.js";
 import { router } from "../router.js";
 import { logic } from "../logic.js";
 class CarRegister {
@@ -15,7 +16,7 @@ class CarRegister {
     }
 
     listBrands() {
-        fetch("http://localhost:8000/api/brands")
+        fetch(`${api_url.apiUrl}/api/brands`)
             .then((res) => {
                 return res.json();
             })
@@ -50,7 +51,7 @@ class CarRegister {
                     description: this.description.value,
                 };
                 let res_text = await fetch(
-                    "http://localhost:8000/api/miniatures",
+                    `${api_url.apiUrl}/api/miniatures`,
                     {
                         method: "POST",
                         body: JSON.stringify(_data),
@@ -61,7 +62,7 @@ class CarRegister {
                 const formData = new FormData();
                 formData.append("file", this.file.files[0]);
                 let res_img = await fetch(
-                    `http://localhost:8000/api/miniatures/upload/${data}`,
+                    `${api_url.apiUrl}/api/miniatures/upload/${data}`,
                     {
                         method: "POST",
                         body: formData,
@@ -83,7 +84,7 @@ class CarRegister {
             );
             formData.append("file", fileField.files[0]);
             fetch(
-                `http://localhost:8000/api/miniatures/upload/${sessionStorage.id_miniature}`,
+                `${api_url.apiUrl}/api/miniatures/upload/${sessionStorage.id_miniature}`,
                 {
                     method: "POST",
                     body: formData,

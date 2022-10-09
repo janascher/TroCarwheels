@@ -25,6 +25,15 @@ export default class cartServ {
             return {data: [], err: err.message, errCode: 500};
         } 
     }
+    async getFindMiniatureId(_id){
+        try {
+            const data = await repositories.cart.getFindMiniatureId(this.#db, _id);
+            return {data: data, err: null, errCode: null};
+        }
+        catch(err){
+            return {data: [], err: err.message, errCode: 500};
+        } 
+    }
 
     async getCartByUserId(_id){
         try {

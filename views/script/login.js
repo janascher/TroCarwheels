@@ -1,3 +1,4 @@
+import api_url from "../index.js";
 import { router } from "../router.js";
 import { logic } from "../logic.js";
 class Login {
@@ -28,7 +29,7 @@ class Login {
                     pwd: this.password.value,
                     email: this.email.value,
                 };
-                await fetch("http://localhost:8000/api/users/login", {
+                await fetch(`${api_url.apiUrl}/api/users/login`, {
                     method: "POST",
                     body: JSON.stringify(_data),
                     headers: { "Content-type": "application/json" },

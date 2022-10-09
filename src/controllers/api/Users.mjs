@@ -310,6 +310,18 @@ export default class UsersCtrl {
         }   
     }
 
+    async logoutUser(req, res) {
+        try {
+                res.clearCookie('token');
+                res.clearCookie('auth');
+                res.status(200).json({data: "ok"});   
+        }
+        catch(err){
+            res.status(500).json({message: err.message});
+        }   
+    }
+
+
     generateAccessToken(_user_id) {    
         return this.#jwt.sign(_user_id, this.#token, { expiresIn: '1800s' });
     }    

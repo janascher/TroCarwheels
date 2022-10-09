@@ -92,7 +92,8 @@ export default class Miniatures {
                                 WHERE a.id = $1 `,
                         values: [ _id ]
                 };
-            const res = await _db.query(query)
+            const res = await _db.query(query);
+            return res.rows;
         }
         catch(err) {
             throw new Error(err.message);

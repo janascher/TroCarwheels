@@ -1,33 +1,36 @@
-.background {
+.containerHome {
     background-color: var(--light-text-0);
-}
-
-#car_img {
+    /* max-width: 1100px; */
     width: 100%;
 }
 
+#car_img {
+    max-width: 100%;
+    height: auto;
+}
+
 #home_title {
+    color: var(--black);
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     text-align: center;
-    padding-top: 15px;
 }
 #home_title2 {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--primary-font);
     font-weight: 700;
     text-align: center;
 }
 #home_title2 span {
-    color: #DC2F02;
+    color: var(--orange0);
 }
 
 #home_p1 {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--secundary-font);
     text-align: center;
     padding-top: 20px;
 }
 #home_p2 {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--secundary-font);
     text-align: center;
     font-size: 16px;
     font-weight: 500;
@@ -35,128 +38,78 @@
 }
 
 #home_black_lines {
-    border-top: 4px solid #000;
-    border-bottom: 4px solid #000;
+    border-top: 4px solid var(--black);
+    border-bottom: 4px solid var(--black);
     height: 4vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 #home_red_line {
-    border: 3px solid #9D0208;
+    border: 2px solid var(--red1);
+    background-color: var(--red1);
 }
 
-#home_car_examples {
-    width: 100%;
-    height: 90vh;
-    display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-    align-items: center;
-    background-color: var(--light-text-0);
-}
-#home_cars_container {
-    /* background-color: red; */
-    width: 80vw;
-    height: 80vh;
+.containerGallery {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    padding: 3rem 0 3rem 0;
 }
-.cars {
-    background-color: #FFBA08;
-    width: 25vw;
-    height: 25vh;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.galleryItens {
+    height: 24vh;
+    width: 16%;
+    flex-grow: 1;
 }
-.car_images {
-    border-style: inset;
-    border-radius: 15px;
-    width: 45%;
-    height: 65%;
-    background-repeat:no-repeat;
-background-size:contain;
-background-position:center;
+
+.galleryItens img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-grow: 1;
 }
-#car_container2,#car_container4,#car_container6,#car_container8 {
-    background-color: #F48C06;
+
+.galleryItens img:hover {
+    opacity: 0.5;
+    transition-duration: 1s;
 }
-#car_one {
-    background-image: url("../assets/img/home/car_1.jpg");
-}
-#car_two {
-    background-image: url("../assets/img/home/car_2.jpg");
-}
-#car_three {
-    background-image: url("../assets/img/home/car_3.jpg");
-}
-#car_four {
-    background-image: url("../assets/img/home/car_4.jpg");
-}
-#car_five {
-    background-image: url("../assets/img/home/car_5.jpg");
-    background-size: 100%;
-}
-#car_six {
-    background-image: url("../assets/img/home/car_6.jpg");
-    background-size: 125%;
-}
-#car_seven {
-    background-image: url("../assets/img/home/car_7.jpg");
-    background-size: 100%;
-}
-#car_eigth {
-    background-image: url("../assets/img/home/car_8.jpg");
-}
-#car_nine {
-    background-image: url("../assets/img/home/car_9.jpg");
-    background-size: 120%;
-}
-.cars h1 {
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-}
-.cars p {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-}
-.card_cars {
-    display: flex;
-    flex-direction: column;
-    height: 15vh;
-}
-#divide {
-    height: 8vh;
-}
+
 #info {
-    width: 100vw;
-    height: 40vh;
     display: flex;
     align-items: center;
-    color: #fff;
+    color: var(--light-text-0);
     justify-content: center;
     align-items: center;
     background-color: var(--light-text-0);
 }
 #info_container {
-    background-color: #03071E;
+    background-color: var(--blue0);
     width: 100vw;
-    height: 20vh;
+    height: 17vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
+
+#info_container div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.fontContact {
+    font-weight: 400;
+    font-size: 1rem;
+}
+
 #info_container p {
     display: flex;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--secundary-font);
+    font-size: 0.9rem;
 }
 #info_container span {
-    color: #fff;
+    color: var(--light-text-0);
 }
 .icons {
     background-size: cover;
@@ -172,17 +125,18 @@ background-position:center;
 }
 #mail_icon {
     background-image: url("../assets/img/home/Mail.svg");
-    width: 2.5vw;
-    height: 5vh;
+    width: 2vw;
+    height: 4vh;
+    margin-right: 0.5vw;
 }
 #clock_icon {
     background-image: url("../assets/img/home/Clock.svg");
-    width: 3w;
-    height: 6vh;
+    width: 2vw;
+    height: 4vh;
     margin-right: 0.5vw;
 }
 .border_white {
-    border-right: #fff solid 2px;
+    border-right: var(--light-text-0) solid 2px;
     height: 10vh;
 }
 .align_center {

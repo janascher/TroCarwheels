@@ -78,9 +78,15 @@ export default class Confirmation {
                     return res.json()
                 })
                 .then(({data})=>{
-                    console.log(data)
-                    document.querySelector("#content").innerHTML = router("/")
-                    logic("/")
+                    console.log(id)
+                    fetch(`${api}/api/exchanges/close/${data[0]}`,{
+                        method: "PUT",
+                        headers: { "Content-type": "application/json" },
+                    }).then(()=>{
+                        document.querySelector("#content").innerHTML = router("/")
+                        logic("/")
+                    })
+                    .catch(err=>console.log(err))
                 })
                 .catch(err=>console.log(err))
             });

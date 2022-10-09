@@ -1,3 +1,5 @@
+import URL from "./url.js";
+const api = new URL().apiUrl
 import { router } from "../router.js";
 import { logic } from "../logic.js";
 class Register {
@@ -188,7 +190,7 @@ class Register {
                     phone: this.phone.value,
                 };
                 console.log(1)
-                fetch("http://localhost:8000/api/users", {
+                fetch(`${api}/api/users`, {
                     method: "POST",
                     body: JSON.stringify(_data),
                     headers: { "Content-type": "application/json" },

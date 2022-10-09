@@ -16,15 +16,11 @@ class Home {
     publish() {
         document.querySelectorAll("button#publish").forEach((el) => {
             el.addEventListener("click", function (_evt) {
-                let _data = {
-                    user_id: localStorage.user_id,
-                    miniature_id: _evt.target.dataset.id,
-                };
-                fetch(`${api_url.apiUrl}/api/miniatures/makeavailable/`, {
-                    method: "POST",
-                    body: JSON.stringify(_data),
+                fetch(`${api}/api/miniatures/makeavailable/${_evt.target.dataset.id}`, {
+                    method: "PUT",
                     headers: { "Content-type": "application/json" },
-                });
+                })
+                .catch(err=>console.log(err));
             });
         });
     }

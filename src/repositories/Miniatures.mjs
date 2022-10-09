@@ -81,6 +81,25 @@ export default class Miniatures {
         }
     }     
 
+    async getStatusById(_db, _id) {
+        try {
+            const query = {
+                        text: `--sql
+                            SELECT 
+                                    a.id, 
+                                    a.status
+                                FROM miniatures a
+                                WHERE a.id = $1 `,
+                        values: [ _id ]
+                };
+            const res = await _db.query(query);
+            return res.rows;
+        }
+        catch(err) {
+            throw new Error(err.message);
+        }
+    }  
+
     async getDataByUserId(_db, _id) {
         try {
             const query = {

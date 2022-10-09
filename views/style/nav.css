@@ -26,7 +26,7 @@ nav .logo span {
     list-style: none;
     display: flex;
     flex-direction: row;
-    gap: 0.5rem;
+    gap: 1.1rem;
     color: var(--light-text-0);
 }
 
@@ -61,4 +61,8 @@ li.auth {
 .menu ul li a:hover {
     color: var(--vivid-orange);
     text-decoration: underline;
+}
+
+#icon-person {
+    color: var(--light-text-0);
 }

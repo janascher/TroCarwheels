@@ -124,7 +124,6 @@ input:focus {
 .card_cars {
     display: flex;
     flex-direction: column;
-    height: 15vh;
 }
 .cars:nth-child(even) {
     background-color: var(--vivid-orange);

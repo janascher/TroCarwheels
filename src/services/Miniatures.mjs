@@ -159,10 +159,21 @@ export default class MiniaturesServ {
         const client = await this.#db.connect();  
         try {
             const params ={ user_id: _user_id,
-                      miniature_id: _id
-                    };
+                            miniature_id: _id
+                         };
 
             await client.query('BEGIN');
+                const status_mini = await repositories.miniatures.getStatusById(client, _id);
+                if (status_mini === [] ){
+                    await client.query('ROLLBACK');
+                    return {data: [], err: 'Error generating Cart. Select Miniature.', errCode: 500};    
+                }
+
+                if (status_mini[0].status > 10 ){
+                    await client.query('ROLLBACK');
+                    return {data: [], err: 'Error generating Cart. Miniature Indisponível para Troca.', errCode: 500};    
+                }
+
                 const cart_id = await repositories.cart.addData(client, params);
                 if (cart_id === []){
                     await client.query('ROLLBACK');

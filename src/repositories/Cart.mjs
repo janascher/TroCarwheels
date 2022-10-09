@@ -29,7 +29,7 @@ export default class Cart {
                                     left join miniatures b on a.miniature_id = b.id  
                                     left join users c on a.user_id = c.id  
                                     left join brand d on b.brand_id = d.id and d.deleted = false
-                                WHERE a.status!=9 and b.status!=9 and c.active=1 `
+                                WHERE a.status!=2 and b.status!=9 and c.active=1 `
             
             const res = await _db.query(query)
             return res.rows;

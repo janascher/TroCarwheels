@@ -28,7 +28,7 @@ export default function Login() {
             />
             <label for="password">Senha:</label>
         </div>
-        <button id="submit_login">Login</button>
+        <button id="submit_login">Entrar</button>
     </div>
 </section>`
 }

@@ -137,7 +137,7 @@ section#login .lines {
     width: 5px;
     top: 0;
     bottom: 0;
-    left: 48%;
+    left: 49%;
     background: var(--red1);
 }
 section#login .lines::after {

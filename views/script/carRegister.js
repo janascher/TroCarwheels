@@ -15,17 +15,17 @@ class CarRegister {
         this.upload();
     }
 
-    listBrands() {
-        fetch(`${api_url.apiUrl}/api/brands`)
-            .then((res) => {
-                return res.json();
-            })
-            .then(({ data }) => {
-                data.forEach((_el) => {
-                    this.brand.innerHTML += `<option value="${_el.id}">${_el.brand}<option/>`;
-                });
-            })
-            .catch((err) => console.log(err));
+    async listBrands() {
+        try{
+            let res = await fetch(`${api_url.apiUrl}/api/brands`);
+            let {data} = await res.json();
+            for (let i = 0; i < data.length; i++) {
+                this.brand.innerHTML += `<option value="${data[i].id}">${data[i].brand}<option/>`;
+                console.log(this.brand.innerHTML)
+            }
+        }catch(err){
+            console.log(err)
+        }
     }
     PreviewImage() {
         document

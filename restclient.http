@@ -83,4 +83,4 @@ GET http://localhost:8000/api/brands HTTP/1.1
 
 ###
 
-GET http://localhost:8000/api/cart_offer/1 HTTP/1.1
+PUT http://localhost:8000/api/exchanges/close/1 HTTP/1.1

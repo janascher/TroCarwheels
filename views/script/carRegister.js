@@ -22,8 +22,12 @@ class CarRegister {
             let {data} = await res.json();
             for (let i = 0; i < data.length; i++) {
                 this.brand.innerHTML += `<option value="${data[i].id}">${data[i].brand}<option/>`;
-                console.log(this.brand.innerHTML)
             }
+            document.querySelectorAll('select#brand option').forEach(_el=>{
+                if (!_el.value) {
+                    _el.remove()
+                }
+            })
         }catch(err){
             console.log(err)
         }

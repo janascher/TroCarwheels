@@ -7,8 +7,9 @@ export default class CartCtrl {
     }
  
     async getCarts(req, res) {
-        try {    
-            const resultado = await cartServ.getCarts();
+        try {
+            let search = req.query.search
+            const resultado = await cartServ.getCarts(search);
             if (resultado.err !== null){ 
                 res.status(500).json(resultado);
             } else{

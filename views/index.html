@@ -19,7 +19,6 @@
         <link rel="stylesheet" href="./style/historic.css" />
 
         <title>TroCarWheels</title>
-
     </head>
     <body>
         <noscript>Esta página necessita do JavaScript ativado.</noscript>
@@ -30,17 +29,41 @@
                 <div class="menu">
                     <ul>
                         <li class="link" id="home"><a href="/">Início</a></li>
-                        <li class="link unauth" id="registration"><a href="/register">Cadastro</a></li>
-                        <li class="link unauth" id="login"><a href="/login">Acesso</a></li>
-                        <li class="link auth" id="register-car"><a href="/add">Cadastrar carro</a></li>
-                        <li class="link auth" id="ad"><a href="/ad">Anúncios</a></li>
-                        <li class="link auth" id="transaction"><a href="/historic">Histórico</a></li>
+                        <li class="link unauth" id="registration">
+                            <a href="/register">Cadastro</a>
+                        </li>
+                        <li class="link unauth" id="login">
+                            <a href="/login">Acesso</a>
+                        </li>
+                        <li class="link auth" id="register-car">
+                            <a href="/add">Cadastrar</a>
+                        </li>
+                        <li class="link auth" id="ad">
+                            <a href="/ad">Anúncios</a>
+                        </li>
+                        <li class="link auth" id="transaction">
+                            <a href="/historic">Histórico</a>
+                        </li>
                         <li class="auth" id="user">
                             <a href="/">
-                                <img src="./assets/img/person-circle.svg" alt="Ícone de pessoa" id="icon-person" />
+                                <img
+                                    src="./assets/img/person-circle.svg"
+                                    alt="Ícone de pessoa"
+                                    id="icon-person"
+                                />
                                 <span></span>
                             </a>
                         </li>
+                        <!-- <li class="auth" id="user">
+                            <img src="./assets/img/person-circle.svg" alt="Ícone de pessoa" id="icon-person" />
+                            <span></span>
+                            <div class="drop">
+                                <ul>
+                                    <li>Sair</li>
+                                    <li>Atualizar Dados</li>
+                                </ul>
+                            </div>
+                    </li> -->
                     </ul>
                 </div>
             </nav>
@@ -48,6 +71,9 @@
 
         <main id="content">Carregando página...</main>
 
+        <div id="alert" class="animate_in">
+            <p id="message">This is an error message!</p>
+        </div>
         <footer>
             <section class="socialMedia">
                 <a href="#">

@@ -46,6 +46,7 @@ export default class Catalog {
 
     async search(){
         try{
+
             document.getElementById('search_img').addEventListener('click', async ()=>{
                 let search = document.getElementById('searchInput').value
                 console.log(search)
@@ -67,6 +68,7 @@ export default class Catalog {
                 }
                 this.detail()
             })
+
         }catch(err){
             console.log(err)
         }

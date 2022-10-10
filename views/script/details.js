@@ -51,29 +51,36 @@ export default class Details {
     }
     async choose() {
         document.querySelectorAll(".infosCar button").forEach((_el, key) => {
+
             _el.addEventListener("click", async (_evt) => {
+
                 let index = this.offers.indexOf(Number(_evt.target.dataset.id));
                 if (index > -1) {
                     this.offers.splice(index, 1);
                 }
                 await this.offers.push(Number(_evt.target.dataset.id));
+
                 document
                     .querySelectorAll(".infosCar")
                     [key].classList.toggle("ok");
             });
+
         });
     }
     async selectOffer() {
         document
             .querySelector(".buttonSubmit button")
             .addEventListener("click", async () => {
+
                 try {
                     if (!this.offers.length) {
                         throw "Escolha um elemento";
+
                     }
                     for (const id of this.offers) {
                         const _data = {
                             miniature_id: String(id),
+
                         };
                         let res = await fetch(
                             `${api}/api/cart_offer/${sessionStorage.infoId}`,
@@ -95,6 +102,7 @@ export default class Details {
                     message.innerHTML = err
                     document.getElementById("alert").style.display =
                             "flex";
+
                 }
             });
     }

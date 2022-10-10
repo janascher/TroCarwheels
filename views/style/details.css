@@ -3,6 +3,12 @@
     width: 100%;
 }
 
+.containerDetails h1 {
+    color: var(--light-text-0);
+    font-family: var(--primary-font);
+    margin: 1.24rem 0 1.24rem 0;
+}
+
 .gridSelect {
     display: grid;
     background-color: var(--vivid-orange-1);

@@ -3,9 +3,9 @@
     margin: 0;
     box-sizing: border-box;
 }
-body {
+/* body {
     background-image: none;
-}
+} */
 #historic {
     display: flex;
     flex-direction: column;

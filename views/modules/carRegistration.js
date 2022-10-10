@@ -1,9 +1,24 @@
 export default function carRegistration() {
     return `
-        <section class="container">
+        <section class="containerCarRegistration">
             <h1>Cadastre seu carro miniatura</h1>
             
             <div class="grid">
+                <div class="rightSide">
+                    <div class="form">
+                        <label class="picture" for="picture-input" tabindex="0">
+                            <img id="pictureImage" />
+                            <div class="infoUpload">
+                                <img class="iconUpload" src="./assets/img/carRegistration/CloudArrowUp.svg" alt="Upload">
+                                <p class="pText">Nenhum arquivo escolhido, ainda!</p>
+                            </div>
+                        </label>
+                        <div class="choose">
+                            <label class="labelChoose" for="picture-input">Escolher arquivo</label>
+                            <input type="file" name="picture-input" accept="image/*" id="picture-input">
+                        </div>
+                    </div>
+                </div>
                 <div class="leftSide">
                     <div class="form">  
                         <div class="input">
@@ -23,18 +38,11 @@ export default function carRegistration() {
                             <textarea name="description" id="description" cols="50" rows="1" placeholder=""></textarea>   
                         </div>                    
                         <button id="submit">Enviar</button>
-                    </form>
-                </div>
-
-                <div class="rightSide">
-                    <div class="form">
-                        <label class="picture" for="picture-input" tabindex="0">
-                            <img id="pictureImage"></img>
-                        </label>
-                        <input type="file" name="picture-input" accept="image/*" id="picture-input">
                     </div>
                 </div>
-            </div>
+
+                
+            </div>              
         </section>
     `
 }

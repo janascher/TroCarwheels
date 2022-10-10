@@ -1,11 +1,12 @@
-.container {
-    /* max-width: 1100px; */
+.containerCarRegistration {
+    max-width: 1100px;
     width: 100%;
-    color: var(--light-text-0);
 }
 
-h1 {
+.containerCarRegistration h1 {
+    color: var(--light-text-0);
     font-family: var(--primary-font);
+    margin: 1.24rem 0 1.24rem 0;
 }
 
 .grid {
@@ -13,13 +14,9 @@ h1 {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    /* display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-radius: 0.5rem;
-    gap: 2rem; */
 }
 
-/* ======== Coluna da Esquerda ======== */
+/* ======== Coluna da Direita ======== */
 .leftSide {
     box-shadow: 0px 10px 13px -7px var(--black),
         5px 5px 15px 5px rgb(3 7 30 / 0%);
@@ -30,7 +27,7 @@ h1 {
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-    padding: 40px;
+    padding: 2.5rem;
     background-color: var(--light-text-0);
 }
 
@@ -40,7 +37,7 @@ h1 {
     position: relative;
     font-family: var(--primary-font);
     gap: 1.5rem;
-    margin: 0 20px;
+    margin: 0 1.25rem;
 }
 
 .leftSide .input {
@@ -64,7 +61,8 @@ h1 {
 .leftSide .input input {
     top: 0;
     width: 100%;
-    font-size: 1.1rem;
+    font-family: var(--secundary-font);
+    font-size: 1.1rem;    
     background: none;
     border: 1px solid var(--blue0);
     border-radius: 0.5rem;
@@ -113,11 +111,12 @@ h1 {
 }
 
 .leftSide .inputTextarea textarea {
-    width: 93%;
     height: 100%;
+    font-family: var(--secundary-font);
     font-size: 1.1rem;
     border: 1px solid var(--blue0);
     border-radius: 0.5rem;
+    outline: none;
     padding: 1rem 1rem;
 }
 
@@ -126,109 +125,133 @@ h1 {
     height: auto;
     display: flex;
     flex-direction: column;
-    /* margin-bottom: 2rem; */
-    /* margin-bottom: 2.5rem; */
 }
+
 .leftSide .select select {
     position: relative;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    font-size: 1.5rem;
+    font-family: var(--secundary-font);
+    font-size: 1.1rem;
     border: 1px solid var(--blue0);
     border-radius: 0.5rem;
     outline: none;
-    color: var(--blue0);
     padding: 1rem;
     background: none;
     z-index: 1;
 }
+
 .leftSide .select label {
     position: absolute;
-    top: -1rem;
+    background-color: var(--light-text-0);
+    left: 1rem;
+    transition: 0.3s;
+    top: -0.8rem;
     font-size: 1rem;
     font-weight: 500;
+    z-index: 10;
 }
 
 .leftSide button {
-    background-color: var(--red1);
+    align-self: center;
+    background-color: var(--dark-green);
     color: var(--light-text-0);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: var(--primary-font);
     padding: 0.5rem 1rem;
-    border-radius: 6px;
+    border-radius: 0.5rem;
     border: none;
-    width: 30%;
+    width: 36%;
     margin-top: 1rem;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
-/* ======== Coluna da Direita ======== */
+.leftSide button:hover {
+    background: var(--lime-green);
+}
+
+/* ======== Coluna da Esquerda ======== */
 .rightSide {
     background-color: var(--gray);
     box-shadow: 0px 10px 13px -7px  var(--black), 5px 5px 15px 5px rgb(3 7 30 / 0%);
     border-radius: 0.5rem;
     position: relative;
-    padding: 40px;
+    padding: 2.5rem;
     display: flex;
     justify-content: center;
 }
 
-.rightSide form {
+.rightSide .form {
     display: flex;
     flex-direction: column;
-    gap: 5.5rem;
+    gap: 2.5rem;
 }
 
 .picture {
-    aspect-ratio: 16/9;
     background-color: var(--very-light-gray);
-    border: 2px dashed;
+    border: 2px solid;
     border-radius: 0.5rem;
     color: var(--dark-grayish-red);
     cursor: pointer;
     font-family: var(--secundary-font);
     outline: none;
     transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+    width: 26vw;
+    height: 46.58vh;
+    position: relative;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    width: 400px;
 }
 
 .picture:hover {
-    background-color: var(--gray);
-    color: var(--black);
-}
-
-.picture:active {
-    color: var(--red1);
-    border-color: var(--red1);
-}
-
-.picture:focus {
-    box-shadow: 0 0 10px var(--black-t);
-    color: var(--black);
+    background-color: #ececec;
 }
 
 #pictureImage {
     border-radius: 0.5rem;
-    max-width: 100%;
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
-#picture-input {
+.infoUpload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iconUpload {
+    width: 8vw;
+}
+
+.picture .pText {
+    text-align: center;
+}
+
+.choose {
+    align-self: center;
+}
+
+.choose input[type="file"] {
     display: none;
 }
 
-.rightSide button {
+.labelChoose{
     background-color: var(--red1);
     color: var(--light-text-0);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: var(--primary-font);
     padding: 0.5rem 1rem;
-    border-radius: 6px;
     border: none;
-    width: 30%;
+    width: 16.99vw;
     cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 0.5rem;
+}
+
+.labelChoose:hover {
+    background: var(--red0);
 }

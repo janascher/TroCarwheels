@@ -28,3 +28,49 @@ body {
     box-sizing: 0;
     background: url(../assets/img/background/giorgio-trovato-2KD6Z-SmTQE-unsplash.jpg) center/cover no-repeat;
 }
+
+@-webkit-keyframes animate_in {
+    from {top:-600px; opacity:0}
+    to {top:15; opacity:1}
+}
+
+@keyframes animate_in {
+    from {top:-600px; opacity:0}
+    to {top:15; opacity:1}
+}
+
+@-webkit-keyframes animate_out {
+    from {right:15; opacity:1}
+    to {right:-300px; opacity:0}
+}
+
+@keyframes animate_out {
+    from {right:15; opacity:1}
+    to {right:-300px; opacity:0}
+}
+
+#alert {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  border: solid 1.5px red;
+  border-radius: 15px;
+  min-width: 20%;
+  max-width: 40%;
+  height: 50px;
+  background: rgba(216, 0, 0, 0.849);
+  right: 15px;
+  top: 3.75rem;
+  z-index: 20;
+  -webkit-animation-name: animate_in;
+    -webkit-animation-duration: 0.3s;
+    animation-name: animate_in;
+    animation-duration: 0.3s;
+}
+
+#alert p {
+  position: relative;
+  font-family: var(--primary-font);
+  color: var(--light-text-0);
+}

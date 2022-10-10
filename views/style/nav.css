@@ -67,6 +67,19 @@ li.auth {
     color: var(--vivid-orange);
     text-decoration: underline;
 }
+.menu li#user .drop{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    opacity: 0;
+    height: 0;
+}
+.menu li#user:hover .drop{
+    position: absolute;
+    opacity: 1;
+    height: 0;
+}
 
 #icon-person {
     color: var(--light-text-0);

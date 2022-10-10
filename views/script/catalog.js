@@ -8,6 +8,7 @@ export default class Catalog {
         this.carsContainer = document.querySelector("#cars_container");
         this.cars = document.querySelector("#cars");
         this.listCars()
+        this.search()
     }
 
 
@@ -45,25 +46,28 @@ export default class Catalog {
 
     async search(){
         try{
-            let res = await fetch(`${api}/api/cart`);
-            let {data} = await res.json()
-            let search = ""
-            const regex = new RegExp(`//search//`, 'gi');
-            const filtro = data.filter(({dt}) => dt.model.match(regex));
-            console.log(filtro);
-            for (let i = 0; i < filtro.length; i++) {
-                if (filtro[i].user_id!=localStorage.user_id) {
-                    this.cars.innerHTML += `<div class="cars">
-                    <img class="car_images" src="./uploads/${filtro[i]["link"]}"/> 
-                    <div class="card_cars">
-                    <p>${filtro[i]["model"]} </p>
-                    <p>@${filtro[i]["nick"]} </p>
-                    </div>
-                    <button class="button_details" data-id="${filtro[i].id}"> Detalhes </button>
-                    </div>`;
+
+            document.getElementById('search_img').addEventListener('click', async ()=>{
+                let search = document.getElementById('searchInput').value
+                console.log(search)
+                let res = await fetch(`${api}/api/cart?search=${search}`);
+                let {data} = await res.json()
+                console.log(data)
+                this.cars.innerHTML =""
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].user_id!=localStorage.user_id) {
+                        this.cars.innerHTML += `<div class="cars">
+                        <img class="car_images" src="./uploads/${data[i]["link"]}"/> 
+                        <div class="card_cars">
+                        <p>${data[i]["model"]} </p>
+                        <p>@${data[i]["nick"]} </p>
+                        </div>
+                        <button class="button_details" data-id="${data[i].id}"> Detalhes </button>
+                        </div>`;
+                    }
                 }
-            }
-            this.detail()
+                this.detail()
+            })
 
         }catch(err){
             console.log(err)

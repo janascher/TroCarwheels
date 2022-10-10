@@ -34,8 +34,8 @@ export default function carRegistration() {
                             <label for="color">Cor:</label>
                         </div>
                         <div class="inputTextarea">
-                            <label for="description">Descrição:</label>
-                            <textarea name="description" id="description" cols="50" rows="1" placeholder=""></textarea>   
+                        <textarea name="description" id="description" cols="50" rows="1" placeholder="" autofocus></textarea>   
+                        <label for="description">Descrição:</label>
                         </div>                    
                         <button id="submit">Enviar</button>
                     </div>

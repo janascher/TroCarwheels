@@ -6,9 +6,14 @@ export default class cartServ {
         this.#db = _db;
     }
 
-    async getCarts(){
+    async getCarts(_search){
         try {
-            const data = await repositories.cart.getData(this.#db);
+            let search = ""
+            if(_search){
+                search = `AND (UPPER(b.model) LIKE '%${_search.toUpperCase()}%' 
+                OR UPPER(b.color) LIKE '%${_search.toUpperCase()}%')`
+            }
+            const data = await repositories.cart.getData(this.#db, search);
             return {data: data, err: null, errCode: null};
         }
         catch(err){

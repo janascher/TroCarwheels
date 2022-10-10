@@ -20,6 +20,7 @@ export default class Confirmation {
                 return res.json();
             })
             .then(({ data }) => {
+                console.log(data)
                 this.data.cart_id = String(data[0].id);
                 this.data.user_id1 = String(data[0].user_id);
                 this.data.miniature_id1 = String(data[0].miniature_id);

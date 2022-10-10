@@ -81,6 +81,10 @@ class Home {
                             </div>`;
                     }
                 });
+            }else{
+                document.getElementById(
+                    "home_cars_container"
+                ).style.display="none"
             }
             this.publish();
             this.viewOffer();

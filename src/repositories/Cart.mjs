@@ -6,7 +6,7 @@ export default class Cart {
         this.#db = _db;
     }
 
-    async getData(_db) {
+    async getData(_db, _search) {
         try {
             const query = `--sql
                             SELECT 
@@ -29,7 +29,7 @@ export default class Cart {
                                     left join miniatures b on a.miniature_id = b.id  
                                     left join users c on a.user_id = c.id  
                                     left join brand d on b.brand_id = d.id and d.deleted = false
-                                WHERE a.status!=2 and b.status!=9 and c.active=1 `
+                                WHERE a.status!=2 and b.status!=9 and c.active=1 ${_search} `
             
             const res = await _db.query(query)
             return res.rows;
@@ -213,7 +213,7 @@ export default class Cart {
                             SELECT 
                                     c.id
                                 FROM cart c
-                                WHERE c.miniature_id = $1 `,
+                                WHERE c.miniature_id = $1 AND c.status!=2 `,
                         values: [ _id ]
                 };
             const res = await _db.query(query)

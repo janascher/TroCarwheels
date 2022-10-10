@@ -312,8 +312,7 @@ export default class UsersCtrl {
 
     async logoutUser(req, res) {
         try {
-                res.clearCookie('token');
-                res.clearCookie('auth');
+                res.cookie('auth', false,{ maxAge: 15, httpOnly: false });
                 res.status(200).json({data: "ok"});   
         }
         catch(err){

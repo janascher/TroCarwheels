@@ -1,16 +1,16 @@
 import URL from "./url.js";
-const api = new URL().apiUrl
+const api = new URL().apiUrl;
 import { router } from "../router.js";
 import { logic } from "../logic.js";
 export default class Confirmation {
     constructor() {
         this.data = {
-            user_id1:null,
-            miniature_id1:null,
-            user_id2:null,
-            miniature_id2:null,
-            cart_id:null
-        }
+            user_id1: null,
+            miniature_id1: null,
+            user_id2: null,
+            miniature_id2: null,
+            cart_id: null,
+        };
         this.list();
     }
     list() {
@@ -19,10 +19,9 @@ export default class Confirmation {
                 return res.json();
             })
             .then(({ data }) => {
-                console.log(data)
-                this.data.cart_id = String(data[0].id)
-                this.data.user_id1 = String(data[0].user_id)
-                this.data.miniature_id1 = String(data[0].miniature_id)
+                this.data.cart_id = String(data[0].id);
+                this.data.user_id1 = String(data[0].user_id);
+                this.data.miniature_id1 = String(data[0].miniature_id);
                 document.querySelector("img#imageCar").src =
                     "./uploads/" + data[0].link;
                 document.querySelector("p.nameUser").innerHTML = data[0].nick;
@@ -37,7 +36,6 @@ export default class Confirmation {
                 return res.json();
             })
             .then(({ data }) => {
-                console.log(data)
                 document.querySelector(".carSelection").innerHTML = "";
                 data.forEach((_dt) => {
                     document.querySelector(".carSelection").innerHTML += `
@@ -62,33 +60,32 @@ export default class Confirmation {
     selectOffer() {
         document
             .querySelector(".buttonSubmit button")
-            .addEventListener("click", () => {
-                const [id,user] = document.querySelector(
-                    'input[name="offer"]:checked'
-                ).value.split("-");
+            .addEventListener("click", async () => {
+                try{
+
+                }catch(err){
+                    console.log(err)
+                }
+                const [id, user] = document
+                    .querySelector('input[name="offer"]:checked')
+                    .value.split("-");
                 this.data.user_id2 = String(user);
                 this.data.miniature_id2 = id;
-                console.log(this.data)
-                fetch(`${api}/api/exchanges/`, {
+                console.log(this.data);
+                let res = await fetch(`${api}/api/exchanges/`, {
                     method: "POST",
                     body: JSON.stringify(this.data),
                     headers: { "Content-type": "application/json" },
+                });
+                let { data } = await res.json();
+                let res1 = await fetch(`${api}/api/exchanges/close/${data}`,{
+                    method: "PUT",
+                    headers: { "Content-type": "application/json" },
                 })
-                .then(res=>{
-                    return res.json()
-                })
-                .then(({data})=>{
-                    console.log(id)
-                    fetch(`${api}/api/exchanges/close/${data[0]}`,{
-                        method: "PUT",
-                        headers: { "Content-type": "application/json" },
-                    }).then(()=>{
-                        document.querySelector("#content").innerHTML = router("/")
-                        logic("/")
-                    })
-                    .catch(err=>console.log(err))
-                })
-                .catch(err=>console.log(err))
+                let data1 = await res1.json();
+                console.log(data1)
+                router("/")
+                logic("/")
             });
     }
 }

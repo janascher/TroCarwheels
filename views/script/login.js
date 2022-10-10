@@ -50,6 +50,7 @@ class Login {
                         document.querySelectorAll(".unauth").forEach((el) => {
                             el.style.display = "none";
                         });
+                        document.querySelector("nav #user span").innerHTML = localStorage.nick;
                     })
                     .catch((err) => console.log(err));
             } catch (error) {

@@ -5,6 +5,7 @@ import Home from "./script/home.js";
 import Catalog from "./script/catalog.js";
 import Details from './script/details.js';
 import Confirmation from './script/confirmation.js'
+import Hitoric from './script/historic.js'
 
 const scripts = {
     "/": Home,
@@ -14,7 +15,7 @@ const scripts = {
     "/ad": Catalog,
     "/details": Details,
     "/confirmation": Confirmation,
-    "/selection": Home,
+    "/historic": Hitoric,
 }
 
 export function logic(route){

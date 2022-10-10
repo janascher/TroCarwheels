@@ -1,4 +1,5 @@
-import api_url from "../index.js";
+import URL from "./url.js";
+const api = new URL().apiUrl
 import { router } from "../router.js";
 import { logic } from "../logic.js";
 class CarRegister {
@@ -15,17 +16,17 @@ class CarRegister {
         this.upload();
     }
 
-    listBrands() {
-        fetch(`${api_url.apiUrl}/api/brands`)
-            .then((res) => {
-                return res.json();
-            })
-            .then(({ data }) => {
-                data.forEach((_el) => {
-                    this.brand.innerHTML += `<option value="${_el.id}">${_el.brand}<option/>`;
-                });
-            })
-            .catch((err) => console.log(err));
+    async listBrands() {
+        try{
+            let res = await fetch(`${api}/api/brands`);
+            let {data} = await res.json();
+            for (let i = 0; i < data.length; i++) {
+                this.brand.innerHTML += `<option value="${data[i].id}">${data[i].brand}<option/>`;
+                console.log(this.brand.innerHTML)
+            }
+        }catch(err){
+            console.log(err)
+        }
     }
     PreviewImage() {
         document
@@ -51,7 +52,7 @@ class CarRegister {
                     description: this.description.value,
                 };
                 let res_text = await fetch(
-                    `${api_url.apiUrl}/api/miniatures`,
+                    `${api}/api/miniatures`,
                     {
                         method: "POST",
                         body: JSON.stringify(_data),
@@ -62,7 +63,7 @@ class CarRegister {
                 const formData = new FormData();
                 formData.append("file", this.file.files[0]);
                 let res_img = await fetch(
-                    `${api_url.apiUrl}/api/miniatures/upload/${data}`,
+                    `${api}/api/miniatures/upload/${data}`,
                     {
                         method: "POST",
                         body: formData,
@@ -84,7 +85,7 @@ class CarRegister {
             );
             formData.append("file", fileField.files[0]);
             fetch(
-                `${api_url.apiUrl}/api/miniatures/upload/${sessionStorage.id_miniature}`,
+                `${api}/api/miniatures/upload/${sessionStorage.id_miniature}`,
                 {
                     method: "POST",
                     body: formData,

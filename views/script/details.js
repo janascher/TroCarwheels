@@ -57,7 +57,7 @@ export default class Details {
                 const _data={
                     miniature_id:id
                 }
-                fetch(`${api_url.apiUrl}/api/cart_offer/${sessionStorage.infoId}`, {
+                fetch(`${api}/api/cart_offer/${sessionStorage.infoId}`, {
                     method: "POST",
                     body: JSON.stringify(_data),
                     headers: { "Content-type": "application/json" },

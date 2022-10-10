@@ -12,9 +12,7 @@ export default function historic() {
         </header>
         <div id="white_space"></div>
         <main id="main">
-            
         </main>
     </section>
-    <script type="module" src="historic.js" defer></script>
     `
 }

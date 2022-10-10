@@ -1,4 +1,5 @@
-import api_url from "../index.js";
+import URL from "./url.js";
+const api = new URL().apiUrl
 import { router } from "../router.js";
 import { logic } from "../logic.js";
 export default class Catalog {
@@ -9,7 +10,7 @@ export default class Catalog {
         this.listCars()
     }
     listCars(){
-        fetch(`${api_url.apiUrl}/api/cart`)
+        fetch(`${api}/api/cart`)
         .then(res=>res.json())
         .then(({data})=>{
             for (let i = 0; i < data.length; i++) {

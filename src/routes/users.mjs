@@ -12,7 +12,7 @@ routeUser.get("/nick/:nick", authenticateToken, usersCtrl.getUsersByNick);
 routeUser.get("/:id", authenticateToken, usersCtrl.getUsersById);
 routeUser.post("/", usersCtrl.addUser);
 routeUser.post("/login", usersCtrl.loginUser);
-routeUser.get("/logout", usersCtrl.logoutUser);
+routeUser.post("/logout", usersCtrl.logoutUser);
 routeUser.put("/pwd/:id", authenticateToken, usersCtrl.updUserPwd);
 routeUser.put("/:id", authenticateToken, usersCtrl.updUser);
 routeUser.delete("/:id", authenticateToken, usersCtrl.delUser);

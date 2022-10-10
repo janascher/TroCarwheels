@@ -1,32 +1,33 @@
 import URL from "./url.js";
-const api = new URL().apiUrl
+const api = new URL().apiUrl;
 import { router } from "../router.js";
 import { logic } from "../logic.js";
 class Register {
-    constructor(){
-        this.name= document.getElementById("namec")
-        this.email= document.getElementById("emailc")
-        this.nick= document.getElementById("nickc")
-        this.password= document.getElementById("passwordc")
-        this.address= document.getElementById("addressc")
-        this.num= document.getElementById("numc")
-        this.complement= document.getElementById("complementc")
-        this.city= document.getElementById("cityc")
-        this.state= document.getElementById("statec")
-        this.district= document.getElementById("districtc")
-        this.birth_date= document.getElementById("birth_datec")
-        this.zip= document.getElementById("zipc")
-        this.phone= document.getElementById("phonec")
-        this.submit= document.getElementById("submitc")
-        this.formatCEP()
-        this.formatPhone()
-        this.listStates()
-        this.changeStates()
-        this.verifyCEP()
-        this.verifyRegister()
+    constructor() {
+        this.name = document.getElementById("namec");
+        this.email = document.getElementById("emailc");
+        this.nick = document.getElementById("nickc");
+        this.password = document.getElementById("passwordc");
+        this.address = document.getElementById("addressc");
+        this.num = document.getElementById("numc");
+        this.complement = document.getElementById("complementc");
+        this.city = document.getElementById("cityc");
+        this.state = document.getElementById("statec");
+        this.district = document.getElementById("districtc");
+        this.birth_date = document.getElementById("birth_datec");
+        this.zip = document.getElementById("zipc");
+        this.phone = document.getElementById("phonec");
+        this.next = document.getElementById("next");
+        this.submit = document.getElementById("submitc");
+        this.formatCEP();
+        this.formatPhone();
+        this.listStates();
+        this.changeStates();
+        this.verifyCEP();
+        this.verifyRegister();
     }
-    formatCEP(){
-        this.zip.addEventListener("keydown", (e)=>{
+    formatCEP() {
+        this.zip.addEventListener("keydown", (e) => {
             if (e.target.value.length < 9) {
                 if (e.key.match(/[0-9]/gi)) {
                     if (e.target.value.length == 5) {
@@ -42,7 +43,7 @@ class Register {
             }
         });
     }
-    formatPhone(){
+    formatPhone() {
         this.phone.addEventListener("keydown", function (e) {
             if (e.target.value.length < 15) {
                 if (e.key.match(/[0-9]/gi)) {
@@ -65,7 +66,7 @@ class Register {
             }
         });
     }
-    verifyCEP(){
+    verifyCEP() {
         this.zip.addEventListener("keyup", async (e) => {
             if (e.target.value.length == 9) {
                 const res = await fetch(
@@ -82,16 +83,18 @@ class Register {
                             this.state.innerHTML += `<option value="${sigla}-${id}">${nome}</option>`;
                         }
                     });
-                    this.getCity(this.state.value.split("-")[1]).then((data) => {
-                        this.city.innerHTML = "";
-                        data.forEach(({ nome }) => {
-                            if (localidade == nome) {
-                                this.city.innerHTML += `<option value="${nome}" selected>${nome}</option>`;
-                            } else {
-                                this.city.innerHTML += `<option value="${nome}">${nome}</option>`;
-                            }
-                        });
-                    });
+                    this.getCity(this.state.value.split("-")[1]).then(
+                        (data) => {
+                            this.city.innerHTML = "";
+                            data.forEach(({ nome }) => {
+                                if (localidade == nome) {
+                                    this.city.innerHTML += `<option value="${nome}" selected>${nome}</option>`;
+                                } else {
+                                    this.city.innerHTML += `<option value="${nome}">${nome}</option>`;
+                                }
+                            });
+                        }
+                    );
                 });
             }
         });
@@ -103,7 +106,7 @@ class Register {
         const data = await res.json();
         return data;
     }
-    listStates(){
+    listStates() {
         this.getStates().then((data) => {
             data.forEach(({ id, sigla, nome }) => {
                 this.state.innerHTML += `
@@ -124,20 +127,31 @@ class Register {
         const data = await res.json();
         return data;
     }
-    changeStates(){
-        this.state.addEventListener('change', (evt)=>{
+    changeStates() {
+        this.state.addEventListener("change", (evt) => {
             this.getCity(evt["target"].value.split("-")[1]).then((data) => {
                 this.city.innerHTML = "";
                 data.forEach(({ nome }) => {
                     this.city.innerHTML += `<option value="${nome}">${nome}</option>`;
                 });
             });
-        })
+        });
     }
-    verifyRegister(){
-        this.submit.addEventListener("click", async () => {
+    verifyRegister() {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+
+        if (month < 10) month = "0" + month.toString();
+        if (day < 10) day = "0" + day.toString();
+
+        var maxDate = year + "-" + month + "-" + day;
+        this.birth_date.max = maxDate
+        console.dir(this.birth_date);
+        this.next.addEventListener("click", () => {
             try {
-                console.log("now")
                 let erros = [];
                 if (this.name.value.length < 3) {
                     erros.push("name");
@@ -148,32 +162,53 @@ class Register {
                 if (this.password.value.length < 3) {
                     erros.push("password");
                 }
-                if (this.zip.value.length < 9) {
-                    erros.push("zip");
-                }
                 if (this.phone.value.length < 15) {
                     erros.push("phone");
                 }
-                if ( !this.email.checkValidity() || this.email.value.length == 0) {
+                if (
+                    !this.email.checkValidity() ||
+                    this.email.value.length == 0
+                ) {
                     erros.push("email");
-                }
-                if (this.address.value.length<5) {
-                    erros.push("address");
-                }
-                if (this.district.value.length<5) {
-                    erros.push("district");
                 }
                 if (this.birth_date.value == "") {
                     erros.push("birth_date");
                 }
-                if (this.num.value == "" || this.num.valueAsNumber < 1) {
-                    erros.push("num");
-                }
-        
                 if (erros.length > 0) {
                     throw erros;
                 }
-        
+                document.getElementById("person").classList.remove("show");
+                document.getElementById("local").classList.add("show");
+            } catch (error) {
+                console.log(error);
+                error.forEach((err) => {
+                    this[err].classList.add("erro");
+                    setInterval(() => {
+                        this[err].classList.remove("erro");
+                    }, 5000);
+                });
+            }
+        });
+        this.submit.addEventListener("click", async () => {
+            try {
+                let erros = [];
+                if (this.zip.value.length < 9) {
+                    erros.push("zip");
+                }
+                if (this.address.value.length < 5) {
+                    erros.push("address");
+                }
+                if (this.district.value.length < 5) {
+                    erros.push("district");
+                }
+                if (this.num.value == "" || this.num.valueAsNumber < 1) {
+                    erros.push("num");
+                }
+
+                if (erros.length > 0) {
+                    throw erros;
+                }
+
                 let _data = {
                     name: this.name.value,
                     email: this.email.value,
@@ -185,28 +220,32 @@ class Register {
                     city: this.city.value,
                     state: this.state.value.split("-")[0],
                     district: this.district.value,
-                    birth_date: this.birth_date.value.split('-').reverse().join('-'),
+                    birth_date: this.birth_date.value
+                        .split("-")
+                        .reverse()
+                        .join("-"),
                     zip: this.zip.value,
                     phone: this.phone.value,
                 };
-                console.log(1)
+                console.log(1);
                 fetch(`${api}/api/users`, {
                     method: "POST",
                     body: JSON.stringify(_data),
                     headers: { "Content-type": "application/json" },
                 })
-                .then((response) => {
-                    console.log(2)
-                    return response.json()
-                })
-                .then(({data}) => {
-                        console.log(3)
-                        localStorage.email=data.email
-                        localStorage.name=data.name
-                        localStorage.nick=data.nick
-                        localStorage.user_class=data.user_class
-                        localStorage.user_id=data.user_id
-                        document.querySelector("#content").innerHTML = router("/");
+                    .then((response) => {
+                        console.log(2);
+                        return response.json();
+                    })
+                    .then(({ data }) => {
+                        console.log(3);
+                        localStorage.email = data.email;
+                        localStorage.name = data.name;
+                        localStorage.nick = data.nick;
+                        localStorage.user_class = data.user_class;
+                        localStorage.user_id = data.user_id;
+                        document.querySelector("#content").innerHTML =
+                            router("/");
                         logic("/");
                         document.querySelectorAll(".auth").forEach((el) => {
                             el.style.display = "block";
@@ -217,7 +256,7 @@ class Register {
                     })
                     .catch((err) => console.log(err));
             } catch (error) {
-                console.log(error)
+                console.log(error);
                 error.forEach((err) => {
                     this[err].classList.add("erro");
                     setInterval(() => {

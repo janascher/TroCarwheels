@@ -39,6 +39,10 @@ content-type: application/json
 }
 
 ###
+POST http://localhost:8000/api/users/logout HTTP/1.1
+content-type: application/json5"
+
+###
 PUT http://192.168.15.15:8000/api/users/pwd/1 HTTP/1.1
 content-type: application/json
 
@@ -83,4 +87,4 @@ GET http://localhost:8000/api/brands HTTP/1.1
 
 ###
 
-PUT http://localhost:8000/api/exchanges/close/1 HTTP/1.1
+PUT http://localhost:8000/api/exchanges/close/4 HTTP/1.1

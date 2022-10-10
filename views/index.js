@@ -11,8 +11,14 @@ const cookie = document.cookie.split("; ").reduce((prev, current) => {
 
 if (cookie.auth) {
     document.querySelector("nav #user span").innerHTML = localStorage.nick;
+    document.querySelectorAll(".auth").forEach((el) => {
+        el.style.display = "block";
+    });
+    document.querySelectorAll(".unauth").forEach((el) => {
+        el.style.display = "none";
+    });
     document.querySelector("nav #user").addEventListener("click", () => {
-        fetch(`${api}/users/logout`).then(() => {
+        document.cookie = "auth=; expires=; path=/";
             document.querySelectorAll(".auth").forEach((el) => {
                 el.style.display = "none";
             });
@@ -21,13 +27,7 @@ if (cookie.auth) {
             });
             app.innerHTML = router("/");
             logic("/");
-        });
-    });
-    document.querySelectorAll(".auth").forEach((el) => {
-        el.style.display = "block";
-    });
-    document.querySelectorAll(".unauth").forEach((el) => {
-        el.style.display = "none";
+            localStorage.clear();
     });
 } else {
     localStorage.clear();
@@ -62,6 +62,6 @@ window.addEventListener("popstate", (evt) => {
     app.innerHTML = router(evt.target.location.pathname);
 });
 // carregamento da pagina
-window.addEventListener("load", (evt) => {
-    app.innerHTML = router(evt.target.location.pathname);
-});
+// window.addEventListener("load", (evt) => {
+//     app.innerHTML = router(evt.target.location.pathname);
+// });

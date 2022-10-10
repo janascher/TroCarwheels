@@ -132,6 +132,12 @@ section#login .form button {
     border-radius: 6px;
     border: none;
 }
+section#login .form button {
+    cursor: pointer;
+}
+section#login .form button:active {
+    opacity: 0.7;
+}
 section#login .lines {
     position: absolute;
     width: 5px;

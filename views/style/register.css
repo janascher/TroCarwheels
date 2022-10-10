@@ -113,6 +113,12 @@
     border-radius: 6px;
     border: none;
 }
+#cadastro .form button:hover {
+    cursor: pointer;
+}
+#cadastro .form button:active {
+    opacity: 0.7;
+}
 #cadastro .lines {
     position: relative;
     width: 5px;

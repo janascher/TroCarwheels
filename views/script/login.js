@@ -30,36 +30,38 @@ class Login {
                     pwd: this.password.value,
                     email: this.email.value,
                 };
-                await fetch(`${api}/api/users/login`, {
+                let res = await fetch(`${api}/api/users/login`, {
                     method: "POST",
                     body: JSON.stringify(_data),
                     headers: { "Content-type": "application/json" },
-                })
-                    .then((response) => response.json())
-                    .then(({data}) => {
-                        localStorage.email=data.email
-                        localStorage.name=data.name
-                        localStorage.nick=data.nick
-                        localStorage.user_class=data.user_class
-                        localStorage.user_id=data.user_id
-                        document.querySelector("#content").innerHTML = router("/");
-                        logic("/");
-                        document.querySelectorAll(".auth").forEach((el) => {
-                            el.style.display = "block";
-                        });
-                        document.querySelectorAll(".unauth").forEach((el) => {
-                            el.style.display = "none";
-                        });
-                        document.querySelector("nav #user span").innerHTML = localStorage.nick;
-                    })
-                    .catch((err) => console.log(err));
-            } catch (error) {
-                error.forEach((err) => {
-                    this[err].classList.add("erro");
-                    setInterval(() => {
-                        this[err].classList.remove("erro");
-                    }, 5000);
                 });
+                let {data} = await res.json();
+                if(data.nick){
+                    localStorage.email=data.email
+                    localStorage.name=data.name
+                    localStorage.nick=data.nick
+                    localStorage.user_class=data.user_class
+                    localStorage.user_id=data.user_id
+                    document.querySelector("#content").innerHTML = router("/");
+                    logic("/");
+                    document.querySelectorAll(".auth").forEach((el) => {
+                        el.style.display = "block";
+                    });
+                    document.querySelectorAll(".unauth").forEach((el) => {
+                        el.style.display = "none";
+                    });
+                    document.querySelector("nav #user span").innerHTML = localStorage.nick;
+                }
+            } catch (error) {
+                console.log(error)
+                if(Object.prototype.toString.call(error) === '[object Array]'){
+                    error.forEach((err) => {
+                        this[err].classList.add("erro");
+                        setInterval(() => {
+                            this[err].classList.remove("erro");
+                        }, 5000);
+                    });
+                }
             }
         });
     }

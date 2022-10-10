@@ -11,11 +11,11 @@ export default function carRegistration() {
                             <div class="infoUpload">
                                 <img class="iconUpload" src="./assets/img/carRegistration/CloudArrowUp.svg" alt="Upload">
                                 <p class="pText">Nenhum arquivo escolhido, ainda!</p>
+                                <input type="file" name="picture-input" accept="image/*" id="picture-input">
                             </div>
                         </label>
                         <div class="choose">
                             <label class="labelChoose" for="picture-input">Escolher arquivo</label>
-                            <input type="file" name="picture-input" accept="image/*" id="picture-input">
                         </div>
                     </div>
                 </div>

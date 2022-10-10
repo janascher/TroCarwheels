@@ -238,6 +238,14 @@
 .choose input[type="file"] {
     display: none;
 }
+.picture input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: blueviolet;
+}
 
 .labelChoose{
     background-color: var(--red1);

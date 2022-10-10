@@ -4,6 +4,7 @@ import { router } from "../router.js";
 import { logic } from "../logic.js";
 export default class Confirmation {
     constructor() {
+        this.offers=[]
         this.data = {
             user_id1: null,
             miniature_id1: null,
@@ -62,30 +63,29 @@ export default class Confirmation {
             .querySelector(".buttonSubmit button")
             .addEventListener("click", async () => {
                 try{
-
+                    const [id, user] = document
+                        .querySelector('input[name="offer"]:checked')
+                        .value.split("-");
+                    this.data.user_id2 = String(user);
+                    this.data.miniature_id2 = id;
+                    console.log(this.data);
+                    let res = await fetch(`${api}/api/exchanges/`, {
+                        method: "POST",
+                        body: JSON.stringify(this.data),
+                        headers: { "Content-type": "application/json" },
+                    });
+                    let { data } = await res.json();
+                    let res1 = await fetch(`${api}/api/exchanges/close/${data}`,{
+                        method: "PUT",
+                        headers: { "Content-type": "application/json" },
+                    })
+                    let data1 = await res1.json();
+                    console.log(data1)
+                    document.querySelector("#content").innerHTML = router("/historic");
+                    logic("/historic");
                 }catch(err){
                     console.log(err)
                 }
-                const [id, user] = document
-                    .querySelector('input[name="offer"]:checked')
-                    .value.split("-");
-                this.data.user_id2 = String(user);
-                this.data.miniature_id2 = id;
-                console.log(this.data);
-                let res = await fetch(`${api}/api/exchanges/`, {
-                    method: "POST",
-                    body: JSON.stringify(this.data),
-                    headers: { "Content-type": "application/json" },
-                });
-                let { data } = await res.json();
-                let res1 = await fetch(`${api}/api/exchanges/close/${data}`,{
-                    method: "PUT",
-                    headers: { "Content-type": "application/json" },
-                })
-                let data1 = await res1.json();
-                console.log(data1)
-                router("/")
-                logic("/")
             });
     }
 }

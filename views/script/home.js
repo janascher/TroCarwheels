@@ -15,12 +15,18 @@ class Home {
     }
     publish() {
         document.querySelectorAll("button#publish").forEach((el) => {
-            el.addEventListener("click", function (_evt) {
-                fetch(`${api}/api/miniatures/makeavailable/${_evt.target.dataset.id}`, {
-                    method: "PUT",
-                    headers: { "Content-type": "application/json" },
-                })
-                .catch(err=>console.log(err));
+            el.addEventListener("click", async function (_evt) {
+                try{
+                    let res = await fetch(`${api}/api/miniatures/makeavailable/${_evt.target.dataset.id}`, {
+                        method: "PUT",
+                        headers: { "Content-type": "application/json" },
+                    });
+                    let {data} = await res.json();
+                    document.querySelector("#content").innerHTML = await router("/ad");
+                    await logic("/ad");
+                }catch(err){
+                    console.log(err)
+                }
             });
         });
     }

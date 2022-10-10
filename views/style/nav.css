@@ -4,6 +4,11 @@ header {
 }
 
 nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 15;
     background-color: var(--blue0);
     display: flex;
     justify-content: space-between;

@@ -1,9 +1,10 @@
 import URL from "./url.js";
-const api = new URL().apiUrl
+const api = new URL().apiUrl;
 import { router } from "../router.js";
 import { logic } from "../logic.js";
 export default class Details {
     constructor() {
+        this.offers = [];
         this.listDetail();
     }
     listDetail() {
@@ -31,11 +32,10 @@ export default class Details {
                     document.querySelector(".carSelection").innerHTML += `
                 <label class="infosCar">
                             <a target="_blank" href="./uploads/${_dt.link}">
-                            <input type="radio" id="offer" name="offer" value="${_dt.id}" />
                                 <img class="basis-1" src="./uploads/${_dt.link}" alt="Fotografia" />
                             </a>                                    
                             <p class="basis-2">${_dt.model}</p>
-                            <button class="basis-1" type="button">Selecionar</button>
+                            <button class="basis-1" type="button" data-id="${_dt.id}">Selecionar</button>
                         </label>
                 `;
                 });
@@ -44,32 +44,47 @@ export default class Details {
                             <button type="submit">Enviar Proposta</button>
                         </div>
             `;
+                this.choose();
                 this.selectOffer();
             });
     }
-    selectOffer() {
+    async choose() {
+        document.querySelectorAll(".infosCar button").forEach((_el, key) => {
+            _el.addEventListener('click', async (_evt)=>{
+                let index = this.offers.indexOf(Number(_evt.target.dataset.id));
+                if (index > -1) {
+                    this.offers.splice(index, 1);
+                }
+                await this.offers.push(Number(_evt.target.dataset.id));
+                document.querySelectorAll(".infosCar")[key].classList.toggle("ok");
+            })
+        });
+    }
+    async selectOffer() {
         document
             .querySelector(".buttonSubmit button")
-            .addEventListener("click", () => {
-                const id = document.querySelector(
-                    'input[name="offer"]:checked'
-                ).value;
-                const _data={
-                    miniature_id:id
+            .addEventListener("click", async () => {
+                try{
+                    if(!this.offers.length){
+                        throw new Error("Escolha um elemento")
+                    }
+                    for (const id of this.offers) {
+                        const _data = {
+                            miniature_id: String(id),
+                        }
+                            let res = await fetch(`${api}/api/cart_offer/${sessionStorage.infoId}`, {
+                                method: "POST",
+                                body: JSON.stringify(_data),
+                                headers: { "Content-type": "application/json" },
+                            })
+                            let {data} = await res.json();
+                            console.log(data);
+                            document.querySelector("#content").innerHTML = router("/ad");
+                            logic("/ad");
+                        };
+                }catch(err){
+                    console.log(err)
                 }
-                fetch(`${api}/api/cart_offer/${sessionStorage.infoId}`, {
-                    method: "POST",
-                    body: JSON.stringify(_data),
-                    headers: { "Content-type": "application/json" },
-                })
-                .then(res=>{
-                    return res.json()
-                })
-                .then(({data})=>{
-                    console.log(data)
-                    document.querySelector("#content").innerHTML = router("/ad")
-                    logic("/ad")
-                })
             });
     }
 }

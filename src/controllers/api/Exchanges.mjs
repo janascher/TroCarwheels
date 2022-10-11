@@ -41,6 +41,7 @@ export default class ExchangesCtrl {
     }
 
     async getExchangeByUserId(req, res) {
+        const search = req.query.search;
         const id = parseInt(req.params.id);
         if (isNaN(id)){
             res.status(400).json({err: `Invalid value for id ${req.params.id}`});
@@ -48,7 +49,7 @@ export default class ExchangesCtrl {
         }
 
         try {    
-            const resultado = await exchangesServ.getExchangeByUserId(id);
+            const resultado = await exchangesServ.getExchangeByUserId(id, search);
             if (resultado.err !== null){ 
                 res.status(500).json(resultado);
             } else{

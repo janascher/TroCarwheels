@@ -41,7 +41,8 @@ export default class Exchanges {
                                     left join miniatures e on a.miniature_id2 = e.id  
                                     left join brand f on d.brand_id = f.id and f.deleted = false
                                     left join brand g on e.brand_id = g.id and g.deleted = false
-                                WHERE a.status!=9 and b.active=1 and c.active=1 and d.status!=9 and e.status!=9  `
+                                WHERE a.status!=9 and b.active=1 and c.active=1 and d.status!=9 and e.status!=9 
+                                ORDER BY created_at desc `
             
             const res = await _db.query(query)
             return res.rows;
@@ -98,11 +99,11 @@ export default class Exchanges {
         }
     }     
 
-    async getDataByUserId(_db, _id) {
+    async getDataByUserId(_db, _id, _search) {
         try {
             const query = {
                         text: `--sql
-                                SELECT 
+                            SELECT 
                                 a.id, 
                                 a.cart_id,
                                 b.nick as nick1,
@@ -134,8 +135,9 @@ export default class Exchanges {
                                 left join miniatures e on a.miniature_id2 = e.id  
                                 left join brand f on d.brand_id = f.id and f.deleted = false
                                 left join brand g on e.brand_id = g.id and g.deleted = false
-                            WHERE (a.user_id1 = $1 or a.user_id2 = $2) and a.status!=9 and b.active=1 and c.active=1 and d.status!=9 and e.status!=9  `,
-                    values: [ _id, _id ]
+                            WHERE (a.user_id1 = $1 or a.user_id2 = $2) and a.status!=9 and b.active=1 and c.active=1 and d.status!=9 and e.status!=9 ${_search} 
+                            ORDER BY created_at desc `,
+                        values: [ _id, _id ]
                 };
             const res = await _db.query(query)
             return res.rows;

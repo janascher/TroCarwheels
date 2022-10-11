@@ -17,7 +17,14 @@ if (cookie.auth) {
     document.querySelectorAll(".unauth").forEach((el) => {
         el.style.display = "none";
     });
-    document.querySelector("nav #user").addEventListener("click", () => {
+    document.querySelector("nav #user").addEventListener("click", (_evt) => {
+        document.querySelector('nav #user').classList.toggle('ondrop');
+    });
+    document.querySelector("nav #user #update-User").addEventListener("click", (_evt) => {
+        app.innerHTML = router("/update-user");
+        logic("/update-user");
+    });
+    document.querySelector("nav #user #logout").addEventListener("click", () => {
         document.cookie = "auth=; expires=; path=/";
             document.querySelectorAll(".auth").forEach((el) => {
                 el.style.display = "none";
@@ -64,4 +71,5 @@ window.addEventListener("popstate", (evt) => {
 // carregamento da pagina
 // window.addEventListener("load", (evt) => {
 //     app.innerHTML = router(evt.target.location.pathname);
+//     logic(evt.target.location.pathname)
 // });

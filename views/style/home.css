@@ -63,6 +63,7 @@
 }
 
 .card {
+    position: relative;
     background-color: var(--vivid-orange-1);
     border-radius: 0.5rem;
     padding: 1.88rem;
@@ -71,6 +72,31 @@
     height: 37.45vh;
     height: auto;
     width: 18%;
+}
+
+.card ion-icon[name=close]{
+    position: absolute;
+    background-color: var(--light-text-0);
+    top: .75rem;
+    left: .75rem;
+    border-radius: 50%;
+    font-weight: bolder;
+    font-size: 1.25rem;
+    color: var(--red1);
+    cursor: pointer;
+    box-shadow: -4px -3px 5px rgba(0, 0, 0, 0.25);
+}
+.card ion-icon[name=create]{
+    position: absolute;
+    background-color: var(--light-text-0);
+    top: .75rem;
+    right: .75rem;
+    border-radius: 50%;
+    font-weight: bolder;
+    font-size: 1.25rem;
+    color: var(--blue0);
+    cursor: pointer;
+    box-shadow: -4px -3px 5px rgba(0, 0, 0, 0.25);
 }
 
 .card_images {
@@ -94,8 +120,8 @@
     align-items: center;
     gap: 0.6rem;
 }
-
 .card .card_cars h1 {
+    font-family: var(--secundary-font);
     font-size: 0.9rem;
 }
 
@@ -118,6 +144,9 @@
     padding: 0.2rem;
     text-transform: uppercase;
     width: 75%;
+}
+.card .card_cars button#offer{
+    background-color: var(--red0);
 }
 
 .card .card_cars button:hover {

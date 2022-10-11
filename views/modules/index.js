@@ -1,12 +1,14 @@
 import CadastroUsuario from "./cadastroUsuario.js";
 import Main from "./main.js";
 import Home from "./home.js";
+import UpdateUser from './updateUser.js';
 import Login from "./login.js";
 import carRegistration from "./carRegistration.js";
 import Details from "./details.js";
 import catalog from "./catalog.js";
 import Confirmation from "./confirmation.js";
-import Historic from './historic.js'
+import Historic from './historic.js';
+import carUpdate from './carUpdate.js';
 
 
 const pages = {
@@ -17,7 +19,9 @@ const pages = {
     details: Details,
     catalog: catalog,
     confirmation: Confirmation,
-    historic: Historic
+    historic: Historic,
+    updateUser: UpdateUser,
+    carUpdate: carUpdate,
 }
 
 export default pages;

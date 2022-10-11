@@ -35,10 +35,10 @@ export default class Catalog {
 
     detail(){
         document.querySelectorAll("button.button_details").forEach((_el)=>{
-            _el.addEventListener('click', function(_evt){
+            _el.addEventListener('click', async function(_evt){
                 sessionStorage.infoId = _evt.target.dataset.id
                 document.querySelector("#content").innerHTML = router("/details")
-                logic("/details")
+                await logic("/details")
             })
         })
     }

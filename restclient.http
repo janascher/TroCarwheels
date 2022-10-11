@@ -35,7 +35,7 @@ content-type: application/json
 
 { 
     "email": "alvaromartinezferreira@gmail.com",
-    "pwd": "alvaro125"
+    "pwd": "alvaro"
 }
 
 ###
@@ -83,7 +83,7 @@ content-type: application/json
 
 ###
 
-GET http://localhost:8000/api/brands HTTP/1.1
+GET http://localhost:8000/api/cart_offer/11 HTTP/1.1
 
 ###
 

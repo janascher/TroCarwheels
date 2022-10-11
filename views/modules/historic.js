@@ -5,8 +5,8 @@ export default function historic() {
             <h1 id="header_title">Histórico de Transações</h1>
             <div id="select_container">
                 <select id="select">
-                    <option value="last_month">Último Mês</option>
-                    <option value="last_year">Último Ano</option>
+                    <option value="month">Último Mês</option>
+                    <option value="year">Último Ano</option>
                 </select>
             </div>
         </header>

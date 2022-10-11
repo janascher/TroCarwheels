@@ -8,10 +8,10 @@ export default class cartServ {
 
     async getCarts(_search){
         try {
-            let search = ""
+            let search = "";
             if(_search){
                 search = `AND (UPPER(b.model) LIKE '%${_search.toUpperCase()}%' 
-                OR UPPER(b.color) LIKE '%${_search.toUpperCase()}%')`
+                OR UPPER(b.color) LIKE '%${_search.toUpperCase()}%')`;
             }
             const data = await repositories.cart.getData(this.#db, search);
             return {data: data, err: null, errCode: null};
@@ -43,6 +43,16 @@ export default class cartServ {
     async getCartByUserId(_id){
         try {
             const data = await repositories.cart.getDataByUserId(this.#db, _id);
+            return {data: data, err: null, errCode: null};
+        }
+        catch(err){
+            return {data: [], err: err.message, errCode: 500};
+        } 
+    }
+
+    async getCartByOtherUserId(_id){
+        try {
+            const data = await repositories.cart.getDataByOtherUserId(this.#db, _id);
             return {data: data, err: null, errCode: null};
         }
         catch(err){

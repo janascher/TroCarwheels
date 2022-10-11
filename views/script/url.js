@@ -3,7 +3,7 @@ export default class Url{
     #apiUrl
 
     constructor (){
-        this.#apiUrl = 'http://localhost:8000';
+        this.#apiUrl = 'https://trocarwheels.zapto.org';
     }
 
     get apiUrl()  {

@@ -26,9 +26,17 @@ export default class ExchangesServ {
         } 
     }
 
-    async getExchangeByUserId(_id){
+    async getExchangeByUserId(_id, _search){
         try {
-            const data = await repositories.exchanges.getDataByUserId(this.#db, _id);
+            let search = "";
+            if(_search){
+                if (_search==='month'){
+                    search = ` AND (a.created_at >= NOW() - INTERVAL '30 days' ) `;
+                } else if(_search==='year'){
+                    search = ` AND (a.created_at >= NOW() - INTERVAL '365 days' ) `;
+                }   
+            }
+            const data = await repositories.exchanges.getDataByUserId(this.#db, _id, search);
             return {data: data, err: null, errCode: null};
         }
         catch(err){

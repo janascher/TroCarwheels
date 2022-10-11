@@ -8,7 +8,7 @@ export default class CartCtrl {
  
     async getCarts(req, res) {
         try {
-            let search = req.query.search
+            const search = req.query.search;
             const resultado = await cartServ.getCarts(search);
             if (resultado.err !== null){ 
                 res.status(500).json(resultado);
@@ -61,14 +61,38 @@ export default class CartCtrl {
     }
 
     async getCartByUserId(req, res) {
-        const id = parseInt(req.params.id);
+        const user_id = String(req.user.id.user_id);
+        console.log(user_id)
+        const id = parseInt(user_id);
         if (isNaN(id)){
-            res.status(400).json({err: `Invalid value for id ${req.params.id}`});
+            res.status(400).json({err: `Invalid value for id ${user_id}`});
             return ;
         }
 
         try {    
             const resultado = await cartServ.getCartByUserId(id);
+            if (resultado.err !== null){ 
+                res.status(500).json(resultado);
+            } else{
+                res.status(200).json(resultado);
+            }     
+        }
+        catch(err){
+            res.status(500).json({message: err.message});
+        }   
+    }
+
+    async getCartByOtherUserId(req, res) {
+        const user_id = String(req.user.id.user_id);
+        console.log(user_id)
+        const id = parseInt(user_id);
+        if (isNaN(id)){
+            res.status(400).json({err: `Invalid value for id ${user_id}`});
+            return ;
+        }
+
+        try {    
+            const resultado = await cartServ.getCartByOtherUserId(id);
             if (resultado.err !== null){ 
                 res.status(500).json(resultado);
             } else{

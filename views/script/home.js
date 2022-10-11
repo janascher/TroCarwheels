@@ -49,14 +49,18 @@ class Home {
     async listMiniatures() {
         try {
             if (this.cookies.auth) {
+                document.querySelector("nav #user span").innerHTML = localStorage.nick;
                 let res = await fetch(`${api}/api/miniatures/own/user`);
                 let { data } = await res.json();
+                console.log(data)
                 document.getElementById("home_cars_container").innerHTML = "";
                 data.forEach(function ({ id, link, model, nick, status }) {
                     if (status == 20) {
                         document.getElementById(
                             "home_cars_container"
                         ).innerHTML += `<div class="card" id="car_container1">
+                            <ion-icon name="close"></ion-icon>
+                            <ion-icon name="create" data-id="${id}"></ion-icon>
                             <img class="card_images" id="card_one" style="background:url(./uploads/${link});background-repeat:no-repeat;
                             background-size:contain;
                                 background-position:center;">
@@ -70,6 +74,8 @@ class Home {
                         document.getElementById(
                             "home_cars_container"
                         ).innerHTML += `<div class="card" id="car_container1">
+                        <ion-icon name="close"></ion-icon>
+                        <ion-icon name="create" data-id="${id}"></ion-icon>
                             <img class="card_images" id="card_one" style="background:url(./uploads/${link});background-repeat:no-repeat;
                             background-size:contain;
                                 background-position:center;">
@@ -86,6 +92,13 @@ class Home {
                     "home_cars_container"
                 ).style.display="none"
             }
+            document.querySelectorAll('ion-icon[name="create"]').forEach((_el)=>{
+                _el.addEventListener('click', async (_evt)=>{
+                    sessionStorage.infoId = _evt.target.dataset.id
+                    document.querySelector("#content").innerHTML = await router("/update-car");
+                    await logic("/update-car");
+                })
+            })
             this.publish();
             this.viewOffer();
         } catch (err) {

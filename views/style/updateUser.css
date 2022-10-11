@@ -1,0 +1,155 @@
+#updateUser {
+    position: relative;
+    width: 90%;
+    left: 1rem;
+    right: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    background-color: var(--light-text-0);
+}
+#updateUser .form {
+    position: relative;
+    font-family: var(--primary-font);
+    width: 100%;
+    padding: 4rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(92, 99, 105, 0.2);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3.5rem;
+    margin: 0 20px;
+}
+#updateUser .form #person, #updateUser .form #local{
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    width: 100%;
+    transition: 1s opacity cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+/* #updateUser .form #person.show, #updateUser .form #local.show{
+    opacity: 1;
+    display: flex;
+    transition: 1s opacity cubic-bezier(0.075, 0.82, 0.165, 1);
+} */
+#updateUser .input {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* height: 20px; */
+    width: 100%;
+    margin-bottom: 2.0rem;
+}
+#updateUser .input input {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    /* height: 100%; */
+    font-size: 1.5rem;
+    border: 1px solid var(--blue0);
+    border-radius: 0.5rem;
+    padding: 1rem .5rem;
+    background: none;
+    z-index: 1;
+    transition: 0.3s all;
+}
+#updateUser .input input.erro {
+    border: 3px solid var(--red0);
+}
+#updateUser .input label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    padding: 0 0.25rem;
+    background-color: #fff;
+    color: var(--blue0);
+    font-size: 1.25rem;
+    transition: 0.3s;
+}
+#updateUser .input input:focus + label {
+    top: -1.2rem;
+    left: 0.8rem;
+    color: var(--blue0);
+    font-size: 1.25rem;
+    font-weight: 500;
+    z-index: 10;
+}
+#updateUser .input input:not(:placeholder-shown):not(:focus) + label {
+    top: -0.5rem;
+    left: 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    z-index: 10;
+}
+#updateUser .input label:focus {
+    border: 1.5px solid var(--blue0);
+}
+#updateUser .select {
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -2rem;
+    /* margin-bottom: 2.5rem; */
+}
+#updateUser .select select {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+    border: 1px solid var(--blue0);
+    border-radius: 0.5rem;
+    outline: none;
+    color: var(--blue0);
+    padding: 1rem;
+    background: none;
+    z-index: 1;
+}
+#updateUser .select label {
+    font-size: 1rem;
+    font-weight: 500;
+}
+#updateUser .form button {
+    background-color: var(--red1);
+    color: var(--light-text-0);
+    font-size: 1.5rem;
+    font-family: var(--primary-font);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+}
+#updateUser .form button:hover {
+    cursor: pointer;
+}
+#updateUser .form button:active {
+    opacity: 0.7;
+}
+#updateUser .lines {
+    position: relative;
+    width: 5px;
+    top: 0;
+    bottom: 0;
+    background: var(--red1);
+}
+#updateUser .lines::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    top: 0;
+    bottom: 0;
+    background: var(--blue0);
+    right: 10px;
+}
+#updateUser .lines::before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    top: 0;
+    bottom: 0;
+    background: var(--blue0);
+    left: 10px;
+}

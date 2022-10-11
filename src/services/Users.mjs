@@ -64,7 +64,7 @@ export default class UsersServ {
         try {
             const data = await repositories.users.updData(this.#db, params, _id);
             if (data.rowCount>0){
-                return {data: [], err: null, errCode: null};
+                return {data: data.rows[0], err: null, errCode: null};
             }else{
                 return {data: [], err: 'No users have been updated.', errCode: 400};
             }    

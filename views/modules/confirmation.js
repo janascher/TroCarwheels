@@ -1,6 +1,6 @@
 export default function Confirmation() {
     return `
-        <section class="containerDetails"> 
+        <section class="containerConfirme"> 
             <h1>Confirmação das propostas</h1>  
 
             <div class="gridSelect">        

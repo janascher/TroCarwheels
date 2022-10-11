@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="./style/catalog.css" />
         <link rel="stylesheet" href="./style/confirmation.css" />
         <link rel="stylesheet" href="./style/historic.css" />
+        <link rel="stylesheet" href="./style/updateUser.css" />
 
         <title>TroCarWheels</title>
     </head>
@@ -45,25 +46,19 @@
                             <a href="/historic">Histórico</a>
                         </li>
                         <li class="auth" id="user">
-                            <a href="/">
-                                <img
-                                    src="./assets/img/person-circle.svg"
-                                    alt="Ícone de pessoa"
-                                    id="icon-person"
-                                />
-                                <span></span>
-                            </a>
-                        </li>
-                        <!-- <li class="auth" id="user">
-                            <img src="./assets/img/person-circle.svg" alt="Ícone de pessoa" id="icon-person" />
+                            <img
+                                src="./assets/img/person-circle.svg"
+                                alt="Ícone de pessoa"
+                                id="icon-person"
+                            />
                             <span></span>
                             <div class="drop">
                                 <ul>
-                                    <li>Sair</li>
-                                    <li>Atualizar Dados</li>
+                                    <li id="logout">Sair</li>
+                                    <li id="update-User">Atualizar Dados</li>
                                 </ul>
                             </div>
-                    </li> -->
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -117,6 +112,14 @@
         </footer>
 
         <script type="module" src="./index.js" defer></script>
+        <script
+            type="module"
+            src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"
+        ></script>
+        <script
+            nomodule=""
+            src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"
+        ></script>
         <!-- <script type="module" src="./script/historic.js"></script> -->
         <!-- <script type="module" src="./script/catalog.js"></script> -->
     </body>

@@ -43,11 +43,10 @@ export default class Confirmation {
                     document.querySelector(".carSelection").innerHTML += `
                 <label class="infosCar">
                             <a target="_blank" href="./uploads/${_dt.link}">
-                            <input type="radio" id="offer" name="offer" value="${_dt.miniature_id}-${_dt.user_id}" />
                                 <img class="basis-1" src="./uploads/${_dt.link}" alt="Fotografia" />
                             </a>                                    
                             <p class="basis-2">${_dt.model}</p>
-                            <button class="basis-1" type="button">Selecionar</button>
+                            <button id="btn-offers" class="basis-1" type="button" data-id="${_dt.miniature_id}" data-user="${_dt.user_id}">Selecionar</button>
                         </label>
                 `;
                 });
@@ -56,19 +55,29 @@ export default class Confirmation {
                             <button type="submit">Enviar Proposta</button>
                         </div>
             `;
+                this.submit();
                 this.selectOffer();
             });
     }
-    selectOffer() {
+
+    async selectOffer(){
+        document.querySelectorAll('button#btn-offers').forEach(async (_el,key)=>{
+            _el.addEventListener('click',async (_evt)=>{
+                document.querySelectorAll('label.infosCar').forEach((_el)=>{
+                    _el.classList.remove('yes')
+                })
+                document.querySelectorAll('label.infosCar')[key].classList.add('yes')
+                this.data.user_id2 = String(_evt.target.dataset.user);
+                this.data.miniature_id2 = String(_evt.target.dataset.id);
+            })
+        })
+    }
+
+    submit() {
         document
             .querySelector(".buttonSubmit button")
             .addEventListener("click", async () => {
                 try{
-                    const [id, user] = document
-                        .querySelector('input[name="offer"]:checked')
-                        .value.split("-");
-                    this.data.user_id2 = String(user);
-                    this.data.miniature_id2 = id;
                     console.log(this.data);
                     let res = await fetch(`${api}/api/exchanges/`, {
                         method: "POST",

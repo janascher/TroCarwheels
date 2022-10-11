@@ -8,7 +8,10 @@ const routes = {
     "/add": pages.carRegistration,
     "/ad": pages.catalog,
     "/confirmation": pages.confirmation,
-    "/historic": pages.historic
+    "/historic": pages.historic,
+    "/update-user": pages.updateUser,
+    "/update-car": pages.carUpdate,
+
 }
 
 export function router(route){

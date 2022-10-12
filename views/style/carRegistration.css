@@ -1,6 +1,7 @@
 .containerCarRegistration {
     max-width: 1100px;
     width: 100%;
+    margin: 2rem 0 2rem 0;
 }
 
 .containerCarRegistration h1 {
@@ -12,27 +13,33 @@
 .grid {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    margin: 0 0 2rem 0;
     width: 100%;
+    height: 100vh;
 }
 
 /* ======== Coluna da Direita ======== */
 .leftSide {
     box-shadow: 0px 10px 13px -7px var(--black),
         5px 5px 15px 5px rgb(3 7 30 / 0%);
-    border-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
     position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-    padding: 2.5rem;
+    padding: 3rem;
     background-color: var(--light-text-0);
+    justify-content: center;
+    align-content: flex-start;
 }
 
 .leftSide .form {
     display: flex;
+    align-self: center;
     flex-direction: column;
     position: relative;
     font-family: var(--primary-font);
@@ -184,7 +191,9 @@
 .rightSide {
     background-color: var(--gray);
     box-shadow: 0px 10px 13px -7px  var(--black), 5px 5px 15px 5px rgb(3 7 30 / 0%);
-    border-radius: 0.5rem;
+    /* border-radius: 0.5rem; */
+    border-bottom-left-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
     position: relative;
     padding: 2.5rem;
     display: flex;
@@ -206,8 +215,8 @@
     font-family: var(--secundary-font);
     outline: none;
     transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
-    width: 26vw;
-    height: 46.58vh;
+    width: 23vw;
+    height: 45vh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -269,5 +278,9 @@
 }
 
 .labelChoose:hover {
+    background: var(--red0);
+}
+
+.card .card_cars button#offer:hover {
     background: var(--red0);
 }

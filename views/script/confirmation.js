@@ -52,7 +52,7 @@ export default class Confirmation {
                 });
                 document.querySelector(".carSelection").innerHTML += `
             <div class="buttonSubmit">
-                            <button type="submit">Enviar Proposta</button>
+                            <button type="submit">Confirmar Proposta</button>
                         </div>
             `;
                 this.submit();

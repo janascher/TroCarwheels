@@ -2,6 +2,7 @@ export default function CadastroUsuario() {
     return `<section id="cadastro">
     <div class="lines"></div>
     <div class="form">
+    <h1>Crie seu cadastro</h1>
         <div id="person" class="show">
             <div class="input">
                 <input type="text" name="namec" id="namec"placeholder=" "/>

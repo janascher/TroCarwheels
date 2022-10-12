@@ -50,16 +50,16 @@ export default class Hitoric{
                 <main class="main_car">
                     <div class="car_1_exchange">
                         <img class="car1_img" src="./uploads/${this.#data.data[i]['link1']}"/>
-                        <p class="p1">${this.#data.data[i]['description1']}</p>
-                        <p class="p2">${this.#data.data[i]['nick1']}</p>
+                        <h1 class="p1">${this.#data.data[i]['description1']}</h1>
+                        <p class="p2">@${this.#data.data[i]['nick1']}</p>
                         <p class="p3">Marca: ${this.#data.data[i]['brand1']}</p>
                         <p class="p4">Cor: ${this.#data.data[i]['color1']}</p>
                     </div>
                     <div class="arrows"></div>
                     <div class="car_2_exchange">
                         <img class="car2_img" src="./uploads/${this.#data.data[i]['link2']}" />
-                        <p class="p1">${this.#data.data[i]['description2']}</p>
-                        <p class="p2">${this.#data.data[i]['nick2']}</p>
+                        <h1 class="p1B">${this.#data.data[i]['description2']}</h1>
+                        <p class="p2">@${this.#data.data[i]['nick2']}</p>
                         <p class="p3">Marca: ${this.#data.data[i]['brand2']}</p>
                         <p class="p4">Cor: ${this.#data.data[i]['color2']}</p>
                     </div>

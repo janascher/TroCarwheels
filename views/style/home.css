@@ -122,7 +122,7 @@
 }
 .card .card_cars h1 {
     font-family: var(--secundary-font);
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .card .card_cars p {

@@ -241,6 +241,22 @@ export default class Cart {
             throw new Error(err.message);
         }
     }
+    async getCartIDOffer(_db, _id) {
+        try {
+            const query = {
+                        text: `--sql
+                            SELECT o.cart_id FROM cart_offers o
+                            left join cart c ON c.id = o.cart_id
+                            WHERE o.status != 9 AND o.miniature_id = $1 `,
+                        values: [ _id ]
+                };
+            const res = await _db.query(query)
+            return res.rows;
+        }
+        catch(err) {
+            throw new Error(err.message);
+        }
+    }
     async getFindMiniatureId(_db, _id) {
         try {
             const query = {

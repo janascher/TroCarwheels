@@ -217,6 +217,26 @@ export default class CartCtrl {
         }   
     }
 
+    async getCartIDOffer(req, res) {
+        const id = parseInt(req.params.miniature_id);
+        if (isNaN(id)){
+            res.status(400).json({err: `Invalid value for cart id ${req.params.miniature_id}`});
+            return ;
+        }
+
+        try {    
+            const resultado = await cartServ.getCartIDOffer(id);
+            if (resultado.err !== null){ 
+                res.status(500).json(resultado);
+            } else{
+                res.status(200).json(resultado);
+            }     
+        }
+        catch(err){
+            res.status(500).json({message: err.message});
+        }   
+    }
+
     async addCartOffer(req, res) {
         const id = parseInt(req.params.cart_id);
         const user_id = String(req.user.id.user_id);

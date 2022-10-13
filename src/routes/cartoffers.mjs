@@ -6,6 +6,7 @@ const routeCartOffer = Router();
 
 // Cart Offers
 routeCartOffer.get("/:cart_id", authenticateToken, cartCtrl.getCartOffer);
+routeCartOffer.get("/cart/:miniature_id", authenticateToken, cartCtrl.getCartIDOffer);
 routeCartOffer.post("/:cart_id", authenticateToken, cartCtrl.addCartOffer);
 routeCartOffer.put("/status/:cart_id/:user_id/:miniature_id/:status", authenticateToken, cartCtrl.updCartOfferStatus);
 routeCartOffer.delete("/:cart_id/:user_id/:miniature_id", authenticateToken, cartCtrl.delCartOffer);

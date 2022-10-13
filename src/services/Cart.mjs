@@ -121,6 +121,16 @@ export default class cartServ {
             return {data: [], err: err.message, errCode: 500};
         } 
     }
+
+    async getCartIDOffer(_id){
+        try {
+            const data = await repositories.cart.getCartIDOffer(this.#db, _id);
+            return {data: data, err: null, errCode: null};
+        }
+        catch(err){
+            return {data: [], err: err.message, errCode: 500};
+        } 
+    }
     
     async updCartOfferStatus(_id, _status, _user_id, _miniature_id){       
         try {

@@ -46,15 +46,31 @@ class Home {
             });
         });
     }
+    viewCart() {
+        document.querySelectorAll("button#viewCart").forEach((el) => {
+            el.addEventListener("click", function (_evt) {
+                sessionStorage.infoId = _evt.target.dataset.id
+                document.querySelector("#content").innerHTML =router("/details");
+                logic("/details");
+            });
+        });
+    }
+    async Cart(_id){
+        let res = await fetch(`${api}/api/cart_offer/cart/${_id}`);
+        let {data}= await res.json();
+        return data[0]?.cart_id
+    }
     async listMiniatures() {
         try {
             if (this.cookies.auth) {
                 document.querySelector("nav #user span").innerHTML = localStorage.nick;
                 let res = await fetch(`${api}/api/miniatures/own/user`);
                 let { data } = await res.json();
-                console.log(data)
                 document.getElementById("home_cars_container").innerHTML = "";
-                data.forEach(function ({ id, link, model, nick, status }) {
+                for(let i= 0; i<data.length; i++){
+                    let {id, link, model, nick, status} = data[i]
+                    let isOffer = await this.Cart(id)
+
                     if (status == 20) {
                         document.getElementById(
                             "home_cars_container"
@@ -71,22 +87,40 @@ class Home {
                                 </div>
                             </div>`;
                     } else if (status == 10) {
-                        document.getElementById(
-                            "home_cars_container"
-                        ).innerHTML += `<div class="card" id="car_container1">
-                        <ion-icon name="close"></ion-icon>
-                        <ion-icon name="create" data-id="${id}"></ion-icon>
-                            <img class="card_images" id="card_one" style="background:url(./uploads/${link});background-repeat:no-repeat;
-                            background-size:contain;
-                                background-position:center;">
-                                <div class="card_cars">
-                                    <h1>${model}</h1>
-                                    <p>@${nick}</p>
-                                    <button id="publish" data-id="${id}">Trocar</button>
-                                </div>
-                            </div>`;
+                        if(isOffer){
+                            document.getElementById(
+                                "home_cars_container"
+                            ).innerHTML += `<div class="card" id="car_container1">
+                            <ion-icon name="close"></ion-icon>
+                            <ion-icon name="create" data-id="${id}"></ion-icon>
+                                <img class="card_images" id="card_one" style="background:url(./uploads/${link});background-repeat:no-repeat;
+                                background-size:contain;
+                                    background-position:center;">
+                                    <div class="card_cars">
+                                        <h1>${model}</h1>
+                                        <p>@${nick}</p>
+                                        <button id="viewCart" data-id="${isOffer}">Já Ofertado</button>
+                                    </div>
+                                </div>`;
+
+                        }else{
+                            document.getElementById(
+                                "home_cars_container"
+                            ).innerHTML += `<div class="card" id="car_container1">
+                            <ion-icon name="close"></ion-icon>
+                            <ion-icon name="create" data-id="${id}"></ion-icon>
+                                <img class="card_images" id="card_one" style="background:url(./uploads/${link});background-repeat:no-repeat;
+                                background-size:contain;
+                                    background-position:center;">
+                                    <div class="card_cars">
+                                        <h1>${model}</h1>
+                                        <p>@${nick}</p>
+                                        <button id="publish" data-id="${id}">Trocar</button>
+                                    </div>
+                                </div>`;
+                        }
                     }
-                });
+                }
             }else{
                 document.getElementById(
                     "home_cars_container"
@@ -100,6 +134,7 @@ class Home {
                 })
             })
             this.publish();
+            this.viewCart();
             this.viewOffer();
         } catch (err) {
             console.log(err);

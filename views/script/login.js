@@ -42,8 +42,6 @@ class Login {
                     localStorage.nick=data.nick
                     localStorage.user_class=data.user_class
                     localStorage.user_id=data.user_id
-                    document.querySelector("#content").innerHTML = router("/");
-                    logic("/");
                     document.querySelectorAll(".auth").forEach((el) => {
                         el.style.display = "block";
                     });
@@ -51,6 +49,8 @@ class Login {
                         el.style.display = "none";
                     });
                     document.querySelector("nav #user span").innerHTML = localStorage.nick;
+                    document.querySelector("#content").innerHTML = router("/");
+                    await logic("/");
                 }
             } catch (error) {
                 console.log(error)

@@ -23,7 +23,7 @@ export default function carRegistration() {
                     <div class="form">  
                         <div class="input">
                             <input type="text" name="model_name" id="model_name" placeholder="" />
-                            <label for="model_name">Modelo:</label>
+                            <label for="model_name">Modelo:<span>*</span></label>
                         </div>
                         <div class="select">
                             <label for="brand">Marca:</label>
@@ -31,11 +31,11 @@ export default function carRegistration() {
                         </div>
                         <div class="input">
                             <input type="text" name="color" id="color" placeholder="" />
-                            <label for="color">Cor:</label>
+                            <label for="color">Cor:<span>*</span></label>
                         </div>
                         <div class="inputTextarea">
                         <textarea name="description" id="description" cols="50" rows="1" placeholder="" autofocus></textarea>   
-                        <label for="description">Descrição:</label>
+                        <label for="description">Descrição:<span>*</span></label>
                         </div>                    
                         <button id="submit">Enviar</button>
                     </div>

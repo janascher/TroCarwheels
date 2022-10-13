@@ -55,6 +55,41 @@ class Home {
             });
         });
     }
+    update() {
+        document.querySelectorAll('ion-icon[name="create"]').forEach((_el)=>{
+            _el.addEventListener('click', async (_evt)=>{
+                sessionStorage.infoId = _evt.target.dataset.id
+                document.querySelector("#content").innerHTML = await router("/update-car");
+                await logic("/update-car");
+            })
+        })
+    }
+    delete() {
+        document.querySelectorAll('ion-icon[name="close"]').forEach((_el)=>{
+            _el.addEventListener('click', async (_evt)=>{
+                try{
+                    let resCart = await fetch(`${api}/api/cart/find/${_evt.target.dataset.id}`);
+                    let dataCart = await resCart.json();
+                    let Cart = dataCart?.data[0]?.id;
+                    if(Cart){
+                        await fetch(`${api}/api/cart/${Cart}`,{
+                            method: "DELETE",
+                            headers: { "Content-type": "application/json"}
+                        })
+                    }
+                    await fetch(`${api}/api/miniatures/${_evt.target.dataset.id}`,{
+                        method: "DELETE",
+                        headers: { "Content-type": "application/json"}
+                    })
+    
+                    document.querySelector("#content").innerHTML = await router("/");
+                    await logic("/");
+                }catch(err){
+                    console.log(err)
+                }
+            })
+        })
+    }
     async Cart(_id){
         let res = await fetch(`${api}/api/cart_offer/cart/${_id}`);
         let {data}= await res.json();
@@ -75,7 +110,7 @@ class Home {
                         document.getElementById(
                             "home_cars_container"
                         ).innerHTML += `<div class="card" id="car_container1">
-                            <ion-icon name="close"></ion-icon>
+                            <ion-icon name="close" data-id="${id}"></ion-icon>
                             <ion-icon name="create" data-id="${id}"></ion-icon>
                             <img class="card_images" id="card_one" style="background:url(./uploads/${link});background-repeat:no-repeat;
                             background-size:contain;
@@ -88,10 +123,11 @@ class Home {
                             </div>`;
                     } else if (status == 10) {
                         if(isOffer){
+                            console.log(isOffer)
                             document.getElementById(
                                 "home_cars_container"
                             ).innerHTML += `<div class="card" id="car_container1">
-                            <ion-icon name="close"></ion-icon>
+                            <ion-icon name="close" data-id="${id}"></ion-icon>
                             <ion-icon name="create" data-id="${id}"></ion-icon>
                                 <img class="card_images" id="card_one" style="background:url(./uploads/${link});background-repeat:no-repeat;
                                 background-size:contain;
@@ -107,7 +143,7 @@ class Home {
                             document.getElementById(
                                 "home_cars_container"
                             ).innerHTML += `<div class="card" id="car_container1">
-                            <ion-icon name="close"></ion-icon>
+                            <ion-icon name="close" data-id="${id}"></ion-icon>
                             <ion-icon name="create" data-id="${id}"></ion-icon>
                                 <img class="card_images" id="card_one" style="background:url(./uploads/${link});background-repeat:no-repeat;
                                 background-size:contain;
@@ -126,13 +162,8 @@ class Home {
                     "home_cars_container"
                 ).style.display="none"
             }
-            document.querySelectorAll('ion-icon[name="create"]').forEach((_el)=>{
-                _el.addEventListener('click', async (_evt)=>{
-                    sessionStorage.infoId = _evt.target.dataset.id
-                    document.querySelector("#content").innerHTML = await router("/update-car");
-                    await logic("/update-car");
-                })
-            })
+            this.update();
+            this.delete();
             this.publish();
             this.viewCart();
             this.viewOffer();

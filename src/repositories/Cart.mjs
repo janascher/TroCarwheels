@@ -247,7 +247,7 @@ export default class Cart {
                         text: `--sql
                             SELECT o.cart_id FROM cart_offers o
                             left join cart c ON c.id = o.cart_id
-                            WHERE o.status != 9 AND o.miniature_id = $1 `,
+                            WHERE o.status != 9 AND c.status != 2 AND c.status != 9 AND o.miniature_id = $1 `,
                         values: [ _id ]
                 };
             const res = await _db.query(query)

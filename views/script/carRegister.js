@@ -37,47 +37,86 @@ class CarRegister {
             .getElementById("picture-input")
             .addEventListener("change", (evt) => {
                 var oFReader = new FileReader();
-                console.log(evt);
-                oFReader.readAsDataURL(evt.target.files[0]);
-
-                oFReader.onload = function (oFREvent) {
-                    document.getElementById("pictureImage").src =
-                        oFREvent.target.result;
-                };
+                if(evt.target.files[0].size<=307200){
+                    oFReader.readAsDataURL(evt.target.files[0]);
+    
+                    oFReader.onload = function (oFREvent) {
+                        document.getElementById("pictureImage").src =
+                            oFREvent.target.result;
+                    };
+                }else{
+                    let message = document.getElementById("message");
+                    message.innerHTML = 'Este Arquivo excedeu 300Kb';
+                    document.getElementById("alert").style.display = "flex";
+                    this.ClickError()
+                }
             });
+    }
+    ClickError() {
+        document.getElementById("alert").addEventListener("click", () => {
+            document.getElementById("alert").style.display = "none";
+        });
     }
     submit() {
         this.btn.addEventListener("click", async () => {
             try {
+                let erros = []
+                if(this.model_name.value==0){
+                    erros.push('model_name')
+                }
+                if(this.color.value==0){
+                    erros.push('color')
+                }
+                if(this.description.value==0){
+                    erros.push('description')
+                }
+                if(erros.length){
+                    throw erros
+                }
                 let _data = {
                     brand_id: this.brand.value,
                     model: this.model_name.value,
                     color: this.color.value,
                     description: this.description.value,
                 };
-                let res_text = await fetch(
-                    `${api}/api/miniatures`,
-                    {
-                        method: "POST",
-                        body: JSON.stringify(_data),
-                        headers: { "Content-type": "application/json" },
-                    }
-                );
-                let {data} = await res_text.json();
-                const formData = new FormData();
-                formData.append("file", this.file.files[0]);
-                let res_img = await fetch(
-                    `${api}/api/miniatures/upload/${data}`,
-                    {
-                        method: "POST",
-                        body: formData,
-                    }
-                )
-                document.querySelector("#content").innerHTML = router("/");
-                logic("/");
+                if (this.file.files[0]) {
+                    let res_text = await fetch(
+                        `${api}/api/miniatures`,
+                        {
+                            method: "POST",
+                            body: JSON.stringify(_data),
+                            headers: { "Content-type": "application/json" },
+                        }
+                    );
+                    let {data} = await res_text.json();
+                    const formData = new FormData();
+                    formData.append("file", this.file.files[0]);
+                    let res_img = await fetch(
+                        `${api}/api/miniatures/upload/${data}`,
+                        {
+                            method: "POST",
+                            body: formData,
+                        }
+                    )
+                    document.querySelector("#content").innerHTML = router("/");
+                    logic("/");
+                }else{
+                    let message = document.getElementById("message");
+                    message.innerHTML = 'Adicione uma Imagem';
+                    document.getElementById("alert").style.display = "flex";
+                    this.ClickError()
+                }
 
             } catch (error) {
                 console.log(error);
+                if(Object.prototype.toString.call(error) === '[object Array]'){
+                    document.querySelectorAll('.leftSide label').forEach((_el)=>{
+                        _el.classList.remove("erro");
+                    })
+                    for(let i=0; i<error.length;i++){
+                        document.querySelector(`label[for=${error[i]}]`).classList.add("erro");
+                    }
+                }
             }
         });
     }

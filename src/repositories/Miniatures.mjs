@@ -119,7 +119,7 @@ export default class Miniatures {
                                 FROM miniatures a
                                     left join users b on a.user_id = b.id and b.deleted_at is null 
                                     left join brand c on a.brand_id = c.id and c.deleted = false
-                                WHERE a.user_id = $1 `,
+                                WHERE a.user_id = $1 and a.status!=9`,
                         values: [ _id ]
                 };
             const res = await _db.query(query)

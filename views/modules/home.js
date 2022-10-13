@@ -13,14 +13,6 @@ export default function home() {
             </div>
 
             <section id="home_cars_container">
-                <div class="card" id="car_container1">
-                    <img class="card_images" id="card_one" />  
-                    <div class="card_cars">
-                        <h1>Carro miniature</h1>
-                        <p>@alfredo</p>
-                        <button id="publish">Trocar</button>
-                    </div>
-                </div>
             </section>
 
             <section class="containerGallery">

@@ -16,6 +16,7 @@ export default class Hitoric{
             const filter = document.getElementById('select').value;
             let res = await fetch(`${api}/api/exchanges/user/${localStorage.user_id}/?search=${filter}`);
             this.#data = await res.json();
+            console.log(this.#data)
             this.list();
         }catch(err){
             console.log(err)
@@ -50,7 +51,7 @@ export default class Hitoric{
                 <main class="main_car">
                     <div class="car_1_exchange">
                         <img class="car1_img" src="./uploads/${this.#data.data[i]['link1']}"/>
-                        <h1 class="p1">${this.#data.data[i]['description1']}</h1>
+                        <h1 class="p1">${this.#data.data[i]['model1']}</h1>
                         <p class="p2">@${this.#data.data[i]['nick1']}</p>
                         <p class="p3">Marca: ${this.#data.data[i]['brand1']}</p>
                         <p class="p4">Cor: ${this.#data.data[i]['color1']}</p>
@@ -58,7 +59,7 @@ export default class Hitoric{
                     <div class="arrows"></div>
                     <div class="car_2_exchange">
                         <img class="car2_img" src="./uploads/${this.#data.data[i]['link2']}" />
-                        <h1 class="p1B">${this.#data.data[i]['description2']}</h1>
+                        <h1 class="p1B">${this.#data.data[i]['model2']}</h1>
                         <p class="p2">@${this.#data.data[i]['nick2']}</p>
                         <p class="p3">Marca: ${this.#data.data[i]['brand2']}</p>
                         <p class="p4">Cor: ${this.#data.data[i]['color2']}</p>

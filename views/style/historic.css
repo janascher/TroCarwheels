@@ -130,6 +130,7 @@
 .p1B {
     color: var(--light-text-0);
     font-family: var(--secundary-font);
+    text-align: center;
     margin: 0;
 }
 .p2 {

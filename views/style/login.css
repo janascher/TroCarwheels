@@ -131,7 +131,13 @@ section#login .form button {
     padding: 0.5rem 1rem;
     border-radius: 6px;
     border: none;
+    text-transform: uppercase;
 }
+
+section#login .form button:hover {
+    background: var(--red0);
+}
+
 section#login .form button {
     cursor: pointer;
 }

@@ -18,14 +18,16 @@ export default class Catalog {
         .then(({data})=>{
             for (let i = 0; i < data.length; i++) {
                 if (data[i].user_id!=localStorage.user_id) {
-                    this.cars.innerHTML += `<div class="cars">
-                    <img class="car_images" src="./uploads/${data[i]["link"]}"/> 
-                    <div class="card_cars">
-                    <p>${data[i]["model"]} </p>
-                    <p>@${data[i]["nick"]} </p>
-                    </div>
-                    <button class="button_details" data-id="${data[i].id}"> Detalhes </button>
-                    </div>`;
+                    this.cars.innerHTML += `
+                        <div class="cardCatalog" id="car_container1">
+                            <img class="car_images" src="./uploads/${data[i]["link"]}"/> 
+                            <div class="card_cars">
+                                <h1>${data[i]["model"]} </h1>
+                                <p>@${data[i]["nick"]} </p>
+                                <button class="button_details" data-id="${data[i].id}"> Detalhes </button>
+                            </div>
+                        </div>
+                    `;
                 }
             }
             this.detail()
@@ -55,14 +57,16 @@ export default class Catalog {
                 this.cars.innerHTML =""
                 for (let i = 0; i < data.length; i++) {
                     if (data[i].user_id!=localStorage.user_id) {
-                        this.cars.innerHTML += `<div class="cars">
-                        <img class="car_images" src="./uploads/${data[i]["link"]}"/> 
-                        <div class="card_cars">
-                        <p>${data[i]["model"]} </p>
-                        <p>@${data[i]["nick"]} </p>
+                        this.cars.innerHTML += `
+                        <div class="cardCatalog" id="car_container1">
+                            <img class="car_images" src="./uploads/${data[i]["link"]}"/> 
+                            <div class="card_cars">
+                                <h1>${data[i]["model"]} </h1>
+                                <p>@${data[i]["nick"]} </p>
+                                <button class="button_details" data-id="${data[i].id}"> Detalhes </button>
+                            </div>
                         </div>
-                        <button class="button_details" data-id="${data[i].id}"> Detalhes </button>
-                        </div>`;
+                        `;
                     }
                 }
                 this.detail()

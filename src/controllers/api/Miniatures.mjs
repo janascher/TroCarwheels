@@ -142,15 +142,15 @@ export default class MiniaturesCtrl {
         //     res.status(400).json({message:`Bad request: invalid user id: ${params.user_id}`});
         //     return; 
         // }
-        if (typeof params.description === ""){
+        if (params.description === ""){
             res.status(400).json({message:`Bad request: invalid miniature description: ${params.description}`});
             return; 
         }
-        if (typeof params.model === ""){
+        if (params.model === ""){
             res.status(400).json({message:`Bad request: invalid miniature model: ${params.model}`});
             return; 
         }
-        if (typeof params.color === ""){
+        if (params.color === ""){
             res.status(400).json({message:`Bad request: invalid miniature color: ${params.color}`});
             return; 
         }
@@ -206,15 +206,15 @@ export default class MiniaturesCtrl {
             res.status(400).json({message:`Bad request: invalid brand id: ${params.brand_id}`});
             return; 
         }
-        if (typeof params.description === ""){
+        if (params.description === ""){
             res.status(400).json({message:`Bad request: invalid miniature description: ${params.description}`});
             return; 
         }
-        if (typeof params.model === ""){
+        if (params.model === ""){
             res.status(400).json({message:`Bad request: invalid miniature model: ${params.model}`});
             return; 
         }
-        if (typeof params.color === ""){
+        if (params.color === ""){
             res.status(400).json({message:`Bad request: invalid miniature color: ${params.color}`});
             return; 
         }

@@ -11,6 +11,11 @@
 	<h4>TroCarWheels</h4>
 </div>
 
+## 👀 Preview
+<div align="center">
+	<img  src="https://user-images.githubusercontent.com/79182711/195835610-9c2f3976-8531-4a07-ac0a-599e78e9d6dd.png"  alt="TroCarWheels"  title="TroCarWheels"  width="450" />
+</div>
+
 ## 🧐 Sobre o projeto
 
 Desenvolver um website que possibilite que usuários possam colecionar e trocar suas coleções.
@@ -38,13 +43,35 @@ Desenvolver um website que possibilite que usuários possam colecionar e trocar 
 
 ## ✨ Requisitos do projeto
 
--   [ ] Uso de API RESTful;
--   [ ] Front-end no formato SPA (Single Page Application);
--   [ ] Programação Javascript Vanilla;
--   [ ] Back-end em Node.js + banco de dados PostgreSQL;
--   [ ] Autenticação / controle de sessão;
--   [ ] Envio, armazenamento e exibição de imagens;
--   [ ] Deve possuir “animação”.
+-   [x] Uso de API RESTful;
+-   [x] Front-end no formato SPA (Single Page Application);
+-   [x] Programação Javascript Vanilla;
+-   [x] Back-end em Node.js + banco de dados PostgreSQL;
+-   [x] Autenticação / controle de sessão;
+-   [x] Envio, armazenamento e exibição de imagens;
+-   [x] Deve possuir “animação”.
+
+## 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- **[HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)**
+- **[CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)**
+- **[JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)**
+- **[GitHub](https://docs.github.com/pt/pages)**
+- **[Git](git-scm.com)**
+- **[WhatsApp](https://www.whatsapp.com/?lang=pt_br)**
+- **[Discord](https://discord.com/)**
+- **[Trello](https://trello.com/pt-BR)**
+- **[Figma](https://www.figma.com/)**
+- **[Node.js](https://nodejs.org/en/)**
+- **[npm](https://www.npmjs.com/)**
+- **[NGINX](https://www.nginx.com/)**
+- **[PostgreSQL](https://www.postgresql.org/)**
+- **[DB Designer](https://www.dbdesigner.net/)**
+- **[JSON Web Tokens - jwt.io](https://jwt.io/)**
+- **[Multer](https://github.com/expressjs/multer)**
+- **[No-IP](https://www.noip.com/pt-BR)**
 
 ## 🔗 Links de sobrevivência
 

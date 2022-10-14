@@ -87,6 +87,7 @@ input:focus {
     padding: 1.88rem;
     margin: 1.25rem 0.31rem 1.25rem 0.31rem;
     text-align: center;
+    width: 18%;
 }
 
 .cardCatalog .card_cars h1 {

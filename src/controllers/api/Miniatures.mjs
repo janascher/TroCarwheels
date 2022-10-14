@@ -77,6 +77,11 @@ export default class MiniaturesCtrl {
     }
 
     async updateImage(req, res) {
+        if (!req.fileOk){
+            res.status(406).json({message: 'Error uploading file'});
+            return;
+        }
+
         const id = parseInt(req.params.id);
         if (isNaN(id)){
             res.status(400).json({err: `Invalid value for id ${req.params.id}`});
@@ -123,7 +128,7 @@ export default class MiniaturesCtrl {
             return; 
         }
         if (typeof params.description !== "string"){
-            res.status(400).json({message:`Bad request: invalid user birthday: ${params.description}`});
+            res.status(400).json({message:`Bad request: invalid miniature description: ${params.description}`});
             return; 
         }
         if (isNaN(parseFloat(params.brand_id))){
@@ -142,6 +147,19 @@ export default class MiniaturesCtrl {
         //     res.status(400).json({message:`Bad request: invalid user id: ${params.user_id}`});
         //     return; 
         // }
+        if (params.description === ""){
+            res.status(400).json({message:`Bad request: invalid miniature description: ${params.description}`});
+            return; 
+        }
+        if (params.model === ""){
+            res.status(400).json({message:`Bad request: invalid miniature model: ${params.model}`});
+            return; 
+        }
+        if (params.color === ""){
+            res.status(400).json({message:`Bad request: invalid miniature color: ${params.color}`});
+            return; 
+        }
+
 
         try {   
             const resultado = await miniaturesServ.addMiniature(params, user_id);
@@ -182,7 +200,7 @@ export default class MiniaturesCtrl {
             return; 
         }
         if (typeof params.description !== "string"){
-            res.status(400).json({message:`Bad request: invalid user birthday: ${params.description}`});
+            res.status(400).json({message:`Bad request: invalid miniature description: ${params.description}`});
             return; 
         }
         if (isNaN(parseFloat(params.brand_id))){
@@ -191,6 +209,18 @@ export default class MiniaturesCtrl {
         }
         if (parseFloat(params.brand_id)<=0){
             res.status(400).json({message:`Bad request: invalid brand id: ${params.brand_id}`});
+            return; 
+        }
+        if (params.description === ""){
+            res.status(400).json({message:`Bad request: invalid miniature description: ${params.description}`});
+            return; 
+        }
+        if (params.model === ""){
+            res.status(400).json({message:`Bad request: invalid miniature model: ${params.model}`});
+            return; 
+        }
+        if (params.color === ""){
+            res.status(400).json({message:`Bad request: invalid miniature color: ${params.color}`});
             return; 
         }
 

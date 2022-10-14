@@ -322,7 +322,7 @@ export default class UsersCtrl {
 
 
     generateAccessToken(_user_id) {    
-        return this.#jwt.sign(_user_id, this.#token, { expiresIn: '1800s' });
+        return this.#jwt.sign(_user_id, this.#token, { expiresIn: '7200s' });
     }    
 
 }

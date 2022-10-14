@@ -15,12 +15,16 @@ export default class Confirmation {
         this.list();
     }
     list() {
+        this.data.cart_id = null;
+        this.data.user_id1 = null;
+        this.data.miniature_id1 = null;
+        this.data.user_id2 = null;
+        this.data.miniature_id2 = null;
         fetch(`${api}/api/cart/${sessionStorage.infoId}`)
             .then((res) => {
                 return res.json();
             })
             .then(({ data }) => {
-                console.log(data)
                 this.data.cart_id = String(data[0].id);
                 this.data.user_id1 = String(data[0].user_id);
                 this.data.miniature_id1 = String(data[0].miniature_id);
@@ -78,24 +82,34 @@ export default class Confirmation {
             .querySelector(".buttonSubmit button")
             .addEventListener("click", async () => {
                 try{
-                    console.log(this.data);
-                    let res = await fetch(`${api}/api/exchanges/`, {
-                        method: "POST",
-                        body: JSON.stringify(this.data),
-                        headers: { "Content-type": "application/json" },
-                    });
-                    let { data } = await res.json();
-                    let res1 = await fetch(`${api}/api/exchanges/close/${data}`,{
-                        method: "PUT",
-                        headers: { "Content-type": "application/json" },
-                    })
-                    let data1 = await res1.json();
-                    console.log(data1)
-                    document.querySelector("#content").innerHTML = router("/historic");
-                    logic("/historic");
+                    if(this.data.miniature_id2){
+                        let res = await fetch(`${api}/api/exchanges/`, {
+                            method: "POST",
+                            body: JSON.stringify(this.data),
+                            headers: { "Content-type": "application/json" },
+                        });
+                        let { data } = await res.json();
+                        let res1 = await fetch(`${api}/api/exchanges/close/${data}`,{
+                            method: "PUT",
+                            headers: { "Content-type": "application/json" },
+                        })
+                        let data1 = await res1.json();
+                        document.querySelector("#content").innerHTML = router("/historic");
+                        logic("/historic");
+                    }else{
+                        let message = document.getElementById("message");
+                        message.innerHTML = 'Item não selecionado';
+                        document.getElementById("alert").style.display = "flex";
+                        this.ClickError()
+                    }
                 }catch(err){
                     console.log(err)
                 }
             });
+    }
+    ClickError() {
+        document.getElementById("alert").addEventListener("click", () => {
+            document.getElementById("alert").style.display = "none";
+        });
     }
 }

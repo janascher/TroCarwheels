@@ -27,6 +27,11 @@ export default class Details {
             return false;
         }
     }
+    async Cart(_id){
+        let res = await fetch(`${api}/api/cart_offer/cart/${_id}`);
+        let {data}= await res.json();
+        return data[0]?.cart_id
+    }
     async listDetail() {
         document.querySelector(".carSelection").innerHTML = "";
         let res_cart = await fetch(`${api}/api/cart/${sessionStorage.infoId}`);
@@ -45,23 +50,31 @@ export default class Details {
         let res_own = await fetch(`${api}/api/miniatures/own/user`);
         let data_own = await res_own.json();
         let own = data_own.data;
+
         for(let i=0;i<own.length;i++){
             let filtro = cart_offers.find((mini) => {
                 if (mini.miniature_id == own[i].id) {
                     return true;
                 }
             });
+
+            let resCart = await fetch(`${api}/api/cart_offer/cart/${String(own[i].id)}`);
+            let dataCart = await resCart.json();
+            console.log(dataCart)
+            let Cart = dataCart.data
             if (!filtro) {
-                document.querySelector(".carSelection").innerHTML += `
-                    <label class="infosCar">
-                        <a target="_blank" href="./uploads/${own[i].link}">
-                            <img class="basis-1" src="./uploads/${own[i].link}" alt="Fotografia" />
-                        </a>                                    
-                        <p class="basis-2">${own[i].model}</p>
-                        <button class="basis-1" type="button" data-id="${own[i].id}">Selecionar</button>
-                    </label>
-                `;
-                this.choose();
+                if(!Cart.length){
+                    document.querySelector(".carSelection").innerHTML += `
+                        <label class="infosCar">
+                            <a target="_blank" href="./uploads/${own[i].link}">
+                                <img class="basis-1" src="./uploads/${own[i].link}" alt="Fotografia" />
+                            </a>                                    
+                            <p class="basis-2">${own[i].model}</p>
+                            <button class="basis-1" type="button" data-id="${own[i].id}">Selecionar</button>
+                        </label>
+                    `;
+                    this.choose();
+                }
             } else {
                 document.querySelector(".carSelection").innerHTML += `
                     <label class="infosCar">
@@ -81,7 +94,6 @@ export default class Details {
                     </div>
             `;
             document.querySelectorAll(".infosCar button").forEach(async (_el, key) => {
-                console.log(1)
                 _el.addEventListener("click", async (_evt) => {
                     console.log(2)
                     let index = this.offers.indexOf(Number(_evt.target.dataset.id));

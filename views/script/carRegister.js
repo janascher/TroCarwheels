@@ -36,7 +36,20 @@ class CarRegister {
         document
             .getElementById("picture-input")
             .addEventListener("change", (evt) => {
-                var oFReader = new FileReader();
+                try{
+                    var oFReader = new FileReader();
+                    if(evt.target.files[0].size<=307200){
+                        throw 'Este Arquivo excedeu 300KB'
+                    }
+                    if(evt.target.files[0].type!="image/png" || evt.target.files[0].type!="image/jpeg"){
+                        throw 'Este Arquivo precisa Ser um JPEG ou PNG'
+                    }
+                }catch(err){
+                    let message = document.getElementById("message");
+                    message.innerHTML = err;
+                    document.getElementById("alert").style.display = "flex";
+                    this.ClickError()
+                }
                 if(evt.target.files[0].size<=307200){
                     oFReader.readAsDataURL(evt.target.files[0]);
     
@@ -44,11 +57,6 @@ class CarRegister {
                         document.getElementById("pictureImage").src =
                             oFREvent.target.result;
                     };
-                }else{
-                    let message = document.getElementById("message");
-                    message.innerHTML = 'Este Arquivo excedeu 300Kb';
-                    document.getElementById("alert").style.display = "flex";
-                    this.ClickError()
                 }
             });
     }

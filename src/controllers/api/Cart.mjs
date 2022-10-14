@@ -84,6 +84,7 @@ export default class CartCtrl {
 
     async getCartByOtherUserId(req, res) {
         const user_id = String(req.user.id.user_id);
+        const search = req.query.search;
         console.log(user_id)
         const id = parseInt(user_id);
         if (isNaN(id)){
@@ -92,7 +93,7 @@ export default class CartCtrl {
         }
 
         try {    
-            const resultado = await cartServ.getCartByOtherUserId(id);
+            const resultado = await cartServ.getCartByOtherUserId(id,search);
             if (resultado.err !== null){ 
                 res.status(500).json(resultado);
             } else{

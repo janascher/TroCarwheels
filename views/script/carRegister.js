@@ -41,7 +41,7 @@ class CarRegister {
                     if(evt.target.files[0].size>307200){
                         throw 'Este Arquivo excedeu 300KB'
                     }
-                    if(evt.target.files[0].type!="image/png" || evt.target.files[0].type!="image/jpeg"){
+                    if(evt.target.files[0].type!="image/png" && evt.target.files[0].type!="image/jpeg"){
                         throw 'Este Arquivo precisa Ser um JPEG ou PNG'
                     }
                 }catch(err){

@@ -21,9 +21,12 @@ const storage = diskStorage(
 const fileFilter = (req, file, cb) => {
     const ext = file.mimetype.split("/")[1];
     if (ext === 'jpeg' || ext === 'png'){
+        req.fileOk=true;
         cb(null, true);
     } else {
-        cb(new Error(`Not a JPEG or PNG file!`), false);
+        req.fileOk=false;
+//        cb(new Error(`Not a JPEG or PNG file!`), false);
+        cb(null, false);
     }    
 }
 

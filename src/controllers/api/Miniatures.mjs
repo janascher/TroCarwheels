@@ -77,6 +77,11 @@ export default class MiniaturesCtrl {
     }
 
     async updateImage(req, res) {
+        if (!req.fileOk){
+            res.status(406).json({message: 'Error uploading file'});
+            return;
+        }
+
         const id = parseInt(req.params.id);
         if (isNaN(id)){
             res.status(400).json({err: `Invalid value for id ${req.params.id}`});

@@ -38,7 +38,7 @@ class CarRegister {
             .addEventListener("change", (evt) => {
                 try{
                     var oFReader = new FileReader();
-                    if(evt.target.files[0].size<=307200){
+                    if(evt.target.files[0].size>307200){
                         throw 'Este Arquivo excedeu 300KB'
                     }
                     if(evt.target.files[0].type!="image/png" || evt.target.files[0].type!="image/jpeg"){

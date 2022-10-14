@@ -12,10 +12,14 @@ routeMiniature.get("/own/user", authenticateToken, miniaturesCtrl.getMiniaturesB
 routeMiniature.get("/other/users", authenticateToken, miniaturesCtrl.getMiniatureOtherUsers);
 routeMiniature.post("/upload/:id", authenticateToken, multerUpload.single('file'), (req, res, next) => {
     try {
+        if(!req.fileOk){
+            console.log(req.fileOk)
+        }    
     }    
     catch (error) {
         console.log(error)
-        return res.sendStatus(500).json({status: 'Error uploading file!'});
+        req.fileOk=false;
+//        return res.sendStatus(406).json({status: 'Error uploading file!'});
     }
     next();
 },  miniaturesCtrl.updateImage);

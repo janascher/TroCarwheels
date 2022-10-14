@@ -11,6 +11,7 @@ export default function carRegistration() {
                             <div class="infoUpload">
                                 <img class="iconUpload" src="./assets/img/carRegistration/CloudArrowUp.svg" alt="Upload">
                                 <p class="pText">Nenhum arquivo escolhido, ainda!</p>
+                                <p class="pText">Maximo 300KB</p>
                                 <input type="file" name="picture-input" accept="image/*" id="picture-input">
                             </div>
                         </label>

@@ -39,7 +39,7 @@ input:focus {
     padding-left: 1vw;
     font-family: var(--secundary-font);
     height: 4.5vh;
-    width: 21vw;
+    width: 20rem;
     font-size: 1rem;
 }
 

@@ -64,6 +64,32 @@ class Home {
             })
         })
     }
+    cancel(){
+        document.querySelectorAll('ion-icon[name="trash"]').forEach((_el)=>{
+            _el.addEventListener('click', async (_evt)=>{
+                try{
+                    let resCart = await fetch(`${api}/api/cart/find/${_evt.target.dataset.id}`);
+                    let dataCart = await resCart.json();
+                    let Cart = dataCart?.data[0]?.id;
+                    await fetch(`${api}/api/miniatures/status/${_evt.target.dataset.id}/10`,{
+                        method: "PUT",
+                        headers: { "Content-type": "application/json"}
+                    })
+                    console.log(Cart)
+                    let res = await fetch(`${api}/api/cart/${Cart}`,{
+                            method: "DELETE",
+                            headers: { "Content-type": "application/json"}
+                    })
+                    let data = await res.json();
+                    console.log(data)
+                    document.querySelector("#content").innerHTML = await router("/");
+                    await logic("/");
+                }catch(err){
+                    console.log(err)
+                }
+            })
+        })
+    }
     delete() {
         document.querySelectorAll('ion-icon[name="close"]').forEach((_el)=>{
             _el.addEventListener('click', async (_evt)=>{
@@ -110,8 +136,9 @@ class Home {
                         document.getElementById(
                             "home_cars_container"
                         ).innerHTML += `<div class="card" id="car_container1">
-                            <ion-icon name="close" data-id="${id}"></ion-icon>
-                            <ion-icon name="create" data-id="${id}"></ion-icon>
+                            <ion-icon name="close" data-id="${id}" title="Excluir miniatura"></ion-icon>
+                            <ion-icon name="create" data-id="${id}" title="Editar miniatura"></ion-icon>
+                            <ion-icon name="trash" data-id="${id}" title="Descartar Troca"></ion-icon>
                             <img class="card_images" id="card_one" style="background:url(./uploads/${link});background-repeat:no-repeat;
                             background-size:contain;
                                 background-position:center;">
@@ -127,8 +154,8 @@ class Home {
                             document.getElementById(
                                 "home_cars_container"
                             ).innerHTML += `<div class="card" id="car_container1">
-                            <ion-icon name="close" data-id="${id}"></ion-icon>
-                            <ion-icon name="create" data-id="${id}"></ion-icon>
+                            <ion-icon name="close" data-id="${id}" title="Excluir miniatura"></ion-icon>
+                            <ion-icon name="create" data-id="${id}" title="Editar miniatura"></ion-icon>
                                 <img class="card_images" id="card_one" style="background:url(./uploads/${link});background-repeat:no-repeat;
                                 background-size:contain;
                                     background-position:center;">
@@ -143,8 +170,8 @@ class Home {
                             document.getElementById(
                                 "home_cars_container"
                             ).innerHTML += `<div class="card" id="car_container1">
-                            <ion-icon name="close" data-id="${id}"></ion-icon>
-                            <ion-icon name="create" data-id="${id}"></ion-icon>
+                            <ion-icon name="close" data-id="${id}" title="Excluir miniatura"></ion-icon>
+                            <ion-icon name="create" data-id="${id}" title="Editar miniatura"></ion-icon>
                                 <img class="card_images" id="card_one" style="background:url(./uploads/${link});background-repeat:no-repeat;
                                 background-size:contain;
                                     background-position:center;">
@@ -164,6 +191,7 @@ class Home {
             }
             this.update();
             this.delete();
+            this.cancel();
             this.publish();
             this.viewCart();
             this.viewOffer();

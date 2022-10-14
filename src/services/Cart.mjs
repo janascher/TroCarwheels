@@ -50,9 +50,14 @@ export default class cartServ {
         } 
     }
 
-    async getCartByOtherUserId(_id){
+    async getCartByOtherUserId(_id, _search){
         try {
-            const data = await repositories.cart.getDataByOtherUserId(this.#db, _id);
+            let search = "";
+            if(_search){
+                search = `AND (UPPER(b.model) LIKE '%${_search.toUpperCase()}%' 
+                OR UPPER(b.color) LIKE '%${_search.toUpperCase()}%')`;
+            }
+            const data = await repositories.cart.getDataByOtherUserId(this.#db, _id, search);
             return {data: data, err: null, errCode: null};
         }
         catch(err){
